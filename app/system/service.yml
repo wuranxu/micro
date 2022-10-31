@@ -1,0 +1,12 @@
+etcd: 127.0.0.1:2379
+version: v1
+service: system
+port: 16017
+method:
+  getSystemConfig:
+    authorization: true
+  updateSystemConfig:
+    authorization: true
+  sendEmail:
+    authorization: true
+

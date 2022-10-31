@@ -1,0 +1,58 @@
+etcd: 127.0.0.1:2379
+version: v1
+service: config
+port: 16016
+method:
+  listGateway:
+    authorization: true
+  insertGateway:
+    authorization: true
+  updateGateway:
+    authorization: true
+  deleteGateway:
+    authorization: true
+  listDbConfig:
+    authorization: true
+  insertDbConfig:
+    authorization: true
+  updateDbConfig:
+    authorization: true
+  deleteDbConfig:
+    authorization: true
+  testDbConfig:
+    authorization: true
+  listEnvironment:
+    authorization: true
+  insertEnvironment:
+    authorization: true
+  updateEnvironment:
+    authorization: true
+  deleteEnvironment:
+    authorization: true
+  listGConfig:
+    authorization: true
+  insertGConfig:
+    authorization: true
+  updateGConfig:
+    authorization: true
+  deleteGConfig:
+    authorization: true
+  listRedis:
+    authorization: true
+  insertRedis:
+    authorization: true
+  updateRedis:
+    authorization: true
+  deleteRedis:
+    authorization: true
+  runRedisCommand:
+    authorization: true
+  listDbTables:
+    authorization: true
+  listDbTree:
+    authorization: true
+  runSQL:
+    authorization: true
+  querySQLHistory:
+    authorization: true
+

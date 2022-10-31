@@ -1,0 +1,25 @@
+etcd: 127.0.0.1:2379
+version: v1
+service: project
+port: 16015
+method:
+  list:
+    authorization: true
+  insert:
+    authorization: true
+  updateAvatar:
+    authorization: true
+  update:
+    authorization: true
+  query:
+    authorization: true
+  delete:
+    authorization: true
+  insertRole:
+    authorization: true
+  updateRole:
+    authorization: true
+  deleteRole:
+    authorization: true
+  checkPermission:
+    authorization: true

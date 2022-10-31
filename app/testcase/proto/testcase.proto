@@ -1,0 +1,493 @@
+syntax = "proto3";
+
+message ListTestCaseDto {
+  optional int32 directory_id = 1;
+  optional string name = 2;
+  optional int32 create_user = 3;
+}
+
+message TestCaseModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  string name = 6;
+  int32 request_type = 7;
+  string url = 8;
+  string request_method = 9;
+  string request_headers = 10;
+  string base_path = 11;
+  string body = 12;
+  int32 body_type = 13;
+  int32 directory_id = 14;
+  string tag = 15;
+  int32 status = 16;
+  string priority = 17;
+  int32 case_type = 18;
+}
+
+message ListTestCaseResponse {
+  int32 code = 1;
+  string msg = 2;
+  repeated TestCaseModel data = 3;
+}
+
+message TestCaseDto {
+  optional int32 id = 1;
+  string priority = 2;
+  optional string url = 3;
+  optional string name = 4;
+  optional int32 case_type = 5;
+  optional string base_path = 6;
+  optional string tag = 7;
+  optional string body = 8;
+  optional int32 body_type = 9;
+  optional string request_headers = 10;
+  optional string request_method = 11;
+  optional int32 status = 12;
+  int32 directory_id = 13;
+  int32 request_type = 14;
+  repeated TestCaseOutParametersDto out_parameters = 15;
+}
+
+message TestCaseOutParametersDto {
+  optional int32 id = 1;
+  string name = 2;
+  optional string expression = 3;
+  optional string match_index = 4;
+  int32 source = 5;
+}
+
+message TestCaseOutParametersResponse {
+  int32 code = 1;
+  string msg = 2;
+  TestCaseOutParametersModel data = 3;
+}
+
+message InsertTestCaseResponseDto {
+  int32 code = 1;
+  int32 data = 2;
+  string msg = 3;
+}
+
+message TestCaseAssertsDto {
+  optional int32 id = 1;
+  string name = 2;
+  optional int32 case_id = 3;
+  optional string assert_type = 4;
+  string expected = 5;
+  string actually = 6;
+}
+
+message TestCaseDataDto {
+  optional int32 id = 1;
+  optional int32 case_id = 2;
+  string name = 3;
+  string json_data = 4;
+  int32 env = 5;
+}
+
+message ConstructorDto {
+  optional int32 id = 1;
+  optional string value = 2;
+  optional int32 type = 3;
+  string name = 4;
+  optional int32 index = 5;
+  string constructor_json = 6;
+  optional bool enable = 7;
+  optional int32 case_id = 8;
+  optional bool public = 9;
+  optional bool suffix = 10;
+}
+
+message TestCaseInfoDto {
+  optional TestCaseDto case = 1;
+  repeated TestCaseAssertsDto asserts = 2;
+  repeated TestCaseDataDto data = 3;
+  repeated TestCaseOutParametersDto out_parameters = 4;
+}
+
+message TestCaseResponse {
+  int32 code = 1;
+  string msg = 2;
+  optional bytes data = 3;
+}
+
+message TestCaseRequest {
+  bytes requestJson = 1;
+}
+
+message QueryTestCaseDirTree {
+  int32 project_id = 1;
+  optional bool move = 2;
+}
+
+message QueryTestCaseDir {
+  int32 directory_id = 1;
+}
+
+message TestCaseTree {
+  string title = 1;
+  string key = 2;
+  optional bool disabled = 3;
+  repeated TestCaseTree children = 4;
+}
+
+message QueryTestCaseDirTreeResponse {
+  int32 code = 1;
+  string msg = 2;
+  repeated TestCaseTree data = 3;
+}
+
+message TestCaseDirectoryModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  int32 project_id = 6;
+  string name = 7;
+  optional int32 parent = 8;
+}
+
+message QueryTestCaseDirectoryResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  TestCaseDirectoryModel data = 3;
+}
+
+message QueryTestCaseDto {
+  int32 case_id = 1;
+}
+
+message TestCaseAssertsModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  string  assert_type = 6;
+  string name = 7;
+  int32 case_id = 8;
+  string expected = 9;
+  string actually = 10;
+}
+
+message TestCaseConstructorModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  int32  type = 6;
+  string name = 7;
+  bool enable = 8;
+  string constructor_json = 9;
+  optional string value = 10;
+  int32 case_id = 11;
+  bool public = 12;
+  int32 index = 13;
+  bool suffix = 14;
+}
+
+message TestCaseDataModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  int32 env = 6;
+  int32 case_id = 7;
+  string name = 8;
+  string json_data = 9;
+}
+
+message TestCaseOutParametersModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  int32 source = 6;
+  int32 case_id = 7;
+  string name = 8;
+  optional string expression = 9;
+  optional string match_index = 10;
+}
+
+message ListTestCaseDataModel {
+  repeated TestCaseDataModel test_data = 1;
+}
+
+message TestCaseFullResponseData {
+  repeated TestCaseAssertsModel asserts = 1;
+  repeated TestCaseConstructorModel constructors = 2;
+  map<int32, ListTestCaseDataModel> test_data = 3;
+  repeated TestCaseOutParametersModel out_parameters = 4;
+  TestCaseModel case = 5;
+  map<int32, TestCaseModel> constructors_case = 6;
+}
+
+message QueryTestCaseResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  TestCaseFullResponseData data = 3;
+}
+
+message UpdateTestCaseData {
+  TestCaseModel case_info = 1;
+  repeated TestCaseOutParametersModel out_parameters = 2;
+}
+
+message UpdateTestCaseResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  UpdateTestCaseData data = 3;
+}
+
+message DeleteTestCaseDto {
+  repeated int32 data = 1;
+}
+
+message TestCaseAssertsResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  TestCaseAssertsModel data = 3;
+}
+
+message CustomDto {
+  int32 id = 1;
+}
+
+message ConstructorIndexDto {
+  int32 id = 1;
+  int32 index = 2;
+}
+
+message ListConstructorIndexDto {
+  repeated ConstructorIndexDto data = 1;
+}
+
+message QueryConstructorTreeDto {
+  bool suffix = 1;
+  optional string name = 2;
+}
+
+message ConstructorTree {
+  string key = 1;
+  optional bool disabled = 2;
+  string title = 3;
+  optional string value = 4;
+  repeated ConstructorTree children = 5;
+}
+
+message QueryConstructorTreeResponse {
+  ConstructorTree data = 1;
+  string msg = 2;
+  int32 code = 3;
+}
+
+message QueryConstructorResponse {
+  TestCaseConstructorModel data = 1;
+  string msg = 2;
+  int32 code = 3;
+}
+
+message ListConstructorDto {
+  optional int32 constructor_type = 1;
+  optional bool suffix = 2;
+}
+
+message ConstructorResponseTree {
+  string title = 1;
+  string key = 2;
+  optional string constructor_json = 3;
+  repeated ConstructorResponseTree children = 4;
+  optional bool isLeaf = 5;
+  optional bool disabled = 6;
+}
+
+message ListConstructorResponse {
+  int32 code = 1;
+  string msg = 2;
+  repeated ConstructorResponseTree data = 3;
+}
+
+message TestReportModel {
+  int32 id = 1;
+  string start_at = 2;
+  string finished_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  int32 executor = 6;
+  int32 env = 7;
+  string cost = 8;
+  int32 plan_id = 9;
+  optional int32 success_count = 10;
+  optional int32 error_count = 11;
+  optional int32 failed_count = 12;
+  optional int32 skipped_count = 13;
+  optional int32 status = 14;
+  optional int32 mode = 15;
+}
+
+message TestResult {
+  int32 id = 1;
+  optional int32 directory_id = 2;
+  optional int32 report_id = 3;
+  optional int32 case_id = 4;
+  string case_name = 5;
+  optional int32 status = 6;
+  string start_at = 7;
+  string finished_at = 8;
+  string case_log = 9;
+  optional int32 retry = 10;
+  string url = 11;
+  optional string body = 12;
+  optional string request_params = 13;
+  optional string data_name = 14;
+  optional int32 data_id = 15;
+  string request_method = 16;
+  string request_headers = 17;
+  string cost = 18;
+  string asserts = 19;
+  string response_headers = 20;
+  string response = 21;
+  optional string cookies = 22;
+}
+
+message QueryReportData {
+  TestReportModel report = 1;
+  string plan_name = 2;
+  repeated TestResult case_list = 3;
+}
+
+message QueryReportResponse {
+  optional int32 code = 1;
+  string msg = 2;
+  QueryReportData data = 3;
+}
+
+message ListReportDto {
+  optional int32 page = 1;
+  optional int32 size = 2;
+  string start_time = 3;
+  string end_time = 4;
+  optional int32 executor = 5;
+}
+
+message ListReportData {
+  optional int32 total = 1;
+  repeated TestReportModel data = 2;
+}
+
+message ListReportResponse {
+  int32 code = 1;
+  string msg = 2;
+  ListReportData data = 3;
+}
+
+message QueryXmindResponse {
+  int32 code = 1;
+  string msg = 2;
+  QueryXmindData data = 3;
+}
+
+message QueryXmindData {
+  string label = 1;
+  string key = 2;
+  string title = 3;
+  optional string id = 4;
+  repeated QueryXmindData children = 5;
+}
+
+message TestPlanCaseDto {
+  int32 project_id = 1;
+}
+
+message TestPlanTreeResponse {
+  int32 code = 1;
+  string msg = 2;
+  TestPlanTreeData data = 3;
+}
+
+message TestPlanTreeData {
+  repeated TestCaseTree tree = 1;
+  map<int32, string> case_map = 2;
+}
+
+message TestCaseDirDto {
+  optional int32 id = 1;
+  string name = 2;
+  int32 project_id = 3;
+  optional int32 parent = 4;
+}
+
+message TestCaseDataResponse {
+  int32 code = 1;
+  string msg = 2;
+  TestCaseDataModel data = 3;
+}
+
+message MoveTestCaseDto {
+  int32 project_id = 1;
+  int32 directory_id = 2;
+  repeated int32 id_list = 3;
+}
+
+message BatchUpdateOutParametersDto {
+  int32 case_id = 1;
+  repeated TestCaseOutParametersDto data = 2;
+}
+
+message BatchUpdateOutParametersResponse {
+  int32 code = 1;
+  string msg = 2;
+  repeated TestCaseOutParametersModel data = 3;
+}
+
+service testcase {
+  rpc listTestCase(ListTestCaseDto) returns (ListTestCaseResponse) {}
+  rpc insertTestCase(TestCaseDto) returns (InsertTestCaseResponseDto) {}
+  rpc createTestCase(TestCaseInfoDto) returns (TestCaseResponse) {}
+  rpc updateTestCase(TestCaseDto) returns (UpdateTestCaseResponseDto) {}
+  rpc deleteTestCase(DeleteTestCaseDto) returns (TestCaseResponse) {}
+  rpc queryTestCase(QueryTestCaseDto) returns (QueryTestCaseResponseDto) {}
+  rpc moveTestCase(MoveTestCaseDto) returns (TestCaseResponse) {}
+  rpc insertAsserts(TestCaseAssertsDto) returns (TestCaseAssertsResponseDto) {}
+  rpc updateAsserts(TestCaseAssertsDto) returns (TestCaseAssertsResponseDto) {}
+  rpc deleteAsserts(CustomDto) returns (TestCaseResponse) {}
+  rpc insertConstructor(ConstructorDto) returns (TestCaseResponse) {}
+  rpc updateConstructor(ConstructorDto) returns (TestCaseResponse) {}
+  rpc deleteConstructor(CustomDto) returns (TestCaseResponse) {}
+  rpc reorderConstructor(ListConstructorIndexDto) returns (TestCaseResponse) {}
+  rpc queryConstructorTree(QueryConstructorTreeDto) returns (QueryConstructorTreeResponse) {}
+  rpc queryConstructor(CustomDto) returns (QueryConstructorResponse) {}
+  rpc listConstructor(ListConstructorDto) returns (ListConstructorResponse) {}
+  rpc queryTestReport(CustomDto) returns (QueryReportResponse) {}
+  rpc listTestReport(ListReportDto) returns (ListReportResponse) {}
+  rpc queryXmindData(CustomDto) returns (QueryXmindResponse) {}
+  rpc queryTestCaseDirTree(QueryTestCaseDirTree) returns (QueryTestCaseDirTreeResponse) {}
+  rpc queryTestCaseTree(TestPlanCaseDto) returns (TestPlanTreeResponse) {}
+  rpc queryTestCaseDir(QueryTestCaseDir) returns (QueryTestCaseDirectoryResponseDto) {}
+  rpc insertTestCaseDir(TestCaseDirDto) returns (TestCaseResponse) {}
+  rpc updateTestCaseDir(TestCaseDirDto) returns (TestCaseResponse) {}
+  rpc deleteTestCaseDir(CustomDto) returns (TestCaseResponse) {}
+  rpc insertTestData(TestCaseDataDto) returns (TestCaseDataResponse) {}
+  rpc updateTestData(TestCaseDataDto) returns (TestCaseDataResponse) {}
+  rpc deleteTestData(CustomDto) returns (TestCaseResponse) {}
+
+  rpc insertParams(TestCaseOutParametersDto) returns (TestCaseOutParametersResponse) {}
+  rpc updateParams(TestCaseOutParametersDto) returns (TestCaseOutParametersResponse) {}
+  rpc batchUpdateParams(BatchUpdateOutParametersDto) returns (BatchUpdateOutParametersResponse) {}
+  rpc deleteParams(CustomDto) returns (TestCaseResponse) {}
+
+
+  rpc startRecord(TestCaseRequest) returns (TestCaseResponse) {}
+  rpc stopRecord(TestCaseRequest) returns (TestCaseResponse) {}
+  rpc removeRecord(TestCaseRequest) returns (TestCaseResponse) {}
+  rpc queryRecordStatus(TestCaseRequest) returns (TestCaseResponse) {}
+  rpc generateTestCase(TestCaseRequest) returns (TestCaseResponse) {}
+  rpc importTestCase(TestCaseRequest) returns (TestCaseResponse) {}
+}
