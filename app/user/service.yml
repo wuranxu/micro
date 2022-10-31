@@ -1,0 +1,19 @@
+etcd: 127.0.0.1:2379
+version: v1
+service: user
+port: 16011
+method:
+  login:
+  loginV2:
+  listUser:
+    authorization: true
+  register:
+  delete:
+    authorization: true
+  query:
+  update:
+    authorization: true
+  checkToken:
+  resetPassword:
+  generatePassword:
+  loginWithGithub:

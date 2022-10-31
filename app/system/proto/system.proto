@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+message SystemRequest {
+
+}
+
+message ConfigDto {
+  Email email = 1;
+  Yapi yapi = 2;
+  Oss oss = 3;
+}
+
+message SystemResponse {
+  int32 code = 1;
+  string msg = 2;
+  ConfigDto data = 3;
+}
+
+message Email {
+  string sender = 1;
+  string password = 2;
+  string host = 3;
+  string to = 4;
+}
+
+message Yapi {
+  string token = 1;
+}
+
+message Oss {
+  string oss_type = 1;
+  string access_key_id = 2;
+  string access_key_secret = 3;
+  string bucket = 4;
+  optional string endpoint = 5;
+}
+
+message EmailDto {
+  string subject = 1;
+  string content = 2;
+  repeated string receiver = 3;
+  optional string attachment = 4;
+}
+
+service system {
+  rpc getSystemConfig(SystemRequest) returns (SystemResponse) {}
+  rpc updateSystemConfig(ConfigDto) returns (SystemResponse) {}
+  rpc sendEmail(EmailDto) returns (SystemResponse) {}
+}

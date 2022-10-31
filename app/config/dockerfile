@@ -1,0 +1,12 @@
+FROM python:3.9-slim as builder
+WORKDIR /pityUser
+COPY ../.. .
+RUN python -m venv /pityUser/venv  \
+    && /pityUser/venv/bin/python -m pip install --upgrade pip \
+    && /pityUser/venv/bin/python -m pip install -r requirements.txt
+
+ENV PYTHONPATH "${PYTHONPATH}:/pityUser"
+
+CMD ["/pityUser/venv/bin/python","server.py"]
+
+#EXPOSE 16011

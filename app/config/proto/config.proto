@@ -1,0 +1,370 @@
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+
+message Request {}
+
+message Response {
+  int32 code = 1;
+  string msg = 2;
+  bytes data = 3;
+}
+
+message CommandResponse {
+  int32 code = 1;
+  string msg = 2;
+  string data = 3;
+}
+
+message PityGatewayModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  string name = 6;
+  int32 env = 7;
+  string gateway = 8;
+}
+
+message ListGatewayDto {
+  optional string name = 1;
+  optional string gateway = 2;
+  optional int32 env = 3;
+}
+
+message ListGatewayResponseDto {
+  int32 code = 1;
+  repeated PityGatewayModel data = 2;
+  string msg = 3;
+}
+
+message GatewayResponseDto {
+  int32 code = 1;
+  PityGatewayModel data = 2;
+  string msg = 3;
+}
+
+message PityGatewayDto {
+  optional int32 id = 1;
+  int32 env = 2;
+  string name = 3;
+  string gateway = 4;
+}
+
+message CustomDto {
+  int32 id = 1;
+}
+
+message RunRedisCommandDto {
+  int32 id = 1;
+  string command = 2;
+}
+
+message QueryDbConfigDto {
+  optional string name = 1;
+  optional string database = 2;
+  optional int32 env = 3;
+}
+
+message PityDatabaseModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  int32 env = 6;
+  string name = 7;
+  string host = 8;
+  int32 port = 9;
+  string username = 10;
+  string password = 11;
+  string database = 12;
+  int32 sql_type = 13;
+  Environment env_info = 14;
+}
+
+message Environment {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  string name = 6;
+  string remarks = 7;
+}
+
+message ListDbConfigResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  repeated PityDatabaseModel data = 3;
+}
+
+message DatabaseModelDto {
+  optional int32 id = 1;
+  string name = 2;
+  string host = 3;
+  optional int32 port = 4;
+  string username = 5;
+  string password = 6;
+  string database = 7;
+  optional int32 sql_type = 8;
+  int32 env = 9;
+}
+
+message DatabaseConnectionDto {
+  optional int32 sql_type = 1;
+  string host = 2;
+  int32 port = 3;
+  string username = 4;
+  string password = 5;
+  string database = 6;
+}
+
+message ListEnvironmentDto {
+  optional string name = 1;
+}
+
+message ListEnvironmentResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  repeated Environment data = 3;
+}
+
+message EnvironmentModelDto {
+  optional int32 id = 1;
+  string name = 2;
+  string remarks = 3;
+}
+
+message UpdateEnvironmentResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  Environment data = 3;
+}
+
+message ListGConfigDto {
+  optional int32 page = 1;
+  optional int32 size = 2;
+  optional int32 env = 3;
+  optional string key = 4;
+}
+
+message GConfigModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  int32 env = 6;
+  string key = 7;
+  string value = 8;
+  optional int32 key_type = 9;
+  optional bool enable = 10;
+}
+
+message GConfigModelData {
+  repeated GConfigModel data = 1;
+  int32 total = 2;
+}
+
+message ListGConfigResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  GConfigModelData data = 3;
+}
+
+message GConfigDto {
+  optional int32 id = 1;
+  string key = 2;
+  string value = 3;
+  optional int32 env = 4;
+  optional int32 key_type = 5;
+  optional bool enable = 6;
+}
+
+message ListRedisDto {
+  optional string name = 1;
+  optional string addr = 2;
+  int32 env = 3;
+  bool cluster = 4;
+}
+
+message PityRedisModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  int32 env = 6;
+  string name = 7;
+  string addr = 8;
+  string username = 9;
+  string password = 10;
+  int32 db = 11;
+  bool cluster = 12;
+}
+
+message ListRedisResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  repeated PityRedisModel data = 3;
+}
+
+message RedisDto {
+  optional int32 id = 1;
+  string name = 2;
+  string addr = 3;
+  optional int32 db = 4;
+  optional string password = 5;
+  optional bool cluster = 6;
+  int32 env = 7;
+}
+
+message RedisResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  PityRedisModel data = 3;
+}
+
+message DbTree {
+  string key = 1;
+  string title = 2;
+  repeated DatabaseInfo children = 3;
+}
+
+message DatabaseInfo {
+  string title = 1;
+  string key = 2;
+  PityDatabaseModel data = 3;
+  int32 sql_type = 4;
+  repeated DatabaseInfo children = 5;
+}
+
+message Table {
+  string title = 1;
+  string key = 2;
+  repeated Field children = 3;
+}
+
+message Field {
+  string title = 1;
+  optional bool primary_key = 2;
+  optional string type = 3;
+  string key = 4;
+  optional bool isLeaf = 5;
+}
+
+message ListTableResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  TableResponse data = 3;
+}
+
+message ListDatabaseResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  repeated DbTree data = 3;
+}
+
+message TableResponse {
+  repeated Table children = 1;
+  repeated string tables = 2;
+}
+
+message SqlCommandDto {
+  int32 id = 1;
+  string sql = 2;
+}
+
+message SqlResult {
+  repeated google.protobuf.Struct result = 1;
+  int32 elapsed = 2;
+  repeated string columns = 3;
+}
+
+message RunSQLResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  SqlResult data = 3;
+}
+
+message QuerySQLHistoryDto {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message QuerySQLHistoryResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  SQLHistoryResponse data = 3;
+}
+
+message PitySQLHistoryModel {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 create_user = 4;
+  int32 update_user = 5;
+  string sql = 6;
+  int32 elapsed = 7;
+  int32 database_id = 8;
+  PityDatabaseModel database = 9;
+}
+
+message SQLHistoryResponse {
+  repeated PitySQLHistoryModel data = 1;
+  int32 total = 2;
+}
+
+service config {
+  // 查询网关地址
+  rpc listGateway(ListGatewayDto) returns (ListGatewayResponseDto) {}
+  // 添加网关地址
+  rpc insertGateway(PityGatewayDto) returns (GatewayResponseDto) {}
+  // 编辑网关地址
+  rpc updateGateway(PityGatewayDto) returns (GatewayResponseDto) {}
+  // 删除网关地址
+  rpc deleteGateway(CustomDto) returns (Response) {}
+
+  // 获取数据库配置
+  rpc listDbConfig(QueryDbConfigDto) returns (ListDbConfigResponseDto) {}
+  // 添加数据库配置
+  rpc insertDbConfig(DatabaseModelDto) returns (Response) {}
+  // 编辑数据库配置
+  rpc updateDbConfig(DatabaseModelDto) returns (Response) {}
+  // 删除数据库配置
+  rpc deleteDbConfig(CustomDto) returns (Response) {}
+  // 测试数据库链接
+  rpc testDbConfig(DatabaseConnectionDto) returns (Response) {}
+
+  // 获取数据库列表
+  rpc listDbTree(Request) returns (ListDatabaseResponseDto) {}
+  // 获取数据库表+字段
+  rpc listDbTables(DatabaseModelDto) returns (ListTableResponseDto) {}
+  // 在线执行sql
+  rpc runSQL(SqlCommandDto) returns (RunSQLResponseDto) {}
+  // 查询sql执行记录
+  rpc querySQLHistory(QuerySQLHistoryDto) returns (QuerySQLHistoryResponseDto) {}
+
+  // 获取环境列表
+  rpc listEnvironment(ListEnvironmentDto) returns (ListEnvironmentResponseDto) {}
+  // 添加环境
+  rpc insertEnvironment(EnvironmentModelDto) returns (Response) {}
+  // 编辑环境
+  rpc updateEnvironment(EnvironmentModelDto) returns (UpdateEnvironmentResponseDto) {}
+  // 删除环境
+  rpc deleteEnvironment(CustomDto) returns (Response) {}
+
+  // 获取全局变量
+  rpc listGConfig(ListGConfigDto) returns (ListGConfigResponseDto) {}
+  rpc insertGConfig(GConfigDto) returns (Response) {}
+  rpc updateGConfig(GConfigDto) returns (Response) {}
+  rpc deleteGConfig(CustomDto) returns (Response) {}
+
+  // redis配置curd
+  rpc listRedis(ListRedisDto) returns (ListRedisResponseDto) {}
+  rpc insertRedis(RedisDto) returns (RedisResponseDto) {}
+  rpc updateRedis(RedisDto) returns (RedisResponseDto) {}
+  rpc deleteRedis(CustomDto) returns (Response) {}
+  rpc runRedisCommand(RunRedisCommandDto) returns (CommandResponse) {}
+}

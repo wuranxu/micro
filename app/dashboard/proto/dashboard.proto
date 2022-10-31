@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message Request {
+  bytes requestJson = 1;
+}
+
+message Response {
+  int32 code = 1;
+  string msg = 2;
+  bytes resultJson = 3;
+}
+
+service dashboard {
+  rpc statistics(Request) returns (Response) {}
+  rpc workspace(Request) returns (Response) {}
+}

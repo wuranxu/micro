@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+message Request {
+
+}
+
+message Response {
+  int32 code = 1;
+  string msg = 2;
+  bytes data = 3;
+}
+
+message LoginDto{
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  UserInfo data = 3;
+}
+
+message UserInfo {
+  optional string token = 1;
+  string email = 2;
+  string name = 3;
+  int32 role = 4;
+  int32 id = 5;
+  optional int32 expire = 6;
+  optional string phone = 7;
+  optional bool is_valid = 8;
+  optional string last_login_at = 9;
+  string avatar = 10;
+}
+
+message UserDto {
+  string name = 1;
+  string password = 2;
+  string username = 3;
+  string email = 4;
+}
+
+message ListUserResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  repeated UserInfo data = 3;
+}
+
+message LoginWithGithubDto {
+  string code = 1;
+}
+
+message UpdateUserDto {
+  int32 id = 1;
+  optional string name = 2;
+  optional string email = 3;
+  optional string phone = 4;
+  optional int32 role = 5;
+  optional bool is_valid = 6;
+}
+
+message CommonDeleteDto {
+  int32 id = 1;
+}
+
+message ResetDto {
+  string token = 1;
+  string password = 2;
+}
+
+message GeneratePasswordDto {
+  string email = 1;
+}
+
+message CheckResetUrlDto {
+  string token = 1;
+}
+
+message CheckResetUrlResponseDto {
+  int32 code = 1;
+  string msg = 2;
+  string data = 3;
+}
+
+service user {
+  // 注册用户
+  rpc register(UserDto) returns (Response) {}
+  // 用户登录
+  rpc login(LoginDto) returns (LoginResponseDto) {}
+  // 获取用户列表
+  rpc listUser(Request) returns (ListUserResponseDto) {}
+  // 通过github登录
+  rpc loginWithGithub(LoginWithGithubDto) returns (LoginResponseDto) {}
+  // 更新用户信息
+  rpc update(UpdateUserDto) returns (LoginResponseDto) {}
+  //  // 根据token查询用户
+  //  rpc query(Request) returns (Response) {}
+  // 禁用用户
+  rpc delete(CommonDeleteDto) returns (Response) {}
+  // 重置用户密码
+  rpc resetPassword(ResetDto) returns (Response) {}
+  // 生成重置密码链接
+  rpc generatePassword(GeneratePasswordDto) returns (Response) {}
+  // 校验生成的重置密码链接
+  rpc checkToken(CheckResetUrlDto) returns (CheckResetUrlResponseDto) {}
+}
