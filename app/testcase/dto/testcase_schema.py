@@ -82,6 +82,6 @@ class QueryTestCaseDto(BaseModel):
 
 
 class ImportTestCaseDto(BaseModel):
-    convertor: CaseConvertorType
+    import_type: CaseConvertorType
     filename: str
     content: bytes

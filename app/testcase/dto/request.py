@@ -15,14 +15,14 @@ body = TypeVar("body", bytes, str)
 
 class RequestInfo(pydantic.BaseModel):
     url: str
-    body: str
+    body: str = ""
     request_method: str
     # request_data: str
     request_headers: dict
     response_headers: dict
-    cookies: dict
-    request_cookies: dict
-    response_content: str
+    cookies: dict = dict()
+    request_cookies: dict = dict()
+    response_content: str = ""
     status_code: int
 
     def __init__(self, flow=None, **kwargs):

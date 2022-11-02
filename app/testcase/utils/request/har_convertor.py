@@ -20,7 +20,7 @@ class HarConvertor(Convertor):
             if regex is not None:
                 flag = re.compile(regex)
             # 加载har请求数据
-            data = json.load(f)
+            data = json.loads(f)
             ans = []
             entries = data.get("log", {}).get("entries")
             if not entries:

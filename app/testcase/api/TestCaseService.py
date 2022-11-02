@@ -1,3 +1,4 @@
+import base64
 from datetime import datetime
 
 from klose.excpetions.AuthException import AuthException
@@ -31,7 +32,8 @@ from proto.testcase_pb2 import ListTestCaseResponse, TestCaseModel, TestCaseTree
     QueryConstructorTreeResponse, ConstructorTree, QueryConstructorResponse, ListConstructorResponse, \
     ConstructorResponseTree, QueryReportResponse, QueryReportData, TestReportModel, TestResult, ListReportResponse, \
     ListReportData, QueryXmindResponse, QueryXmindData, TestPlanTreeResponse, TestPlanTreeData, TestCaseDataResponse, \
-    TestCaseOutParametersResponse, BatchUpdateOutParametersResponse
+    TestCaseOutParametersResponse, BatchUpdateOutParametersResponse, TestCaseGenerateResponse, TestCaseInfoDto, \
+    ImportTestCaseResponse, RequestInfo
 from proto.testcase_pb2_grpc import testcaseServicer
 from utils.request import get_convertor
 from utils.request.generator import CaseGenerator
@@ -362,33 +364,33 @@ class TestCaseServiceApi(testcaseServicer):
         async with async_session() as session:
             await PityTestCaseOutParametersDao.delete_record_by_id(session, request.id, user.id, log=False)
 
+    @Interceptor(TestCaseGeneratorForm, TestCaseGenerateResponse)
     async def generateTestCase(self, request, context):
         """
         生成测试用例
         """
         user = Context.get_user(context)
-        dto: TestCaseGeneratorForm = Context.parse_args(request, TestCaseGeneratorForm)
-        if len(dto.requests) == 0:
+        if len(request.requests) == 0:
             return Context.failed("无http请求，请检查参数")
-        CaseGenerator.extract_field(dto.requests)
-        cs = CaseGenerator.generate_case(dto.directory_id, dto.name, dto.requests[-1])
-        constructors = CaseGenerator.generate_constructors(dto.requests)
+        CaseGenerator.extract_field(request.requests)
+        cs = CaseGenerator.generate_case(request.directory_id, request.name, request.requests[-1])
+        constructors = CaseGenerator.generate_constructors(request.requests)
         info = TestCaseInfo(constructor=constructors, case=cs)
         async with async_session() as session:
             async with session.begin():
                 ans = await TestCaseDao.insert_test_case(session, info, user.id)
-                return Context.success(ans)
+                return PityResponse.from_orm(ans, TestCaseInfoDto())
 
+    @Interceptor(ImportTestCaseDto, ImportTestCaseResponse)
     async def importTestCase(self, request, context):
         """
         导入测试用例
         """
-        # user = Context.get_user(context)
-        dto: ImportTestCaseDto = Context.parse_args(request, ImportTestCaseDto)
-        convert, file_ext = get_convertor(dto.convertor)
+        convert, file_ext = get_convertor(request.import_type)
         if convert is None:
             return Context.failed("不支持的导入数据")
-        if not dto.filename.endswith(f".{file_ext}"):
+        if not request.filename.endswith(f".{file_ext}"):
             return Context.failed(f"请传入{file_ext}后缀文件")
-        requests = convert(dto.content)
-        return Context.success(requests)
+        content = base64.b64decode(request.content.decode().split("base64,")[-1])
+        requests = convert(content.decode())
+        return Context.render_list(requests, RequestInfo)

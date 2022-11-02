@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0etestcase.proto\"\x83\x01\n\x0fListTestCaseDto\x12\x19\n\x0c\x64irectory_id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x11\n\x04name\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x18\n\x0b\x63reate_user\x18\x03 \x01(\x05H\x02\x88\x01\x01\x42\x0f\n\r_directory_idB\x07\n\x05_nameB\x0e\n\x0c_create_user\"\xdb\x02\n\rTestCaseModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x14\n\x0crequest_type\x18\x07 \x01(\x05\x12\x0b\n\x03url\x18\x08 \x01(\t\x12\x16\n\x0erequest_method\x18\t \x01(\t\x12\x17\n\x0frequest_headers\x18\n \x01(\t\x12\x11\n\tbase_path\x18\x0b \x01(\t\x12\x0c\n\x04\x62ody\x18\x0c \x01(\t\x12\x11\n\tbody_type\x18\r \x01(\x05\x12\x14\n\x0c\x64irectory_id\x18\x0e \x01(\x05\x12\x0b\n\x03tag\x18\x0f \x01(\t\x12\x0e\n\x06status\x18\x10 \x01(\x05\x12\x10\n\x08priority\x18\x11 \x01(\t\x12\x11\n\tcase_type\x18\x12 \x01(\x05\"O\n\x14ListTestCaseResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1c\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x0e.TestCaseModel\"\xf6\x03\n\x0bTestCaseDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x10\n\x08priority\x18\x02 \x01(\t\x12\x10\n\x03url\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x11\n\x04name\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x16\n\tcase_type\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x16\n\tbase_path\x18\x06 \x01(\tH\x04\x88\x01\x01\x12\x10\n\x03tag\x18\x07 \x01(\tH\x05\x88\x01\x01\x12\x11\n\x04\x62ody\x18\x08 \x01(\tH\x06\x88\x01\x01\x12\x16\n\tbody_type\x18\t \x01(\x05H\x07\x88\x01\x01\x12\x1c\n\x0frequest_headers\x18\n \x01(\tH\x08\x88\x01\x01\x12\x1b\n\x0erequest_method\x18\x0b \x01(\tH\t\x88\x01\x01\x12\x13\n\x06status\x18\x0c \x01(\x05H\n\x88\x01\x01\x12\x14\n\x0c\x64irectory_id\x18\r \x01(\x05\x12\x14\n\x0crequest_type\x18\x0e \x01(\x05\x12\x31\n\x0eout_parameters\x18\x0f \x03(\x0b\x32\x19.TestCaseOutParametersDtoB\x05\n\x03_idB\x06\n\x04_urlB\x07\n\x05_nameB\x0c\n\n_case_typeB\x0c\n\n_base_pathB\x06\n\x04_tagB\x07\n\x05_bodyB\x0c\n\n_body_typeB\x12\n\x10_request_headersB\x11\n\x0f_request_methodB\t\n\x07_status\"\xa2\x01\n\x18TestCaseOutParametersDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\nexpression\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x18\n\x0bmatch_index\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x0e\n\x06source\x18\x05 \x01(\x05\x42\x05\n\x03_idB\r\n\x0b_expressionB\x0e\n\x0c_match_index\"e\n\x1dTestCaseOutParametersResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12)\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x1b.TestCaseOutParametersModel\"D\n\x19InsertTestCaseResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x05\x12\x0b\n\x03msg\x18\x03 \x01(\t\"\xaa\x01\n\x12TestCaseAssertsDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x07\x63\x61se_id\x18\x03 \x01(\x05H\x01\x88\x01\x01\x12\x18\n\x0b\x61ssert_type\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x10\n\x08\x65xpected\x18\x05 \x01(\t\x12\x10\n\x08\x61\x63tually\x18\x06 \x01(\tB\x05\n\x03_idB\n\n\x08_case_idB\x0e\n\x0c_assert_type\"y\n\x0fTestCaseDataDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x14\n\x07\x63\x61se_id\x18\x02 \x01(\x05H\x01\x88\x01\x01\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x11\n\tjson_data\x18\x04 \x01(\t\x12\x0b\n\x03\x65nv\x18\x05 \x01(\x05\x42\x05\n\x03_idB\n\n\x08_case_id\"\xaa\x02\n\x0e\x43onstructorDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x12\n\x05value\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x11\n\x04type\x18\x03 \x01(\x05H\x02\x88\x01\x01\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x12\n\x05index\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x18\n\x10\x63onstructor_json\x18\x06 \x01(\t\x12\x13\n\x06\x65nable\x18\x07 \x01(\x08H\x04\x88\x01\x01\x12\x14\n\x07\x63\x61se_id\x18\x08 \x01(\x05H\x05\x88\x01\x01\x12\x13\n\x06public\x18\t \x01(\x08H\x06\x88\x01\x01\x12\x13\n\x06suffix\x18\n \x01(\x08H\x07\x88\x01\x01\x42\x05\n\x03_idB\x08\n\x06_valueB\x07\n\x05_typeB\x08\n\x06_indexB\t\n\x07_enableB\n\n\x08_case_idB\t\n\x07_publicB\t\n\x07_suffix\"\xb4\x01\n\x0fTestCaseInfoDto\x12\x1f\n\x04\x63\x61se\x18\x01 \x01(\x0b\x32\x0c.TestCaseDtoH\x00\x88\x01\x01\x12$\n\x07\x61sserts\x18\x02 \x03(\x0b\x32\x13.TestCaseAssertsDto\x12\x1e\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x10.TestCaseDataDto\x12\x31\n\x0eout_parameters\x18\x04 \x03(\x0b\x32\x19.TestCaseOutParametersDtoB\x07\n\x05_case\"I\n\x10TestCaseResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x11\n\x04\x64\x61ta\x18\x03 \x01(\x0cH\x00\x88\x01\x01\x42\x07\n\x05_data\"&\n\x0fTestCaseRequest\x12\x13\n\x0brequestJson\x18\x01 \x01(\x0c\"F\n\x14QueryTestCaseDirTree\x12\x12\n\nproject_id\x18\x01 \x01(\x05\x12\x11\n\x04move\x18\x02 \x01(\x08H\x00\x88\x01\x01\x42\x07\n\x05_move\"(\n\x10QueryTestCaseDir\x12\x14\n\x0c\x64irectory_id\x18\x01 \x01(\x05\"o\n\x0cTestCaseTree\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x15\n\x08\x64isabled\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x1f\n\x08\x63hildren\x18\x04 \x03(\x0b\x32\r.TestCaseTreeB\x0b\n\t_disabled\"V\n\x1cQueryTestCaseDirTreeResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1b\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\r.TestCaseTree\"\xb8\x01\n\x16TestCaseDirectoryModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x12\n\nproject_id\x18\x06 \x01(\x05\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x13\n\x06parent\x18\x08 \x01(\x05H\x00\x88\x01\x01\x42\t\n\x07_parent\"e\n!QueryTestCaseDirectoryResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12%\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x17.TestCaseDirectoryModel\"#\n\x10QueryTestCaseDto\x12\x0f\n\x07\x63\x61se_id\x18\x01 \x01(\x05\"\xcc\x01\n\x14TestCaseAssertsModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x13\n\x0b\x61ssert_type\x18\x06 \x01(\t\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x0f\n\x07\x63\x61se_id\x18\x08 \x01(\x05\x12\x10\n\x08\x65xpected\x18\t \x01(\t\x12\x10\n\x08\x61\x63tually\x18\n \x01(\t\"\x9c\x02\n\x18TestCaseConstructorModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x0c\n\x04type\x18\x06 \x01(\x05\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x0e\n\x06\x65nable\x18\x08 \x01(\x08\x12\x18\n\x10\x63onstructor_json\x18\t \x01(\t\x12\x12\n\x05value\x18\n \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07\x63\x61se_id\x18\x0b \x01(\x05\x12\x0e\n\x06public\x18\x0c \x01(\x08\x12\r\n\x05index\x18\r \x01(\x05\x12\x0e\n\x06suffix\x18\x0e \x01(\x08\x42\x08\n\x06_value\"\xb0\x01\n\x11TestCaseDataModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x0b\n\x03\x65nv\x18\x06 \x01(\x05\x12\x0f\n\x07\x63\x61se_id\x18\x07 \x01(\x05\x12\x0c\n\x04name\x18\x08 \x01(\t\x12\x11\n\tjson_data\x18\t \x01(\t\"\xfb\x01\n\x1aTestCaseOutParametersModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x0e\n\x06source\x18\x06 \x01(\x05\x12\x0f\n\x07\x63\x61se_id\x18\x07 \x01(\x05\x12\x0c\n\x04name\x18\x08 \x01(\t\x12\x17\n\nexpression\x18\t \x01(\tH\x00\x88\x01\x01\x12\x18\n\x0bmatch_index\x18\n \x01(\tH\x01\x88\x01\x01\x42\r\n\x0b_expressionB\x0e\n\x0c_match_index\">\n\x15ListTestCaseDataModel\x12%\n\ttest_data\x18\x01 \x03(\x0b\x32\x12.TestCaseDataModel\"\xe0\x03\n\x18TestCaseFullResponseData\x12&\n\x07\x61sserts\x18\x01 \x03(\x0b\x32\x15.TestCaseAssertsModel\x12/\n\x0c\x63onstructors\x18\x02 \x03(\x0b\x32\x19.TestCaseConstructorModel\x12:\n\ttest_data\x18\x03 \x03(\x0b\x32\'.TestCaseFullResponseData.TestDataEntry\x12\x33\n\x0eout_parameters\x18\x04 \x03(\x0b\x32\x1b.TestCaseOutParametersModel\x12\x1c\n\x04\x63\x61se\x18\x05 \x01(\x0b\x32\x0e.TestCaseModel\x12J\n\x11\x63onstructors_case\x18\x06 \x03(\x0b\x32/.TestCaseFullResponseData.ConstructorsCaseEntry\x1aG\n\rTestDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.ListTestCaseDataModel:\x02\x38\x01\x1aG\n\x15\x43onstructorsCaseEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x1d\n\x05value\x18\x02 \x01(\x0b\x32\x0e.TestCaseModel:\x02\x38\x01\"^\n\x18QueryTestCaseResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\'\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x19.TestCaseFullResponseData\"l\n\x12UpdateTestCaseData\x12!\n\tcase_info\x18\x01 \x01(\x0b\x32\x0e.TestCaseModel\x12\x33\n\x0eout_parameters\x18\x02 \x03(\x0b\x32\x1b.TestCaseOutParametersModel\"Y\n\x19UpdateTestCaseResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12!\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x13.UpdateTestCaseData\"!\n\x11\x44\x65leteTestCaseDto\x12\x0c\n\x04\x64\x61ta\x18\x01 \x03(\x05\"\\\n\x1aTestCaseAssertsResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12#\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x15.TestCaseAssertsModel\"\x17\n\tCustomDto\x12\n\n\x02id\x18\x01 \x01(\x05\"0\n\x13\x43onstructorIndexDto\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05index\x18\x02 \x01(\x05\"=\n\x17ListConstructorIndexDto\x12\"\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x14.ConstructorIndexDto\"E\n\x17QueryConstructorTreeDto\x12\x0e\n\x06suffix\x18\x01 \x01(\x08\x12\x11\n\x04name\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x07\n\x05_name\"\x93\x01\n\x0f\x43onstructorTree\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x15\n\x08\x64isabled\x18\x02 \x01(\x08H\x00\x88\x01\x01\x12\r\n\x05title\x18\x03 \x01(\t\x12\x12\n\x05value\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\"\n\x08\x63hildren\x18\x05 \x03(\x0b\x32\x10.ConstructorTreeB\x0b\n\t_disabledB\x08\n\x06_value\"Y\n\x1cQueryConstructorTreeResponse\x12\x1e\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x10.ConstructorTree\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\x05\"^\n\x18QueryConstructorResponse\x12\'\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x19.TestCaseConstructorModel\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\x05\"h\n\x12ListConstructorDto\x12\x1d\n\x10\x63onstructor_type\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x13\n\x06suffix\x18\x02 \x01(\x08H\x01\x88\x01\x01\x42\x13\n\x11_constructor_typeB\t\n\x07_suffix\"\xd9\x01\n\x17\x43onstructorResponseTree\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x1d\n\x10\x63onstructor_json\x18\x03 \x01(\tH\x00\x88\x01\x01\x12*\n\x08\x63hildren\x18\x04 \x03(\x0b\x32\x18.ConstructorResponseTree\x12\x13\n\x06isLeaf\x18\x05 \x01(\x08H\x01\x88\x01\x01\x12\x15\n\x08\x64isabled\x18\x06 \x01(\x08H\x02\x88\x01\x01\x42\x13\n\x11_constructor_jsonB\t\n\x07_isLeafB\x0b\n\t_disabled\"\\\n\x17ListConstructorResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12&\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x18.ConstructorResponseTree\"\x9a\x03\n\x0fTestReportModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08start_at\x18\x02 \x01(\t\x12\x13\n\x0b\x66inished_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x10\n\x08\x65xecutor\x18\x06 \x01(\x05\x12\x0b\n\x03\x65nv\x18\x07 \x01(\x05\x12\x0c\n\x04\x63ost\x18\x08 \x01(\t\x12\x0f\n\x07plan_id\x18\t \x01(\x05\x12\x1a\n\rsuccess_count\x18\n \x01(\x05H\x00\x88\x01\x01\x12\x18\n\x0b\x65rror_count\x18\x0b \x01(\x05H\x01\x88\x01\x01\x12\x19\n\x0c\x66\x61iled_count\x18\x0c \x01(\x05H\x02\x88\x01\x01\x12\x1a\n\rskipped_count\x18\r \x01(\x05H\x03\x88\x01\x01\x12\x13\n\x06status\x18\x0e \x01(\x05H\x04\x88\x01\x01\x12\x11\n\x04mode\x18\x0f \x01(\x05H\x05\x88\x01\x01\x42\x10\n\x0e_success_countB\x0e\n\x0c_error_countB\x0f\n\r_failed_countB\x10\n\x0e_skipped_countB\t\n\x07_statusB\x07\n\x05_mode\"\xd5\x04\n\nTestResult\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x19\n\x0c\x64irectory_id\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\x16\n\treport_id\x18\x03 \x01(\x05H\x01\x88\x01\x01\x12\x14\n\x07\x63\x61se_id\x18\x04 \x01(\x05H\x02\x88\x01\x01\x12\x11\n\tcase_name\x18\x05 \x01(\t\x12\x13\n\x06status\x18\x06 \x01(\x05H\x03\x88\x01\x01\x12\x10\n\x08start_at\x18\x07 \x01(\t\x12\x13\n\x0b\x66inished_at\x18\x08 \x01(\t\x12\x10\n\x08\x63\x61se_log\x18\t \x01(\t\x12\x12\n\x05retry\x18\n \x01(\x05H\x04\x88\x01\x01\x12\x0b\n\x03url\x18\x0b \x01(\t\x12\x11\n\x04\x62ody\x18\x0c \x01(\tH\x05\x88\x01\x01\x12\x1b\n\x0erequest_params\x18\r \x01(\tH\x06\x88\x01\x01\x12\x16\n\tdata_name\x18\x0e \x01(\tH\x07\x88\x01\x01\x12\x14\n\x07\x64\x61ta_id\x18\x0f \x01(\x05H\x08\x88\x01\x01\x12\x16\n\x0erequest_method\x18\x10 \x01(\t\x12\x17\n\x0frequest_headers\x18\x11 \x01(\t\x12\x0c\n\x04\x63ost\x18\x12 \x01(\t\x12\x0f\n\x07\x61sserts\x18\x13 \x01(\t\x12\x18\n\x10response_headers\x18\x14 \x01(\t\x12\x10\n\x08response\x18\x15 \x01(\t\x12\x14\n\x07\x63ookies\x18\x16 \x01(\tH\t\x88\x01\x01\x42\x0f\n\r_directory_idB\x0c\n\n_report_idB\n\n\x08_case_idB\t\n\x07_statusB\x08\n\x06_retryB\x07\n\x05_bodyB\x11\n\x0f_request_paramsB\x0c\n\n_data_nameB\n\n\x08_data_idB\n\n\x08_cookies\"f\n\x0fQueryReportData\x12 \n\x06report\x18\x01 \x01(\x0b\x32\x10.TestReportModel\x12\x11\n\tplan_name\x18\x02 \x01(\t\x12\x1e\n\tcase_list\x18\x03 \x03(\x0b\x32\x0b.TestResult\"^\n\x13QueryReportResponse\x12\x11\n\x04\x63ode\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1e\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x10.QueryReportDataB\x07\n\x05_code\"\x91\x01\n\rListReportDto\x12\x11\n\x04page\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x11\n\x04size\x18\x02 \x01(\x05H\x01\x88\x01\x01\x12\x12\n\nstart_time\x18\x03 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\t\x12\x15\n\x08\x65xecutor\x18\x05 \x01(\x05H\x02\x88\x01\x01\x42\x07\n\x05_pageB\x07\n\x05_sizeB\x0b\n\t_executor\"N\n\x0eListReportData\x12\x12\n\x05total\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x1e\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x10.TestReportModelB\x08\n\x06_total\"N\n\x12ListReportResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1d\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.ListReportData\"N\n\x12QueryXmindResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1d\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.QueryXmindData\"v\n\x0eQueryXmindData\x12\r\n\x05label\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x02id\x18\x04 \x01(\tH\x00\x88\x01\x01\x12!\n\x08\x63hildren\x18\x05 \x03(\x0b\x32\x0f.QueryXmindDataB\x05\n\x03_id\"%\n\x0fTestPlanCaseDto\x12\x12\n\nproject_id\x18\x01 \x01(\x05\"R\n\x14TestPlanTreeResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x11.TestPlanTreeData\"\x91\x01\n\x10TestPlanTreeData\x12\x1b\n\x04tree\x18\x01 \x03(\x0b\x32\r.TestCaseTree\x12\x30\n\x08\x63\x61se_map\x18\x02 \x03(\x0b\x32\x1e.TestPlanTreeData.CaseMapEntry\x1a.\n\x0c\x43\x61seMapEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"j\n\x0eTestCaseDirDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\nproject_id\x18\x03 \x01(\x05\x12\x13\n\x06parent\x18\x04 \x01(\x05H\x01\x88\x01\x01\x42\x05\n\x03_idB\t\n\x07_parent\"S\n\x14TestCaseDataResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12 \n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x12.TestCaseDataModel\"L\n\x0fMoveTestCaseDto\x12\x12\n\nproject_id\x18\x01 \x01(\x05\x12\x14\n\x0c\x64irectory_id\x18\x02 \x01(\x05\x12\x0f\n\x07id_list\x18\x03 \x03(\x05\"W\n\x1b\x42\x61tchUpdateOutParametersDto\x12\x0f\n\x07\x63\x61se_id\x18\x01 \x01(\x05\x12\'\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x19.TestCaseOutParametersDto\"h\n BatchUpdateOutParametersResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12)\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x1b.TestCaseOutParametersModel2\xfe\x12\n\x08testcase\x12\x39\n\x0clistTestCase\x12\x10.ListTestCaseDto\x1a\x15.ListTestCaseResponse\"\x00\x12<\n\x0einsertTestCase\x12\x0c.TestCaseDto\x1a\x1a.InsertTestCaseResponseDto\"\x00\x12\x37\n\x0e\x63reateTestCase\x12\x10.TestCaseInfoDto\x1a\x11.TestCaseResponse\"\x00\x12<\n\x0eupdateTestCase\x12\x0c.TestCaseDto\x1a\x1a.UpdateTestCaseResponseDto\"\x00\x12\x39\n\x0e\x64\x65leteTestCase\x12\x12.DeleteTestCaseDto\x1a\x11.TestCaseResponse\"\x00\x12?\n\rqueryTestCase\x12\x11.QueryTestCaseDto\x1a\x19.QueryTestCaseResponseDto\"\x00\x12\x35\n\x0cmoveTestCase\x12\x10.MoveTestCaseDto\x1a\x11.TestCaseResponse\"\x00\x12\x43\n\rinsertAsserts\x12\x13.TestCaseAssertsDto\x1a\x1b.TestCaseAssertsResponseDto\"\x00\x12\x43\n\rupdateAsserts\x12\x13.TestCaseAssertsDto\x1a\x1b.TestCaseAssertsResponseDto\"\x00\x12\x30\n\rdeleteAsserts\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12\x39\n\x11insertConstructor\x12\x0f.ConstructorDto\x1a\x11.TestCaseResponse\"\x00\x12\x39\n\x11updateConstructor\x12\x0f.ConstructorDto\x1a\x11.TestCaseResponse\"\x00\x12\x34\n\x11\x64\x65leteConstructor\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12\x43\n\x12reorderConstructor\x12\x18.ListConstructorIndexDto\x1a\x11.TestCaseResponse\"\x00\x12Q\n\x14queryConstructorTree\x12\x18.QueryConstructorTreeDto\x1a\x1d.QueryConstructorTreeResponse\"\x00\x12;\n\x10queryConstructor\x12\n.CustomDto\x1a\x19.QueryConstructorResponse\"\x00\x12\x42\n\x0flistConstructor\x12\x13.ListConstructorDto\x1a\x18.ListConstructorResponse\"\x00\x12\x35\n\x0fqueryTestReport\x12\n.CustomDto\x1a\x14.QueryReportResponse\"\x00\x12\x37\n\x0elistTestReport\x12\x0e.ListReportDto\x1a\x13.ListReportResponse\"\x00\x12\x33\n\x0equeryXmindData\x12\n.CustomDto\x1a\x13.QueryXmindResponse\"\x00\x12N\n\x14queryTestCaseDirTree\x12\x15.QueryTestCaseDirTree\x1a\x1d.QueryTestCaseDirTreeResponse\"\x00\x12>\n\x11queryTestCaseTree\x12\x10.TestPlanCaseDto\x1a\x15.TestPlanTreeResponse\"\x00\x12K\n\x10queryTestCaseDir\x12\x11.QueryTestCaseDir\x1a\".QueryTestCaseDirectoryResponseDto\"\x00\x12\x39\n\x11insertTestCaseDir\x12\x0f.TestCaseDirDto\x1a\x11.TestCaseResponse\"\x00\x12\x39\n\x11updateTestCaseDir\x12\x0f.TestCaseDirDto\x1a\x11.TestCaseResponse\"\x00\x12\x34\n\x11\x64\x65leteTestCaseDir\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12;\n\x0einsertTestData\x12\x10.TestCaseDataDto\x1a\x15.TestCaseDataResponse\"\x00\x12;\n\x0eupdateTestData\x12\x10.TestCaseDataDto\x1a\x15.TestCaseDataResponse\"\x00\x12\x31\n\x0e\x64\x65leteTestData\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12K\n\x0cinsertParams\x12\x19.TestCaseOutParametersDto\x1a\x1e.TestCaseOutParametersResponse\"\x00\x12K\n\x0cupdateParams\x12\x19.TestCaseOutParametersDto\x1a\x1e.TestCaseOutParametersResponse\"\x00\x12V\n\x11\x62\x61tchUpdateParams\x12\x1c.BatchUpdateOutParametersDto\x1a!.BatchUpdateOutParametersResponse\"\x00\x12/\n\x0c\x64\x65leteParams\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12\x34\n\x0bstartRecord\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12\x33\n\nstopRecord\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12\x35\n\x0cremoveRecord\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12:\n\x11queryRecordStatus\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12\x39\n\x10generateTestCase\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12\x37\n\x0eimportTestCase\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0etestcase.proto\"\x83\x01\n\x0fListTestCaseDto\x12\x19\n\x0c\x64irectory_id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x11\n\x04name\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x18\n\x0b\x63reate_user\x18\x03 \x01(\x05H\x02\x88\x01\x01\x42\x0f\n\r_directory_idB\x07\n\x05_nameB\x0e\n\x0c_create_user\"\xdb\x02\n\rTestCaseModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x14\n\x0crequest_type\x18\x07 \x01(\x05\x12\x0b\n\x03url\x18\x08 \x01(\t\x12\x16\n\x0erequest_method\x18\t \x01(\t\x12\x17\n\x0frequest_headers\x18\n \x01(\t\x12\x11\n\tbase_path\x18\x0b \x01(\t\x12\x0c\n\x04\x62ody\x18\x0c \x01(\t\x12\x11\n\tbody_type\x18\r \x01(\x05\x12\x14\n\x0c\x64irectory_id\x18\x0e \x01(\x05\x12\x0b\n\x03tag\x18\x0f \x01(\t\x12\x0e\n\x06status\x18\x10 \x01(\x05\x12\x10\n\x08priority\x18\x11 \x01(\t\x12\x11\n\tcase_type\x18\x12 \x01(\x05\"O\n\x14ListTestCaseResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1c\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x0e.TestCaseModel\"\xf6\x03\n\x0bTestCaseDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x10\n\x08priority\x18\x02 \x01(\t\x12\x10\n\x03url\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x11\n\x04name\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x16\n\tcase_type\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x16\n\tbase_path\x18\x06 \x01(\tH\x04\x88\x01\x01\x12\x10\n\x03tag\x18\x07 \x01(\tH\x05\x88\x01\x01\x12\x11\n\x04\x62ody\x18\x08 \x01(\tH\x06\x88\x01\x01\x12\x16\n\tbody_type\x18\t \x01(\x05H\x07\x88\x01\x01\x12\x1c\n\x0frequest_headers\x18\n \x01(\tH\x08\x88\x01\x01\x12\x1b\n\x0erequest_method\x18\x0b \x01(\tH\t\x88\x01\x01\x12\x13\n\x06status\x18\x0c \x01(\x05H\n\x88\x01\x01\x12\x14\n\x0c\x64irectory_id\x18\r \x01(\x05\x12\x14\n\x0crequest_type\x18\x0e \x01(\x05\x12\x31\n\x0eout_parameters\x18\x0f \x03(\x0b\x32\x19.TestCaseOutParametersDtoB\x05\n\x03_idB\x06\n\x04_urlB\x07\n\x05_nameB\x0c\n\n_case_typeB\x0c\n\n_base_pathB\x06\n\x04_tagB\x07\n\x05_bodyB\x0c\n\n_body_typeB\x12\n\x10_request_headersB\x11\n\x0f_request_methodB\t\n\x07_status\"\xb2\x01\n\x18TestCaseOutParametersDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\nexpression\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x18\n\x0bmatch_index\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x13\n\x06source\x18\x05 \x01(\x05H\x03\x88\x01\x01\x42\x05\n\x03_idB\r\n\x0b_expressionB\x0e\n\x0c_match_indexB\t\n\x07_source\"e\n\x1dTestCaseOutParametersResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12)\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x1b.TestCaseOutParametersModel\"D\n\x19InsertTestCaseResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x05\x12\x0b\n\x03msg\x18\x03 \x01(\t\"\xaa\x01\n\x12TestCaseAssertsDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x07\x63\x61se_id\x18\x03 \x01(\x05H\x01\x88\x01\x01\x12\x18\n\x0b\x61ssert_type\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x10\n\x08\x65xpected\x18\x05 \x01(\t\x12\x10\n\x08\x61\x63tually\x18\x06 \x01(\tB\x05\n\x03_idB\n\n\x08_case_idB\x0e\n\x0c_assert_type\"y\n\x0fTestCaseDataDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x14\n\x07\x63\x61se_id\x18\x02 \x01(\x05H\x01\x88\x01\x01\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x11\n\tjson_data\x18\x04 \x01(\t\x12\x0b\n\x03\x65nv\x18\x05 \x01(\x05\x42\x05\n\x03_idB\n\n\x08_case_id\"\xaa\x02\n\x0e\x43onstructorDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x12\n\x05value\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x11\n\x04type\x18\x03 \x01(\x05H\x02\x88\x01\x01\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x12\n\x05index\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x18\n\x10\x63onstructor_json\x18\x06 \x01(\t\x12\x13\n\x06\x65nable\x18\x07 \x01(\x08H\x04\x88\x01\x01\x12\x14\n\x07\x63\x61se_id\x18\x08 \x01(\x05H\x05\x88\x01\x01\x12\x13\n\x06public\x18\t \x01(\x08H\x06\x88\x01\x01\x12\x13\n\x06suffix\x18\n \x01(\x08H\x07\x88\x01\x01\x42\x05\n\x03_idB\x08\n\x06_valueB\x07\n\x05_typeB\x08\n\x06_indexB\t\n\x07_enableB\n\n\x08_case_idB\t\n\x07_publicB\t\n\x07_suffix\"\xb4\x01\n\x0fTestCaseInfoDto\x12\x1f\n\x04\x63\x61se\x18\x01 \x01(\x0b\x32\x0c.TestCaseDtoH\x00\x88\x01\x01\x12$\n\x07\x61sserts\x18\x02 \x03(\x0b\x32\x13.TestCaseAssertsDto\x12\x1e\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x10.TestCaseDataDto\x12\x31\n\x0eout_parameters\x18\x04 \x03(\x0b\x32\x19.TestCaseOutParametersDtoB\x07\n\x05_case\"I\n\x10TestCaseResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x11\n\x04\x64\x61ta\x18\x03 \x01(\x0cH\x00\x88\x01\x01\x42\x07\n\x05_data\"&\n\x0fTestCaseRequest\x12\x13\n\x0brequestJson\x18\x01 \x01(\x0c\"F\n\x14QueryTestCaseDirTree\x12\x12\n\nproject_id\x18\x01 \x01(\x05\x12\x11\n\x04move\x18\x02 \x01(\x08H\x00\x88\x01\x01\x42\x07\n\x05_move\"(\n\x10QueryTestCaseDir\x12\x14\n\x0c\x64irectory_id\x18\x01 \x01(\x05\"o\n\x0cTestCaseTree\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x15\n\x08\x64isabled\x18\x03 \x01(\x08H\x00\x88\x01\x01\x12\x1f\n\x08\x63hildren\x18\x04 \x03(\x0b\x32\r.TestCaseTreeB\x0b\n\t_disabled\"V\n\x1cQueryTestCaseDirTreeResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1b\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\r.TestCaseTree\"\xb8\x01\n\x16TestCaseDirectoryModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x12\n\nproject_id\x18\x06 \x01(\x05\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x13\n\x06parent\x18\x08 \x01(\x05H\x00\x88\x01\x01\x42\t\n\x07_parent\"e\n!QueryTestCaseDirectoryResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12%\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x17.TestCaseDirectoryModel\"#\n\x10QueryTestCaseDto\x12\x0f\n\x07\x63\x61se_id\x18\x01 \x01(\x05\"\xcc\x01\n\x14TestCaseAssertsModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x13\n\x0b\x61ssert_type\x18\x06 \x01(\t\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x0f\n\x07\x63\x61se_id\x18\x08 \x01(\x05\x12\x10\n\x08\x65xpected\x18\t \x01(\t\x12\x10\n\x08\x61\x63tually\x18\n \x01(\t\"\x9c\x02\n\x18TestCaseConstructorModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x0c\n\x04type\x18\x06 \x01(\x05\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x0e\n\x06\x65nable\x18\x08 \x01(\x08\x12\x18\n\x10\x63onstructor_json\x18\t \x01(\t\x12\x12\n\x05value\x18\n \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07\x63\x61se_id\x18\x0b \x01(\x05\x12\x0e\n\x06public\x18\x0c \x01(\x08\x12\r\n\x05index\x18\r \x01(\x05\x12\x0e\n\x06suffix\x18\x0e \x01(\x08\x42\x08\n\x06_value\"\xb0\x01\n\x11TestCaseDataModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x0b\n\x03\x65nv\x18\x06 \x01(\x05\x12\x0f\n\x07\x63\x61se_id\x18\x07 \x01(\x05\x12\x0c\n\x04name\x18\x08 \x01(\t\x12\x11\n\tjson_data\x18\t \x01(\t\"\xfb\x01\n\x1aTestCaseOutParametersModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\ncreated_at\x18\x02 \x01(\t\x12\x12\n\nupdated_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x0e\n\x06source\x18\x06 \x01(\x05\x12\x0f\n\x07\x63\x61se_id\x18\x07 \x01(\x05\x12\x0c\n\x04name\x18\x08 \x01(\t\x12\x17\n\nexpression\x18\t \x01(\tH\x00\x88\x01\x01\x12\x18\n\x0bmatch_index\x18\n \x01(\tH\x01\x88\x01\x01\x42\r\n\x0b_expressionB\x0e\n\x0c_match_index\">\n\x15ListTestCaseDataModel\x12%\n\ttest_data\x18\x01 \x03(\x0b\x32\x12.TestCaseDataModel\"\xe0\x03\n\x18TestCaseFullResponseData\x12&\n\x07\x61sserts\x18\x01 \x03(\x0b\x32\x15.TestCaseAssertsModel\x12/\n\x0c\x63onstructors\x18\x02 \x03(\x0b\x32\x19.TestCaseConstructorModel\x12:\n\ttest_data\x18\x03 \x03(\x0b\x32\'.TestCaseFullResponseData.TestDataEntry\x12\x33\n\x0eout_parameters\x18\x04 \x03(\x0b\x32\x1b.TestCaseOutParametersModel\x12\x1c\n\x04\x63\x61se\x18\x05 \x01(\x0b\x32\x0e.TestCaseModel\x12J\n\x11\x63onstructors_case\x18\x06 \x03(\x0b\x32/.TestCaseFullResponseData.ConstructorsCaseEntry\x1aG\n\rTestDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.ListTestCaseDataModel:\x02\x38\x01\x1aG\n\x15\x43onstructorsCaseEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x1d\n\x05value\x18\x02 \x01(\x0b\x32\x0e.TestCaseModel:\x02\x38\x01\"^\n\x18QueryTestCaseResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\'\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x19.TestCaseFullResponseData\"l\n\x12UpdateTestCaseData\x12!\n\tcase_info\x18\x01 \x01(\x0b\x32\x0e.TestCaseModel\x12\x33\n\x0eout_parameters\x18\x02 \x03(\x0b\x32\x1b.TestCaseOutParametersModel\"Y\n\x19UpdateTestCaseResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12!\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x13.UpdateTestCaseData\"!\n\x11\x44\x65leteTestCaseDto\x12\x0c\n\x04\x64\x61ta\x18\x01 \x03(\x05\"\\\n\x1aTestCaseAssertsResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12#\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x15.TestCaseAssertsModel\"\x17\n\tCustomDto\x12\n\n\x02id\x18\x01 \x01(\x05\"0\n\x13\x43onstructorIndexDto\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05index\x18\x02 \x01(\x05\"=\n\x17ListConstructorIndexDto\x12\"\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x14.ConstructorIndexDto\"E\n\x17QueryConstructorTreeDto\x12\x0e\n\x06suffix\x18\x01 \x01(\x08\x12\x11\n\x04name\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x07\n\x05_name\"\x93\x01\n\x0f\x43onstructorTree\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x15\n\x08\x64isabled\x18\x02 \x01(\x08H\x00\x88\x01\x01\x12\r\n\x05title\x18\x03 \x01(\t\x12\x12\n\x05value\x18\x04 \x01(\tH\x01\x88\x01\x01\x12\"\n\x08\x63hildren\x18\x05 \x03(\x0b\x32\x10.ConstructorTreeB\x0b\n\t_disabledB\x08\n\x06_value\"Y\n\x1cQueryConstructorTreeResponse\x12\x1e\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x10.ConstructorTree\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\x05\"^\n\x18QueryConstructorResponse\x12\'\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x19.TestCaseConstructorModel\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\x05\"h\n\x12ListConstructorDto\x12\x1d\n\x10\x63onstructor_type\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x13\n\x06suffix\x18\x02 \x01(\x08H\x01\x88\x01\x01\x42\x13\n\x11_constructor_typeB\t\n\x07_suffix\"\xd9\x01\n\x17\x43onstructorResponseTree\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x1d\n\x10\x63onstructor_json\x18\x03 \x01(\tH\x00\x88\x01\x01\x12*\n\x08\x63hildren\x18\x04 \x03(\x0b\x32\x18.ConstructorResponseTree\x12\x13\n\x06isLeaf\x18\x05 \x01(\x08H\x01\x88\x01\x01\x12\x15\n\x08\x64isabled\x18\x06 \x01(\x08H\x02\x88\x01\x01\x42\x13\n\x11_constructor_jsonB\t\n\x07_isLeafB\x0b\n\t_disabled\"\\\n\x17ListConstructorResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12&\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x18.ConstructorResponseTree\"\x9a\x03\n\x0fTestReportModel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08start_at\x18\x02 \x01(\t\x12\x13\n\x0b\x66inished_at\x18\x03 \x01(\t\x12\x13\n\x0b\x63reate_user\x18\x04 \x01(\x05\x12\x13\n\x0bupdate_user\x18\x05 \x01(\x05\x12\x10\n\x08\x65xecutor\x18\x06 \x01(\x05\x12\x0b\n\x03\x65nv\x18\x07 \x01(\x05\x12\x0c\n\x04\x63ost\x18\x08 \x01(\t\x12\x0f\n\x07plan_id\x18\t \x01(\x05\x12\x1a\n\rsuccess_count\x18\n \x01(\x05H\x00\x88\x01\x01\x12\x18\n\x0b\x65rror_count\x18\x0b \x01(\x05H\x01\x88\x01\x01\x12\x19\n\x0c\x66\x61iled_count\x18\x0c \x01(\x05H\x02\x88\x01\x01\x12\x1a\n\rskipped_count\x18\r \x01(\x05H\x03\x88\x01\x01\x12\x13\n\x06status\x18\x0e \x01(\x05H\x04\x88\x01\x01\x12\x11\n\x04mode\x18\x0f \x01(\x05H\x05\x88\x01\x01\x42\x10\n\x0e_success_countB\x0e\n\x0c_error_countB\x0f\n\r_failed_countB\x10\n\x0e_skipped_countB\t\n\x07_statusB\x07\n\x05_mode\"\xd5\x04\n\nTestResult\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x19\n\x0c\x64irectory_id\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\x16\n\treport_id\x18\x03 \x01(\x05H\x01\x88\x01\x01\x12\x14\n\x07\x63\x61se_id\x18\x04 \x01(\x05H\x02\x88\x01\x01\x12\x11\n\tcase_name\x18\x05 \x01(\t\x12\x13\n\x06status\x18\x06 \x01(\x05H\x03\x88\x01\x01\x12\x10\n\x08start_at\x18\x07 \x01(\t\x12\x13\n\x0b\x66inished_at\x18\x08 \x01(\t\x12\x10\n\x08\x63\x61se_log\x18\t \x01(\t\x12\x12\n\x05retry\x18\n \x01(\x05H\x04\x88\x01\x01\x12\x0b\n\x03url\x18\x0b \x01(\t\x12\x11\n\x04\x62ody\x18\x0c \x01(\tH\x05\x88\x01\x01\x12\x1b\n\x0erequest_params\x18\r \x01(\tH\x06\x88\x01\x01\x12\x16\n\tdata_name\x18\x0e \x01(\tH\x07\x88\x01\x01\x12\x14\n\x07\x64\x61ta_id\x18\x0f \x01(\x05H\x08\x88\x01\x01\x12\x16\n\x0erequest_method\x18\x10 \x01(\t\x12\x17\n\x0frequest_headers\x18\x11 \x01(\t\x12\x0c\n\x04\x63ost\x18\x12 \x01(\t\x12\x0f\n\x07\x61sserts\x18\x13 \x01(\t\x12\x18\n\x10response_headers\x18\x14 \x01(\t\x12\x10\n\x08response\x18\x15 \x01(\t\x12\x14\n\x07\x63ookies\x18\x16 \x01(\tH\t\x88\x01\x01\x42\x0f\n\r_directory_idB\x0c\n\n_report_idB\n\n\x08_case_idB\t\n\x07_statusB\x08\n\x06_retryB\x07\n\x05_bodyB\x11\n\x0f_request_paramsB\x0c\n\n_data_nameB\n\n\x08_data_idB\n\n\x08_cookies\"f\n\x0fQueryReportData\x12 \n\x06report\x18\x01 \x01(\x0b\x32\x10.TestReportModel\x12\x11\n\tplan_name\x18\x02 \x01(\t\x12\x1e\n\tcase_list\x18\x03 \x03(\x0b\x32\x0b.TestResult\"^\n\x13QueryReportResponse\x12\x11\n\x04\x63ode\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1e\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x10.QueryReportDataB\x07\n\x05_code\"\x91\x01\n\rListReportDto\x12\x11\n\x04page\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x11\n\x04size\x18\x02 \x01(\x05H\x01\x88\x01\x01\x12\x12\n\nstart_time\x18\x03 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\t\x12\x15\n\x08\x65xecutor\x18\x05 \x01(\x05H\x02\x88\x01\x01\x42\x07\n\x05_pageB\x07\n\x05_sizeB\x0b\n\t_executor\"N\n\x0eListReportData\x12\x12\n\x05total\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x1e\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x10.TestReportModelB\x08\n\x06_total\"N\n\x12ListReportResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1d\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.ListReportData\"N\n\x12QueryXmindResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1d\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.QueryXmindData\"v\n\x0eQueryXmindData\x12\r\n\x05label\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x02id\x18\x04 \x01(\tH\x00\x88\x01\x01\x12!\n\x08\x63hildren\x18\x05 \x03(\x0b\x32\x0f.QueryXmindDataB\x05\n\x03_id\"%\n\x0fTestPlanCaseDto\x12\x12\n\nproject_id\x18\x01 \x01(\x05\"R\n\x14TestPlanTreeResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1f\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x11.TestPlanTreeData\"\x91\x01\n\x10TestPlanTreeData\x12\x1b\n\x04tree\x18\x01 \x03(\x0b\x32\r.TestCaseTree\x12\x30\n\x08\x63\x61se_map\x18\x02 \x03(\x0b\x32\x1e.TestPlanTreeData.CaseMapEntry\x1a.\n\x0c\x43\x61seMapEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"j\n\x0eTestCaseDirDto\x12\x0f\n\x02id\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\nproject_id\x18\x03 \x01(\x05\x12\x13\n\x06parent\x18\x04 \x01(\x05H\x01\x88\x01\x01\x42\x05\n\x03_idB\t\n\x07_parent\"S\n\x14TestCaseDataResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12 \n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x12.TestCaseDataModel\"L\n\x0fMoveTestCaseDto\x12\x12\n\nproject_id\x18\x01 \x01(\x05\x12\x14\n\x0c\x64irectory_id\x18\x02 \x01(\x05\x12\x0f\n\x07id_list\x18\x03 \x03(\x05\"W\n\x1b\x42\x61tchUpdateOutParametersDto\x12\x0f\n\x07\x63\x61se_id\x18\x01 \x01(\x05\x12\'\n\x04\x64\x61ta\x18\x02 \x03(\x0b\x32\x19.TestCaseOutParametersDto\"h\n BatchUpdateOutParametersResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12)\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x1b.TestCaseOutParametersModel\"\xcc\x04\n\x0bRequestInfo\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x11\n\x04\x62ody\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x16\n\x0erequest_method\x18\x03 \x01(\t\x12\x39\n\x0frequest_headers\x18\x04 \x03(\x0b\x32 .RequestInfo.RequestHeadersEntry\x12;\n\x10response_headers\x18\x05 \x03(\x0b\x32!.RequestInfo.ResponseHeadersEntry\x12*\n\x07\x63ookies\x18\x06 \x03(\x0b\x32\x19.RequestInfo.CookiesEntry\x12\x39\n\x0frequest_cookies\x18\x07 \x03(\x0b\x32 .RequestInfo.RequestCookiesEntry\x12\x1d\n\x10response_content\x18\x08 \x01(\tH\x01\x88\x01\x01\x12\x13\n\x0bstatus_code\x18\t \x01(\x05\x1a\x35\n\x13RequestHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x36\n\x14ResponseHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a.\n\x0c\x43ookiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x35\n\x13RequestCookiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x07\n\x05_bodyB\x13\n\x11_response_content\"Z\n\x14TestCaseGeneratorDto\x12\x14\n\x0c\x64irectory_id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1e\n\x08requests\x18\x03 \x03(\x0b\x32\x0c.RequestInfo\"U\n\x18TestCaseGenerateResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1e\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x10.TestCaseInfoDto\"G\n\rImportCaseDto\x12\x13\n\x0bimport_type\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\"O\n\x16ImportTestCaseResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1a\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x0c.RequestInfo2\x8f\x13\n\x08testcase\x12\x39\n\x0clistTestCase\x12\x10.ListTestCaseDto\x1a\x15.ListTestCaseResponse\"\x00\x12<\n\x0einsertTestCase\x12\x0c.TestCaseDto\x1a\x1a.InsertTestCaseResponseDto\"\x00\x12\x37\n\x0e\x63reateTestCase\x12\x10.TestCaseInfoDto\x1a\x11.TestCaseResponse\"\x00\x12<\n\x0eupdateTestCase\x12\x0c.TestCaseDto\x1a\x1a.UpdateTestCaseResponseDto\"\x00\x12\x39\n\x0e\x64\x65leteTestCase\x12\x12.DeleteTestCaseDto\x1a\x11.TestCaseResponse\"\x00\x12?\n\rqueryTestCase\x12\x11.QueryTestCaseDto\x1a\x19.QueryTestCaseResponseDto\"\x00\x12\x35\n\x0cmoveTestCase\x12\x10.MoveTestCaseDto\x1a\x11.TestCaseResponse\"\x00\x12\x43\n\rinsertAsserts\x12\x13.TestCaseAssertsDto\x1a\x1b.TestCaseAssertsResponseDto\"\x00\x12\x43\n\rupdateAsserts\x12\x13.TestCaseAssertsDto\x1a\x1b.TestCaseAssertsResponseDto\"\x00\x12\x30\n\rdeleteAsserts\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12\x39\n\x11insertConstructor\x12\x0f.ConstructorDto\x1a\x11.TestCaseResponse\"\x00\x12\x39\n\x11updateConstructor\x12\x0f.ConstructorDto\x1a\x11.TestCaseResponse\"\x00\x12\x34\n\x11\x64\x65leteConstructor\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12\x43\n\x12reorderConstructor\x12\x18.ListConstructorIndexDto\x1a\x11.TestCaseResponse\"\x00\x12Q\n\x14queryConstructorTree\x12\x18.QueryConstructorTreeDto\x1a\x1d.QueryConstructorTreeResponse\"\x00\x12;\n\x10queryConstructor\x12\n.CustomDto\x1a\x19.QueryConstructorResponse\"\x00\x12\x42\n\x0flistConstructor\x12\x13.ListConstructorDto\x1a\x18.ListConstructorResponse\"\x00\x12\x35\n\x0fqueryTestReport\x12\n.CustomDto\x1a\x14.QueryReportResponse\"\x00\x12\x37\n\x0elistTestReport\x12\x0e.ListReportDto\x1a\x13.ListReportResponse\"\x00\x12\x33\n\x0equeryXmindData\x12\n.CustomDto\x1a\x13.QueryXmindResponse\"\x00\x12N\n\x14queryTestCaseDirTree\x12\x15.QueryTestCaseDirTree\x1a\x1d.QueryTestCaseDirTreeResponse\"\x00\x12>\n\x11queryTestCaseTree\x12\x10.TestPlanCaseDto\x1a\x15.TestPlanTreeResponse\"\x00\x12K\n\x10queryTestCaseDir\x12\x11.QueryTestCaseDir\x1a\".QueryTestCaseDirectoryResponseDto\"\x00\x12\x39\n\x11insertTestCaseDir\x12\x0f.TestCaseDirDto\x1a\x11.TestCaseResponse\"\x00\x12\x39\n\x11updateTestCaseDir\x12\x0f.TestCaseDirDto\x1a\x11.TestCaseResponse\"\x00\x12\x34\n\x11\x64\x65leteTestCaseDir\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12;\n\x0einsertTestData\x12\x10.TestCaseDataDto\x1a\x15.TestCaseDataResponse\"\x00\x12;\n\x0eupdateTestData\x12\x10.TestCaseDataDto\x1a\x15.TestCaseDataResponse\"\x00\x12\x31\n\x0e\x64\x65leteTestData\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12K\n\x0cinsertParams\x12\x19.TestCaseOutParametersDto\x1a\x1e.TestCaseOutParametersResponse\"\x00\x12K\n\x0cupdateParams\x12\x19.TestCaseOutParametersDto\x1a\x1e.TestCaseOutParametersResponse\"\x00\x12V\n\x11\x62\x61tchUpdateParams\x12\x1c.BatchUpdateOutParametersDto\x1a!.BatchUpdateOutParametersResponse\"\x00\x12/\n\x0c\x64\x65leteParams\x12\n.CustomDto\x1a\x11.TestCaseResponse\"\x00\x12\x34\n\x0bstartRecord\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12\x33\n\nstopRecord\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12\x35\n\x0cremoveRecord\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12:\n\x11queryRecordStatus\x12\x10.TestCaseRequest\x1a\x11.TestCaseResponse\"\x00\x12\x46\n\x10generateTestCase\x12\x15.TestCaseGeneratorDto\x1a\x19.TestCaseGenerateResponse\"\x00\x12;\n\x0eimportTestCase\x12\x0e.ImportCaseDto\x1a\x17.ImportTestCaseResponse\"\x00\x62\x06proto3')
 
 
 
@@ -79,6 +79,15 @@ _TESTCASEDATARESPONSE = DESCRIPTOR.message_types_by_name['TestCaseDataResponse']
 _MOVETESTCASEDTO = DESCRIPTOR.message_types_by_name['MoveTestCaseDto']
 _BATCHUPDATEOUTPARAMETERSDTO = DESCRIPTOR.message_types_by_name['BatchUpdateOutParametersDto']
 _BATCHUPDATEOUTPARAMETERSRESPONSE = DESCRIPTOR.message_types_by_name['BatchUpdateOutParametersResponse']
+_REQUESTINFO = DESCRIPTOR.message_types_by_name['RequestInfo']
+_REQUESTINFO_REQUESTHEADERSENTRY = _REQUESTINFO.nested_types_by_name['RequestHeadersEntry']
+_REQUESTINFO_RESPONSEHEADERSENTRY = _REQUESTINFO.nested_types_by_name['ResponseHeadersEntry']
+_REQUESTINFO_COOKIESENTRY = _REQUESTINFO.nested_types_by_name['CookiesEntry']
+_REQUESTINFO_REQUESTCOOKIESENTRY = _REQUESTINFO.nested_types_by_name['RequestCookiesEntry']
+_TESTCASEGENERATORDTO = DESCRIPTOR.message_types_by_name['TestCaseGeneratorDto']
+_TESTCASEGENERATERESPONSE = DESCRIPTOR.message_types_by_name['TestCaseGenerateResponse']
+_IMPORTCASEDTO = DESCRIPTOR.message_types_by_name['ImportCaseDto']
+_IMPORTTESTCASERESPONSE = DESCRIPTOR.message_types_by_name['ImportTestCaseResponse']
 ListTestCaseDto = _reflection.GeneratedProtocolMessageType('ListTestCaseDto', (_message.Message,), {
   'DESCRIPTOR' : _LISTTESTCASEDTO,
   '__module__' : 'testcase_pb2'
@@ -509,6 +518,73 @@ BatchUpdateOutParametersResponse = _reflection.GeneratedProtocolMessageType('Bat
   })
 _sym_db.RegisterMessage(BatchUpdateOutParametersResponse)
 
+RequestInfo = _reflection.GeneratedProtocolMessageType('RequestInfo', (_message.Message,), {
+
+  'RequestHeadersEntry' : _reflection.GeneratedProtocolMessageType('RequestHeadersEntry', (_message.Message,), {
+    'DESCRIPTOR' : _REQUESTINFO_REQUESTHEADERSENTRY,
+    '__module__' : 'testcase_pb2'
+    # @@protoc_insertion_point(class_scope:RequestInfo.RequestHeadersEntry)
+    })
+  ,
+
+  'ResponseHeadersEntry' : _reflection.GeneratedProtocolMessageType('ResponseHeadersEntry', (_message.Message,), {
+    'DESCRIPTOR' : _REQUESTINFO_RESPONSEHEADERSENTRY,
+    '__module__' : 'testcase_pb2'
+    # @@protoc_insertion_point(class_scope:RequestInfo.ResponseHeadersEntry)
+    })
+  ,
+
+  'CookiesEntry' : _reflection.GeneratedProtocolMessageType('CookiesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _REQUESTINFO_COOKIESENTRY,
+    '__module__' : 'testcase_pb2'
+    # @@protoc_insertion_point(class_scope:RequestInfo.CookiesEntry)
+    })
+  ,
+
+  'RequestCookiesEntry' : _reflection.GeneratedProtocolMessageType('RequestCookiesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _REQUESTINFO_REQUESTCOOKIESENTRY,
+    '__module__' : 'testcase_pb2'
+    # @@protoc_insertion_point(class_scope:RequestInfo.RequestCookiesEntry)
+    })
+  ,
+  'DESCRIPTOR' : _REQUESTINFO,
+  '__module__' : 'testcase_pb2'
+  # @@protoc_insertion_point(class_scope:RequestInfo)
+  })
+_sym_db.RegisterMessage(RequestInfo)
+_sym_db.RegisterMessage(RequestInfo.RequestHeadersEntry)
+_sym_db.RegisterMessage(RequestInfo.ResponseHeadersEntry)
+_sym_db.RegisterMessage(RequestInfo.CookiesEntry)
+_sym_db.RegisterMessage(RequestInfo.RequestCookiesEntry)
+
+TestCaseGeneratorDto = _reflection.GeneratedProtocolMessageType('TestCaseGeneratorDto', (_message.Message,), {
+  'DESCRIPTOR' : _TESTCASEGENERATORDTO,
+  '__module__' : 'testcase_pb2'
+  # @@protoc_insertion_point(class_scope:TestCaseGeneratorDto)
+  })
+_sym_db.RegisterMessage(TestCaseGeneratorDto)
+
+TestCaseGenerateResponse = _reflection.GeneratedProtocolMessageType('TestCaseGenerateResponse', (_message.Message,), {
+  'DESCRIPTOR' : _TESTCASEGENERATERESPONSE,
+  '__module__' : 'testcase_pb2'
+  # @@protoc_insertion_point(class_scope:TestCaseGenerateResponse)
+  })
+_sym_db.RegisterMessage(TestCaseGenerateResponse)
+
+ImportCaseDto = _reflection.GeneratedProtocolMessageType('ImportCaseDto', (_message.Message,), {
+  'DESCRIPTOR' : _IMPORTCASEDTO,
+  '__module__' : 'testcase_pb2'
+  # @@protoc_insertion_point(class_scope:ImportCaseDto)
+  })
+_sym_db.RegisterMessage(ImportCaseDto)
+
+ImportTestCaseResponse = _reflection.GeneratedProtocolMessageType('ImportTestCaseResponse', (_message.Message,), {
+  'DESCRIPTOR' : _IMPORTTESTCASERESPONSE,
+  '__module__' : 'testcase_pb2'
+  # @@protoc_insertion_point(class_scope:ImportTestCaseResponse)
+  })
+_sym_db.RegisterMessage(ImportTestCaseResponse)
+
 _TESTCASE = DESCRIPTOR.services_by_name['testcase']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
@@ -519,6 +595,14 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _TESTCASEFULLRESPONSEDATA_CONSTRUCTORSCASEENTRY._serialized_options = b'8\001'
   _TESTPLANTREEDATA_CASEMAPENTRY._options = None
   _TESTPLANTREEDATA_CASEMAPENTRY._serialized_options = b'8\001'
+  _REQUESTINFO_REQUESTHEADERSENTRY._options = None
+  _REQUESTINFO_REQUESTHEADERSENTRY._serialized_options = b'8\001'
+  _REQUESTINFO_RESPONSEHEADERSENTRY._options = None
+  _REQUESTINFO_RESPONSEHEADERSENTRY._serialized_options = b'8\001'
+  _REQUESTINFO_COOKIESENTRY._options = None
+  _REQUESTINFO_COOKIESENTRY._serialized_options = b'8\001'
+  _REQUESTINFO_REQUESTCOOKIESENTRY._options = None
+  _REQUESTINFO_REQUESTCOOKIESENTRY._serialized_options = b'8\001'
   _LISTTESTCASEDTO._serialized_start=19
   _LISTTESTCASEDTO._serialized_end=150
   _TESTCASEMODEL._serialized_start=153
@@ -528,119 +612,137 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _TESTCASEDTO._serialized_start=584
   _TESTCASEDTO._serialized_end=1086
   _TESTCASEOUTPARAMETERSDTO._serialized_start=1089
-  _TESTCASEOUTPARAMETERSDTO._serialized_end=1251
-  _TESTCASEOUTPARAMETERSRESPONSE._serialized_start=1253
-  _TESTCASEOUTPARAMETERSRESPONSE._serialized_end=1354
-  _INSERTTESTCASERESPONSEDTO._serialized_start=1356
-  _INSERTTESTCASERESPONSEDTO._serialized_end=1424
-  _TESTCASEASSERTSDTO._serialized_start=1427
-  _TESTCASEASSERTSDTO._serialized_end=1597
-  _TESTCASEDATADTO._serialized_start=1599
-  _TESTCASEDATADTO._serialized_end=1720
-  _CONSTRUCTORDTO._serialized_start=1723
-  _CONSTRUCTORDTO._serialized_end=2021
-  _TESTCASEINFODTO._serialized_start=2024
-  _TESTCASEINFODTO._serialized_end=2204
-  _TESTCASERESPONSE._serialized_start=2206
-  _TESTCASERESPONSE._serialized_end=2279
-  _TESTCASEREQUEST._serialized_start=2281
-  _TESTCASEREQUEST._serialized_end=2319
-  _QUERYTESTCASEDIRTREE._serialized_start=2321
-  _QUERYTESTCASEDIRTREE._serialized_end=2391
-  _QUERYTESTCASEDIR._serialized_start=2393
-  _QUERYTESTCASEDIR._serialized_end=2433
-  _TESTCASETREE._serialized_start=2435
-  _TESTCASETREE._serialized_end=2546
-  _QUERYTESTCASEDIRTREERESPONSE._serialized_start=2548
-  _QUERYTESTCASEDIRTREERESPONSE._serialized_end=2634
-  _TESTCASEDIRECTORYMODEL._serialized_start=2637
-  _TESTCASEDIRECTORYMODEL._serialized_end=2821
-  _QUERYTESTCASEDIRECTORYRESPONSEDTO._serialized_start=2823
-  _QUERYTESTCASEDIRECTORYRESPONSEDTO._serialized_end=2924
-  _QUERYTESTCASEDTO._serialized_start=2926
-  _QUERYTESTCASEDTO._serialized_end=2961
-  _TESTCASEASSERTSMODEL._serialized_start=2964
-  _TESTCASEASSERTSMODEL._serialized_end=3168
-  _TESTCASECONSTRUCTORMODEL._serialized_start=3171
-  _TESTCASECONSTRUCTORMODEL._serialized_end=3455
-  _TESTCASEDATAMODEL._serialized_start=3458
-  _TESTCASEDATAMODEL._serialized_end=3634
-  _TESTCASEOUTPARAMETERSMODEL._serialized_start=3637
-  _TESTCASEOUTPARAMETERSMODEL._serialized_end=3888
-  _LISTTESTCASEDATAMODEL._serialized_start=3890
-  _LISTTESTCASEDATAMODEL._serialized_end=3952
-  _TESTCASEFULLRESPONSEDATA._serialized_start=3955
-  _TESTCASEFULLRESPONSEDATA._serialized_end=4435
-  _TESTCASEFULLRESPONSEDATA_TESTDATAENTRY._serialized_start=4291
-  _TESTCASEFULLRESPONSEDATA_TESTDATAENTRY._serialized_end=4362
-  _TESTCASEFULLRESPONSEDATA_CONSTRUCTORSCASEENTRY._serialized_start=4364
-  _TESTCASEFULLRESPONSEDATA_CONSTRUCTORSCASEENTRY._serialized_end=4435
-  _QUERYTESTCASERESPONSEDTO._serialized_start=4437
-  _QUERYTESTCASERESPONSEDTO._serialized_end=4531
-  _UPDATETESTCASEDATA._serialized_start=4533
-  _UPDATETESTCASEDATA._serialized_end=4641
-  _UPDATETESTCASERESPONSEDTO._serialized_start=4643
-  _UPDATETESTCASERESPONSEDTO._serialized_end=4732
-  _DELETETESTCASEDTO._serialized_start=4734
-  _DELETETESTCASEDTO._serialized_end=4767
-  _TESTCASEASSERTSRESPONSEDTO._serialized_start=4769
-  _TESTCASEASSERTSRESPONSEDTO._serialized_end=4861
-  _CUSTOMDTO._serialized_start=4863
-  _CUSTOMDTO._serialized_end=4886
-  _CONSTRUCTORINDEXDTO._serialized_start=4888
-  _CONSTRUCTORINDEXDTO._serialized_end=4936
-  _LISTCONSTRUCTORINDEXDTO._serialized_start=4938
-  _LISTCONSTRUCTORINDEXDTO._serialized_end=4999
-  _QUERYCONSTRUCTORTREEDTO._serialized_start=5001
-  _QUERYCONSTRUCTORTREEDTO._serialized_end=5070
-  _CONSTRUCTORTREE._serialized_start=5073
-  _CONSTRUCTORTREE._serialized_end=5220
-  _QUERYCONSTRUCTORTREERESPONSE._serialized_start=5222
-  _QUERYCONSTRUCTORTREERESPONSE._serialized_end=5311
-  _QUERYCONSTRUCTORRESPONSE._serialized_start=5313
-  _QUERYCONSTRUCTORRESPONSE._serialized_end=5407
-  _LISTCONSTRUCTORDTO._serialized_start=5409
-  _LISTCONSTRUCTORDTO._serialized_end=5513
-  _CONSTRUCTORRESPONSETREE._serialized_start=5516
-  _CONSTRUCTORRESPONSETREE._serialized_end=5733
-  _LISTCONSTRUCTORRESPONSE._serialized_start=5735
-  _LISTCONSTRUCTORRESPONSE._serialized_end=5827
-  _TESTREPORTMODEL._serialized_start=5830
-  _TESTREPORTMODEL._serialized_end=6240
-  _TESTRESULT._serialized_start=6243
-  _TESTRESULT._serialized_end=6840
-  _QUERYREPORTDATA._serialized_start=6842
-  _QUERYREPORTDATA._serialized_end=6944
-  _QUERYREPORTRESPONSE._serialized_start=6946
-  _QUERYREPORTRESPONSE._serialized_end=7040
-  _LISTREPORTDTO._serialized_start=7043
-  _LISTREPORTDTO._serialized_end=7188
-  _LISTREPORTDATA._serialized_start=7190
-  _LISTREPORTDATA._serialized_end=7268
-  _LISTREPORTRESPONSE._serialized_start=7270
-  _LISTREPORTRESPONSE._serialized_end=7348
-  _QUERYXMINDRESPONSE._serialized_start=7350
-  _QUERYXMINDRESPONSE._serialized_end=7428
-  _QUERYXMINDDATA._serialized_start=7430
-  _QUERYXMINDDATA._serialized_end=7548
-  _TESTPLANCASEDTO._serialized_start=7550
-  _TESTPLANCASEDTO._serialized_end=7587
-  _TESTPLANTREERESPONSE._serialized_start=7589
-  _TESTPLANTREERESPONSE._serialized_end=7671
-  _TESTPLANTREEDATA._serialized_start=7674
-  _TESTPLANTREEDATA._serialized_end=7819
-  _TESTPLANTREEDATA_CASEMAPENTRY._serialized_start=7773
-  _TESTPLANTREEDATA_CASEMAPENTRY._serialized_end=7819
-  _TESTCASEDIRDTO._serialized_start=7821
-  _TESTCASEDIRDTO._serialized_end=7927
-  _TESTCASEDATARESPONSE._serialized_start=7929
-  _TESTCASEDATARESPONSE._serialized_end=8012
-  _MOVETESTCASEDTO._serialized_start=8014
-  _MOVETESTCASEDTO._serialized_end=8090
-  _BATCHUPDATEOUTPARAMETERSDTO._serialized_start=8092
-  _BATCHUPDATEOUTPARAMETERSDTO._serialized_end=8179
-  _BATCHUPDATEOUTPARAMETERSRESPONSE._serialized_start=8181
-  _BATCHUPDATEOUTPARAMETERSRESPONSE._serialized_end=8285
-  _TESTCASE._serialized_start=8288
-  _TESTCASE._serialized_end=10718
+  _TESTCASEOUTPARAMETERSDTO._serialized_end=1267
+  _TESTCASEOUTPARAMETERSRESPONSE._serialized_start=1269
+  _TESTCASEOUTPARAMETERSRESPONSE._serialized_end=1370
+  _INSERTTESTCASERESPONSEDTO._serialized_start=1372
+  _INSERTTESTCASERESPONSEDTO._serialized_end=1440
+  _TESTCASEASSERTSDTO._serialized_start=1443
+  _TESTCASEASSERTSDTO._serialized_end=1613
+  _TESTCASEDATADTO._serialized_start=1615
+  _TESTCASEDATADTO._serialized_end=1736
+  _CONSTRUCTORDTO._serialized_start=1739
+  _CONSTRUCTORDTO._serialized_end=2037
+  _TESTCASEINFODTO._serialized_start=2040
+  _TESTCASEINFODTO._serialized_end=2220
+  _TESTCASERESPONSE._serialized_start=2222
+  _TESTCASERESPONSE._serialized_end=2295
+  _TESTCASEREQUEST._serialized_start=2297
+  _TESTCASEREQUEST._serialized_end=2335
+  _QUERYTESTCASEDIRTREE._serialized_start=2337
+  _QUERYTESTCASEDIRTREE._serialized_end=2407
+  _QUERYTESTCASEDIR._serialized_start=2409
+  _QUERYTESTCASEDIR._serialized_end=2449
+  _TESTCASETREE._serialized_start=2451
+  _TESTCASETREE._serialized_end=2562
+  _QUERYTESTCASEDIRTREERESPONSE._serialized_start=2564
+  _QUERYTESTCASEDIRTREERESPONSE._serialized_end=2650
+  _TESTCASEDIRECTORYMODEL._serialized_start=2653
+  _TESTCASEDIRECTORYMODEL._serialized_end=2837
+  _QUERYTESTCASEDIRECTORYRESPONSEDTO._serialized_start=2839
+  _QUERYTESTCASEDIRECTORYRESPONSEDTO._serialized_end=2940
+  _QUERYTESTCASEDTO._serialized_start=2942
+  _QUERYTESTCASEDTO._serialized_end=2977
+  _TESTCASEASSERTSMODEL._serialized_start=2980
+  _TESTCASEASSERTSMODEL._serialized_end=3184
+  _TESTCASECONSTRUCTORMODEL._serialized_start=3187
+  _TESTCASECONSTRUCTORMODEL._serialized_end=3471
+  _TESTCASEDATAMODEL._serialized_start=3474
+  _TESTCASEDATAMODEL._serialized_end=3650
+  _TESTCASEOUTPARAMETERSMODEL._serialized_start=3653
+  _TESTCASEOUTPARAMETERSMODEL._serialized_end=3904
+  _LISTTESTCASEDATAMODEL._serialized_start=3906
+  _LISTTESTCASEDATAMODEL._serialized_end=3968
+  _TESTCASEFULLRESPONSEDATA._serialized_start=3971
+  _TESTCASEFULLRESPONSEDATA._serialized_end=4451
+  _TESTCASEFULLRESPONSEDATA_TESTDATAENTRY._serialized_start=4307
+  _TESTCASEFULLRESPONSEDATA_TESTDATAENTRY._serialized_end=4378
+  _TESTCASEFULLRESPONSEDATA_CONSTRUCTORSCASEENTRY._serialized_start=4380
+  _TESTCASEFULLRESPONSEDATA_CONSTRUCTORSCASEENTRY._serialized_end=4451
+  _QUERYTESTCASERESPONSEDTO._serialized_start=4453
+  _QUERYTESTCASERESPONSEDTO._serialized_end=4547
+  _UPDATETESTCASEDATA._serialized_start=4549
+  _UPDATETESTCASEDATA._serialized_end=4657
+  _UPDATETESTCASERESPONSEDTO._serialized_start=4659
+  _UPDATETESTCASERESPONSEDTO._serialized_end=4748
+  _DELETETESTCASEDTO._serialized_start=4750
+  _DELETETESTCASEDTO._serialized_end=4783
+  _TESTCASEASSERTSRESPONSEDTO._serialized_start=4785
+  _TESTCASEASSERTSRESPONSEDTO._serialized_end=4877
+  _CUSTOMDTO._serialized_start=4879
+  _CUSTOMDTO._serialized_end=4902
+  _CONSTRUCTORINDEXDTO._serialized_start=4904
+  _CONSTRUCTORINDEXDTO._serialized_end=4952
+  _LISTCONSTRUCTORINDEXDTO._serialized_start=4954
+  _LISTCONSTRUCTORINDEXDTO._serialized_end=5015
+  _QUERYCONSTRUCTORTREEDTO._serialized_start=5017
+  _QUERYCONSTRUCTORTREEDTO._serialized_end=5086
+  _CONSTRUCTORTREE._serialized_start=5089
+  _CONSTRUCTORTREE._serialized_end=5236
+  _QUERYCONSTRUCTORTREERESPONSE._serialized_start=5238
+  _QUERYCONSTRUCTORTREERESPONSE._serialized_end=5327
+  _QUERYCONSTRUCTORRESPONSE._serialized_start=5329
+  _QUERYCONSTRUCTORRESPONSE._serialized_end=5423
+  _LISTCONSTRUCTORDTO._serialized_start=5425
+  _LISTCONSTRUCTORDTO._serialized_end=5529
+  _CONSTRUCTORRESPONSETREE._serialized_start=5532
+  _CONSTRUCTORRESPONSETREE._serialized_end=5749
+  _LISTCONSTRUCTORRESPONSE._serialized_start=5751
+  _LISTCONSTRUCTORRESPONSE._serialized_end=5843
+  _TESTREPORTMODEL._serialized_start=5846
+  _TESTREPORTMODEL._serialized_end=6256
+  _TESTRESULT._serialized_start=6259
+  _TESTRESULT._serialized_end=6856
+  _QUERYREPORTDATA._serialized_start=6858
+  _QUERYREPORTDATA._serialized_end=6960
+  _QUERYREPORTRESPONSE._serialized_start=6962
+  _QUERYREPORTRESPONSE._serialized_end=7056
+  _LISTREPORTDTO._serialized_start=7059
+  _LISTREPORTDTO._serialized_end=7204
+  _LISTREPORTDATA._serialized_start=7206
+  _LISTREPORTDATA._serialized_end=7284
+  _LISTREPORTRESPONSE._serialized_start=7286
+  _LISTREPORTRESPONSE._serialized_end=7364
+  _QUERYXMINDRESPONSE._serialized_start=7366
+  _QUERYXMINDRESPONSE._serialized_end=7444
+  _QUERYXMINDDATA._serialized_start=7446
+  _QUERYXMINDDATA._serialized_end=7564
+  _TESTPLANCASEDTO._serialized_start=7566
+  _TESTPLANCASEDTO._serialized_end=7603
+  _TESTPLANTREERESPONSE._serialized_start=7605
+  _TESTPLANTREERESPONSE._serialized_end=7687
+  _TESTPLANTREEDATA._serialized_start=7690
+  _TESTPLANTREEDATA._serialized_end=7835
+  _TESTPLANTREEDATA_CASEMAPENTRY._serialized_start=7789
+  _TESTPLANTREEDATA_CASEMAPENTRY._serialized_end=7835
+  _TESTCASEDIRDTO._serialized_start=7837
+  _TESTCASEDIRDTO._serialized_end=7943
+  _TESTCASEDATARESPONSE._serialized_start=7945
+  _TESTCASEDATARESPONSE._serialized_end=8028
+  _MOVETESTCASEDTO._serialized_start=8030
+  _MOVETESTCASEDTO._serialized_end=8106
+  _BATCHUPDATEOUTPARAMETERSDTO._serialized_start=8108
+  _BATCHUPDATEOUTPARAMETERSDTO._serialized_end=8195
+  _BATCHUPDATEOUTPARAMETERSRESPONSE._serialized_start=8197
+  _BATCHUPDATEOUTPARAMETERSRESPONSE._serialized_end=8301
+  _REQUESTINFO._serialized_start=8304
+  _REQUESTINFO._serialized_end=8892
+  _REQUESTINFO_REQUESTHEADERSENTRY._serialized_start=8650
+  _REQUESTINFO_REQUESTHEADERSENTRY._serialized_end=8703
+  _REQUESTINFO_RESPONSEHEADERSENTRY._serialized_start=8705
+  _REQUESTINFO_RESPONSEHEADERSENTRY._serialized_end=8759
+  _REQUESTINFO_COOKIESENTRY._serialized_start=8761
+  _REQUESTINFO_COOKIESENTRY._serialized_end=8807
+  _REQUESTINFO_REQUESTCOOKIESENTRY._serialized_start=8809
+  _REQUESTINFO_REQUESTCOOKIESENTRY._serialized_end=8862
+  _TESTCASEGENERATORDTO._serialized_start=8894
+  _TESTCASEGENERATORDTO._serialized_end=8984
+  _TESTCASEGENERATERESPONSE._serialized_start=8986
+  _TESTCASEGENERATERESPONSE._serialized_end=9071
+  _IMPORTCASEDTO._serialized_start=9073
+  _IMPORTCASEDTO._serialized_end=9144
+  _IMPORTTESTCASERESPONSE._serialized_start=9146
+  _IMPORTTESTCASERESPONSE._serialized_end=9225
+  _TESTCASE._serialized_start=9228
+  _TESTCASE._serialized_end=11675
 # @@protoc_insertion_point(module_scope)

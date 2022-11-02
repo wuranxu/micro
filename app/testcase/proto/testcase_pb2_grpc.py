@@ -201,13 +201,13 @@ class testcaseStub(object):
                 )
         self.generateTestCase = channel.unary_unary(
                 '/testcase/generateTestCase',
-                request_serializer=testcase__pb2.TestCaseRequest.SerializeToString,
-                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                request_serializer=testcase__pb2.TestCaseGeneratorDto.SerializeToString,
+                response_deserializer=testcase__pb2.TestCaseGenerateResponse.FromString,
                 )
         self.importTestCase = channel.unary_unary(
                 '/testcase/importTestCase',
-                request_serializer=testcase__pb2.TestCaseRequest.SerializeToString,
-                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                request_serializer=testcase__pb2.ImportCaseDto.SerializeToString,
+                response_deserializer=testcase__pb2.ImportTestCaseResponse.FromString,
                 )
 
 
@@ -638,13 +638,13 @@ def add_testcaseServicer_to_server(servicer, server):
             ),
             'generateTestCase': grpc.unary_unary_rpc_method_handler(
                     servicer.generateTestCase,
-                    request_deserializer=testcase__pb2.TestCaseRequest.FromString,
-                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+                    request_deserializer=testcase__pb2.TestCaseGeneratorDto.FromString,
+                    response_serializer=testcase__pb2.TestCaseGenerateResponse.SerializeToString,
             ),
             'importTestCase': grpc.unary_unary_rpc_method_handler(
                     servicer.importTestCase,
-                    request_deserializer=testcase__pb2.TestCaseRequest.FromString,
-                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+                    request_deserializer=testcase__pb2.ImportCaseDto.FromString,
+                    response_serializer=testcase__pb2.ImportTestCaseResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -1297,8 +1297,8 @@ class testcase(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/testcase/generateTestCase',
-            testcase__pb2.TestCaseRequest.SerializeToString,
-            testcase__pb2.TestCaseResponse.FromString,
+            testcase__pb2.TestCaseGeneratorDto.SerializeToString,
+            testcase__pb2.TestCaseGenerateResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -1314,7 +1314,7 @@ class testcase(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/testcase/importTestCase',
-            testcase__pb2.TestCaseRequest.SerializeToString,
-            testcase__pb2.TestCaseResponse.FromString,
+            testcase__pb2.ImportCaseDto.SerializeToString,
+            testcase__pb2.ImportTestCaseResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -56,7 +56,7 @@ message TestCaseOutParametersDto {
   string name = 2;
   optional string expression = 3;
   optional string match_index = 4;
-  int32 source = 5;
+  optional int32 source = 5;
 }
 
 message TestCaseOutParametersResponse {
@@ -447,6 +447,42 @@ message BatchUpdateOutParametersResponse {
   repeated TestCaseOutParametersModel data = 3;
 }
 
+message RequestInfo {
+  string url = 1;
+  optional string body = 2;
+  string request_method = 3;
+  map<string, string> request_headers = 4;
+  map<string, string> response_headers = 5;
+  map<string, string> cookies = 6;
+  map<string, string> request_cookies = 7;
+  optional string response_content = 8;
+  int32 status_code = 9;
+}
+
+message TestCaseGeneratorDto {
+  int32 directory_id = 1;
+  string name = 2;
+  repeated RequestInfo requests = 3;
+}
+
+message TestCaseGenerateResponse {
+  int32 code = 1;
+  string msg = 2;
+  TestCaseInfoDto data = 3;
+}
+
+message ImportCaseDto {
+  int32 import_type = 1;
+  string content = 2;
+  string filename = 3;
+}
+
+message ImportTestCaseResponse {
+  int32 code = 1;
+  string msg = 2;
+  repeated RequestInfo data = 3;
+}
+
 service testcase {
   rpc listTestCase(ListTestCaseDto) returns (ListTestCaseResponse) {}
   rpc insertTestCase(TestCaseDto) returns (InsertTestCaseResponseDto) {}
@@ -488,6 +524,6 @@ service testcase {
   rpc stopRecord(TestCaseRequest) returns (TestCaseResponse) {}
   rpc removeRecord(TestCaseRequest) returns (TestCaseResponse) {}
   rpc queryRecordStatus(TestCaseRequest) returns (TestCaseResponse) {}
-  rpc generateTestCase(TestCaseRequest) returns (TestCaseResponse) {}
-  rpc importTestCase(TestCaseRequest) returns (TestCaseResponse) {}
+  rpc generateTestCase(TestCaseGeneratorDto) returns (TestCaseGenerateResponse) {}
+  rpc importTestCase(ImportCaseDto) returns (ImportTestCaseResponse) {}
 }
