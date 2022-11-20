@@ -14,32 +14,20 @@ class dashboardStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.queryTestPlanData = channel.unary_unary(
-                '/dashboard/queryTestPlanData',
-                request_serializer=dashboard__pb2.Request.SerializeToString,
-                response_deserializer=dashboard__pb2.Response.FromString,
-                )
         self.statistics = channel.unary_unary(
                 '/dashboard/statistics',
-                request_serializer=dashboard__pb2.Request.SerializeToString,
+                request_serializer=dashboard__pb2.DashboardRequest.SerializeToString,
                 response_deserializer=dashboard__pb2.Response.FromString,
                 )
         self.workspace = channel.unary_unary(
                 '/dashboard/workspace',
-                request_serializer=dashboard__pb2.Request.SerializeToString,
-                response_deserializer=dashboard__pb2.Response.FromString,
+                request_serializer=dashboard__pb2.DashboardRequest.SerializeToString,
+                response_deserializer=dashboard__pb2.WorkspaceResponse.FromString,
                 )
 
 
 class dashboardServicer(object):
     """Missing associated documentation comment in .proto file."""
-
-    def queryTestPlanData(self, request, context):
-        """login
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
 
     def statistics(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -56,20 +44,15 @@ class dashboardServicer(object):
 
 def add_dashboardServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'queryTestPlanData': grpc.unary_unary_rpc_method_handler(
-                    servicer.queryTestPlanData,
-                    request_deserializer=dashboard__pb2.Request.FromString,
-                    response_serializer=dashboard__pb2.Response.SerializeToString,
-            ),
             'statistics': grpc.unary_unary_rpc_method_handler(
                     servicer.statistics,
-                    request_deserializer=dashboard__pb2.Request.FromString,
+                    request_deserializer=dashboard__pb2.DashboardRequest.FromString,
                     response_serializer=dashboard__pb2.Response.SerializeToString,
             ),
             'workspace': grpc.unary_unary_rpc_method_handler(
                     servicer.workspace,
-                    request_deserializer=dashboard__pb2.Request.FromString,
-                    response_serializer=dashboard__pb2.Response.SerializeToString,
+                    request_deserializer=dashboard__pb2.DashboardRequest.FromString,
+                    response_serializer=dashboard__pb2.WorkspaceResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -80,23 +63,6 @@ def add_dashboardServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class dashboard(object):
     """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def queryTestPlanData(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dashboard/queryTestPlanData',
-            dashboard__pb2.Request.SerializeToString,
-            dashboard__pb2.Response.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def statistics(request,
@@ -110,7 +76,7 @@ class dashboard(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dashboard/statistics',
-            dashboard__pb2.Request.SerializeToString,
+            dashboard__pb2.DashboardRequest.SerializeToString,
             dashboard__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -127,7 +93,7 @@ class dashboard(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dashboard/workspace',
-            dashboard__pb2.Request.SerializeToString,
-            dashboard__pb2.Response.FromString,
+            dashboard__pb2.DashboardRequest.SerializeToString,
+            dashboard__pb2.WorkspaceResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -48,3 +48,7 @@ class PermissionDto(BaseModel):
     user_id: int
     user_role: int
     project_id: int
+
+
+class UserProjectDto(BaseModel):
+    user_id: int

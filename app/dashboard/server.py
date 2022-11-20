@@ -3,8 +3,8 @@ import atexit
 
 from klose.utils.serve import RpcService
 
-from api.UserService import UserServiceApi
-from proto import user_pb2_grpc, user_pb2
+from api.DashboardService import DashboardServiceApi
+from proto import dashboard_pb2, dashboard_pb2_grpc
 
 
 @atexit.register
@@ -13,8 +13,9 @@ def unregister():
 
 
 async def main():
-    await RpcService.start("./service.yml", user_pb2_grpc.add_userServicer_to_server, UserServiceApi(), user_pb2)
+    await RpcService.start("./service.yml", dashboard_pb2_grpc.add_dashboardServicer_to_server,
+                           DashboardServiceApi(), dashboard_pb2)
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.get_event_loop().run_until_complete(main())

@@ -14,18 +14,21 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x64\x61shboard.proto\"\x1e\n\x07Request\x12\x13\n\x0brequestJson\x18\x01 \x01(\x0c\"9\n\x08Response\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x12\n\nresultJson\x18\x03 \x01(\x0c\x32\x80\x01\n\tdashboard\x12*\n\x11queryTestPlanData\x12\x08.Request\x1a\t.Response\"\x00\x12#\n\nstatistics\x12\x08.Request\x1a\t.Response\"\x00\x12\"\n\tworkspace\x12\x08.Request\x1a\t.Response\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x64\x61shboard.proto\"\'\n\x10\x44\x61shboardRequest\x12\x13\n\x0brequestJson\x18\x01 \x01(\x0c\"9\n\x08Response\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x12\n\nresultJson\x18\x03 \x01(\x0c\")\n\nWeeklyCase\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"\x83\x01\n\rWorkSpaceData\x12\x15\n\rproject_count\x18\x01 \x01(\x05\x12\x12\n\ncase_count\x18\x02 \x01(\x05\x12\x11\n\tuser_rank\x18\x03 \x01(\x05\x12 \n\x0bweekly_case\x18\x04 \x03(\x0b\x32\x0b.WeeklyCase\x12\x12\n\ntotal_user\x18\x05 \x01(\x05\"L\n\x11WorkspaceResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1c\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0e.WorkSpaceData2o\n\tdashboard\x12,\n\nstatistics\x12\x11.DashboardRequest\x1a\t.Response\"\x00\x12\x34\n\tworkspace\x12\x11.DashboardRequest\x1a\x12.WorkspaceResponse\"\x00\x62\x06proto3')
 
 
 
-_REQUEST = DESCRIPTOR.message_types_by_name['Request']
+_DASHBOARDREQUEST = DESCRIPTOR.message_types_by_name['DashboardRequest']
 _RESPONSE = DESCRIPTOR.message_types_by_name['Response']
-Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
-  'DESCRIPTOR' : _REQUEST,
+_WEEKLYCASE = DESCRIPTOR.message_types_by_name['WeeklyCase']
+_WORKSPACEDATA = DESCRIPTOR.message_types_by_name['WorkSpaceData']
+_WORKSPACERESPONSE = DESCRIPTOR.message_types_by_name['WorkspaceResponse']
+DashboardRequest = _reflection.GeneratedProtocolMessageType('DashboardRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DASHBOARDREQUEST,
   '__module__' : 'dashboard_pb2'
-  # @@protoc_insertion_point(class_scope:Request)
+  # @@protoc_insertion_point(class_scope:DashboardRequest)
   })
-_sym_db.RegisterMessage(Request)
+_sym_db.RegisterMessage(DashboardRequest)
 
 Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
   'DESCRIPTOR' : _RESPONSE,
@@ -34,14 +37,41 @@ Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Messag
   })
 _sym_db.RegisterMessage(Response)
 
+WeeklyCase = _reflection.GeneratedProtocolMessageType('WeeklyCase', (_message.Message,), {
+  'DESCRIPTOR' : _WEEKLYCASE,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:WeeklyCase)
+  })
+_sym_db.RegisterMessage(WeeklyCase)
+
+WorkSpaceData = _reflection.GeneratedProtocolMessageType('WorkSpaceData', (_message.Message,), {
+  'DESCRIPTOR' : _WORKSPACEDATA,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:WorkSpaceData)
+  })
+_sym_db.RegisterMessage(WorkSpaceData)
+
+WorkspaceResponse = _reflection.GeneratedProtocolMessageType('WorkspaceResponse', (_message.Message,), {
+  'DESCRIPTOR' : _WORKSPACERESPONSE,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:WorkspaceResponse)
+  })
+_sym_db.RegisterMessage(WorkspaceResponse)
+
 _DASHBOARD = DESCRIPTOR.services_by_name['dashboard']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _REQUEST._serialized_start=19
-  _REQUEST._serialized_end=49
-  _RESPONSE._serialized_start=51
-  _RESPONSE._serialized_end=108
-  _DASHBOARD._serialized_start=111
-  _DASHBOARD._serialized_end=239
+  _DASHBOARDREQUEST._serialized_start=19
+  _DASHBOARDREQUEST._serialized_end=58
+  _RESPONSE._serialized_start=60
+  _RESPONSE._serialized_end=117
+  _WEEKLYCASE._serialized_start=119
+  _WEEKLYCASE._serialized_end=160
+  _WORKSPACEDATA._serialized_start=163
+  _WORKSPACEDATA._serialized_end=294
+  _WORKSPACERESPONSE._serialized_start=296
+  _WORKSPACERESPONSE._serialized_end=372
+  _DASHBOARD._serialized_start=374
+  _DASHBOARD._serialized_end=485
 # @@protoc_insertion_point(module_scope)

@@ -1,6 +1,5 @@
+from klose.model.basic import PityBase
 from sqlalchemy import Column, String, TEXT, UniqueConstraint, BOOLEAN, SMALLINT, INT
-
-from app.models.basic import PityBase
 
 _notice_type = {
     '0': '邮件',
@@ -44,7 +43,8 @@ class PityTestPlan(PityBase):
     __fields__ = (name, project_id, env, priority)
     __tag__ = "测试计划"
     __alias__ = dict(name="名称", project_id="项目", env="环境", priority="优先级", cron="cron", ordered="顺序",
-                     pass_rate="通过率", msg_type="通知类型", retry_minutes="重试时间", receiver="通知人", case_list="用例列表")
+                     pass_rate="通过率", msg_type="通知类型", retry_minutes="重试时间", receiver="通知人",
+                     case_list="用例列表")
 
     def __init__(self, project_id, env, case_list, name, priority, cron, ordered, pass_rate, receiver, msg_type,
                  user, state=0, retry_minutes=0, id=None):

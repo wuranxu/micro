@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-message Request {
+message DashboardRequest {
   bytes requestJson = 1;
 }
 
@@ -10,7 +10,26 @@ message Response {
   bytes resultJson = 3;
 }
 
+message WeeklyCase {
+  string date = 1;
+  int32 count = 2;
+}
+
+message WorkSpaceData {
+  int32 project_count = 1;
+  int32 case_count = 2;
+  int32 user_rank = 3;
+  repeated WeeklyCase weekly_case = 4;
+  int32 total_user = 5;
+}
+
+message WorkspaceResponse {
+  int32 code = 1;
+  string msg = 2;
+  WorkSpaceData data = 3;
+}
+
 service dashboard {
-  rpc statistics(Request) returns (Response) {}
-  rpc workspace(Request) returns (Response) {}
+  rpc statistics(DashboardRequest) returns (Response) {}
+  rpc workspace(DashboardRequest) returns (WorkspaceResponse) {}
 }

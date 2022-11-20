@@ -310,12 +310,12 @@ class TestCaseDao(Mapper):
         result["children"] = children
         return result
 
-    @classmethod
-    async def generate_sql(cls):
-        return select(TestCase.create_user, func.count(TestCase.id)) \
-            .outerjoin(User, and_(User.deleted_at == 0, TestCase.create_user == User.id)).where(
-            TestCase.deleted_at == 0).group_by(TestCase.create_user).order_by(
-            desc(func.count(TestCase.id)))
+    # @classmethod
+    # async def generate_sql(cls):
+    #     return select(TestCase.create_user, func.count(TestCase.id)) \
+    #         .outerjoin(User, and_(User.deleted_at == 0, TestCase.create_user == User.id)).where(
+    #         TestCase.deleted_at == 0).group_by(TestCase.create_user).order_by(
+    #         desc(func.count(TestCase.id)))
 
     # @classmethod
     # @RedisHelper.cache("rank")
@@ -361,20 +361,3 @@ class TestCaseDao(Mapper):
     #                 date, count = q
     #                 ans[date.strftime("%Y-%m-%d")] = count
     #     return await TestCaseDao.fill_data(start_time, end_time, ans)
-
-    @staticmethod
-    async def fill_data(start_time: datetime, end_time: datetime, data: dict):
-        """
-        填补数据
-        :param data:
-        :param start_time:
-        :param end_time:
-        :return:
-        """
-        start = start_time
-        ans = []
-        while start <= end_time:
-            date = start.strftime("%Y-%m-%d")
-            ans.append(dict(date=date, count=data.get(date, 0)))
-            start += timedelta(days=1)
-        return ans

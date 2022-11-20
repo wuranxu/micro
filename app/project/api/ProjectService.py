@@ -14,9 +14,9 @@ from curd.ProjectRoleDao import ProjectRoleDao
 from dto.project import ListProjectDto, ProjectForm, CustomDto, ProjectAvatarDto, ProjectRoleForm, ProjectRoleEditForm, \
     PermissionDto
 from model.project_role import ProjectRole
-from proto.project_pb2 import ListProjectResponseDto, ListProjectResponseData, ProjectModel, Response, \
+from proto.project_pb2 import ListProjectResponseDto, ListProjectResponseData, ProjectModel, ProjectResponse, \
     QueryProjectResponseDto, QueryProjectData, ProjectDto, ProjectRoleDto, ProjectAvatarResponseDto, \
-    PermissionResponseDto
+    PermissionResponseDto, QueryUserProjectAmountResponse
 from proto.project_pb2_grpc import projectServicer
 
 
@@ -32,12 +32,12 @@ class ProjectServiceApi(projectServicer):
         data = PityResponse.from_orm_list(result, ProjectModel)
         return ListProjectResponseData(data=data, total=total)
 
-    @Interceptor(ProjectForm, Response, role=Config.MANAGER)
+    @Interceptor(ProjectForm, ProjectResponse, role=Config.MANAGER)
     async def insert(self, request, context):
         user = Context.get_user(context)
         await ProjectDao.add_project(user_id=user.id, **request.dict())
 
-    @Interceptor(ProjectForm, Response)
+    @Interceptor(ProjectForm, ProjectResponse)
     async def update(self, request, context):
         user = Context.get_user(context)
         await ProjectDao.update_project(user_id=user.id, role=user.role, **request.dict())
@@ -68,7 +68,7 @@ class ProjectServiceApi(projectServicer):
         await ProjectDao.update_avatar(request.project_id, user.id, user.role, file_url)
         return file_url
 
-    @Interceptor(CustomDto, Response)
+    @Interceptor(CustomDto, ProjectResponse)
     async def delete(self, request, context):
         user = Context.get_user(context)
         async with async_session() as session:
@@ -83,7 +83,7 @@ class ProjectServiceApi(projectServicer):
                 # await PityTestPlanDao.delete_record_by_id(session, user_info['id'], projectId, key="project_id",
                 #                                           exists=False, session_begin=True)
 
-    @Interceptor(ProjectRoleForm, Response)
+    @Interceptor(ProjectRoleForm, ProjectResponse)
     async def insertRole(self, request, context):
         user = Context.get_user(context)
         query = await ProjectRoleDao.query_record(user_id=request.user_id, project_id=request.project_id,
@@ -94,12 +94,12 @@ class ProjectServiceApi(projectServicer):
         model = ProjectRole(**request.dict(), create_user=user.id)
         await ProjectRoleDao.insert(model=model, log=True)
 
-    @Interceptor(ProjectRoleEditForm, Response)
+    @Interceptor(ProjectRoleEditForm, ProjectResponse)
     async def updateRole(self, request, context):
         user = Context.get_user(context)
         await ProjectRoleDao.update_project_role(request, user.id, user.role)
 
-    @Interceptor(CustomDto, Response)
+    @Interceptor(CustomDto, ProjectResponse)
     async def deleteRole(self, request, context):
         user = Context.get_user(context)
         await ProjectRoleDao.delete_project_role(request.id, user.id, user.role)
@@ -111,3 +111,11 @@ class ProjectServiceApi(projectServicer):
             return True
         except AuthException:
             return False
+
+    @Interceptor(None, QueryUserProjectAmountResponse)
+    async def queryUserProjectAmount(self, request, context):
+        """
+        查询用户拥有的项目数量
+        """
+        user = Context.get_user(context)
+        return await ProjectDao.query_user_project(user.id)

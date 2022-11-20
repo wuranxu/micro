@@ -1,5 +1,5 @@
 syntax = "proto3";
-message Request {
+message ProjectRequest {
   bytes requestJson = 1;
 }
 
@@ -7,7 +7,7 @@ message Query {
   int32 id = 1;
 }
 
-message Response {
+message ProjectResponse {
   int32 code = 1;
   string msg = 2;
   bytes data = 3;
@@ -106,25 +106,37 @@ message ProjectAvatarResponseDto {
   string msg = 3;
 }
 
+message QueryUserProjectDto {
+  int32 user_id = 1;
+}
+
+message QueryUserProjectAmountResponse {
+  int32 code = 1;
+  string msg = 2;
+  int32 data = 3;
+}
+
 service project {
   // 获取项目列表
   rpc list(ListProjectDto) returns (ListProjectResponseDto) {}
   // 创建项目
-  rpc insert(ProjectDto) returns (Response) {}
+  rpc insert(ProjectDto) returns (ProjectResponse) {}
   // 更新项目头像
   rpc updateAvatar(ProjectAvatarDto) returns (ProjectAvatarResponseDto) {}
   // 更新项目
-  rpc update(ProjectDto) returns (Response) {}
+  rpc update(ProjectDto) returns (ProjectResponse) {}
   // 查询项目信息
   rpc query(Query) returns (QueryProjectResponseDto) {}
   // 删除项目
-  rpc delete(Query) returns (Response) {}
+  rpc delete(Query) returns (ProjectResponse) {}
   // 插入角色
-  rpc insertRole(ProjectRoleDto) returns (Response) {}
+  rpc insertRole(ProjectRoleDto) returns (ProjectResponse) {}
   // 编辑角色
-  rpc updateRole(ProjectRoleDto) returns (Response) {}
+  rpc updateRole(ProjectRoleDto) returns (ProjectResponse) {}
   // 删除角色
-  rpc deleteRole(Query) returns (Response) {}
+  rpc deleteRole(Query) returns (ProjectResponse) {}
   // 查询用户是否有权限
   rpc checkPermission(PermissionDto) returns (PermissionResponseDto) {}
+  // 查询用户已有的项目
+  rpc queryUserProjectAmount(ProjectRequest) returns (QueryUserProjectAmountResponse) {}
 }

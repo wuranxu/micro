@@ -1,15 +1,17 @@
 from datetime import datetime, timedelta
+from typing import List, Dict
 
-from sqlalchemy import select, func
+from klose.model import async_session
+from klose.third_party.Redis import RedisHelper
+from klose.third_party.sql import Mapper, connect
+from sqlalchemy import select, func, and_, desc, asc
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.crud import connect, Mapper
-from app.middleware.RedisManager import RedisHelper
-from app.models.project import Project
-from app.models.report import PityReport
-from app.models.test_case import TestCase
-from app.models.test_plan import PityTestPlan
-from app.models.user import User
+from model.project import Project
+from model.report import PityReport
+from model.test_case import TestCase
+from model.test_plan import PityTestPlan
+from model.user import PityUser
 
 
 class Item(object):
@@ -26,7 +28,7 @@ class DashboardDao(Mapper):
         return await cls.get_model_statistic_data(start, end, session, Item("project", Project),
                                                   Item("testcase", TestCase),
                                                   Item("testplan", PityTestPlan),
-                                                  Item("user", User))
+                                                  Item("user", PityUser))
 
     @classmethod
     @RedisHelper.cache("report_statistics")
@@ -35,7 +37,8 @@ class DashboardDao(Mapper):
         result, idx = await cls.get_date_data(start, end)
         sql = cls.create_sql(PityReport, start, end, field="start_at")
         data = await session.execute(sql)
-        count, success, failed, skip, error, total, total_pass = 0, 0, 0, 0, 0, 0, 0
+        # count, success, failed, skip, error, total, total_pass = 0, 0, 0, 0, 0, 0, 0
+        count = success = failed = skip = error = total = total_pass = 0
         for item in data.scalars().all():
             date = item.start_at.strftime("%Y-%m-%d")
             count += 1
@@ -93,3 +96,72 @@ class DashboardDao(Mapper):
             date_index[date] = len(ans) - 1
             start_time += timedelta(days=1)
         return ans, date_index
+
+    @classmethod
+    async def generate_sql(cls):
+        return select(TestCase.create_user, func.count(TestCase.id)) \
+            .outerjoin(PityUser, and_(PityUser.deleted_at == 0, TestCase.create_user == PityUser.id)).where(
+            TestCase.deleted_at == 0).group_by(TestCase.create_user).order_by(
+            desc(func.count(TestCase.id)))
+
+    @classmethod
+    @RedisHelper.cache("rank")
+    @connect
+    async def query_user_case_list(cls, session: AsyncSession = None) -> Dict[str, List]:
+        """
+        created by woody at 2022-02-13 12:59
+        查询用户case数量和排名
+        :return:
+        """
+        ans = dict()
+        sql = await cls.generate_sql()
+        query = await session.execute(sql)
+        for i, q in enumerate(query.all()):
+            user, count = q
+            ans[str(user)] = [count, i + 1]
+        return ans
+
+    @classmethod
+    @RedisHelper.cache("rank_detail")
+    @connect
+    async def query_user_case_rank(cls, session: AsyncSession = None) -> List:
+        ans = []
+        sql = await cls.generate_sql()
+        query = await session.execute(sql)
+        for i, q in enumerate(query.all()):
+            user, count = q
+            ans.append(dict(id=user, count=count, rank=i + 1))
+        return ans
+
+    @staticmethod
+    async def fill_data(start_time: datetime, end_time: datetime, data: dict):
+        """
+        填补数据
+        :param data:
+        :param start_time:
+        :param end_time:
+        :return:
+        """
+        start = start_time
+        ans = []
+        while start <= end_time:
+            date = start.strftime("%Y-%m-%d")
+            ans.append(dict(date=date, count=data.get(date, 0)))
+            start += timedelta(days=1)
+        return ans
+
+    @staticmethod
+    async def query_weekly_user_case(user_id: int, start_time: datetime, end_time: datetime) -> List:
+        ans = dict()
+        async with async_session() as session:
+            async with session.begin():
+                # date_ = func.date_format(TestCase.created_at, "%Y-%m-%d")
+                sql = select(TestCase.created_at, func.count(TestCase.id)).where(
+                    TestCase.create_user == user_id,
+                    TestCase.deleted_at == 0, TestCase.created_at.between(start_time, end_time)).group_by(
+                    TestCase.created_at).order_by(asc(TestCase.created_at))
+                query = await session.execute(sql)
+                for i, q in enumerate(query.all()):
+                    date, count = q
+                    ans[date.strftime("%Y-%m-%d")] = count
+        return await DashboardDao.fill_data(start_time, end_time, ans)

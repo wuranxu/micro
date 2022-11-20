@@ -1,6 +1,5 @@
+from klose.model.basic import PityBase
 from sqlalchemy import INT, Column, UniqueConstraint
-
-from app.models.basic import PityBase
 
 
 class PityTestPlanFollowUserRel(PityBase):

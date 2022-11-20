@@ -1,18 +1,9 @@
 etcd: 127.0.0.1:2379
 version: v1
-service: user
-port: 16011
+service: dashboard
+port: 16021
 method:
-  login:
-  listUser:
+  workspace:
     authorization: true
-  register:
-  delete:
+  statistics:
     authorization: true
-  query:
-  update:
-    authorization: true
-  checkToken:
-  resetPassword:
-  generatePassword:
-  loginWithGithub:

@@ -22,7 +22,7 @@ class projectStub(object):
         self.insert = channel.unary_unary(
                 '/project/insert',
                 request_serializer=project__pb2.ProjectDto.SerializeToString,
-                response_deserializer=project__pb2.Response.FromString,
+                response_deserializer=project__pb2.ProjectResponse.FromString,
                 )
         self.updateAvatar = channel.unary_unary(
                 '/project/updateAvatar',
@@ -32,7 +32,7 @@ class projectStub(object):
         self.update = channel.unary_unary(
                 '/project/update',
                 request_serializer=project__pb2.ProjectDto.SerializeToString,
-                response_deserializer=project__pb2.Response.FromString,
+                response_deserializer=project__pb2.ProjectResponse.FromString,
                 )
         self.query = channel.unary_unary(
                 '/project/query',
@@ -42,27 +42,32 @@ class projectStub(object):
         self.delete = channel.unary_unary(
                 '/project/delete',
                 request_serializer=project__pb2.Query.SerializeToString,
-                response_deserializer=project__pb2.Response.FromString,
+                response_deserializer=project__pb2.ProjectResponse.FromString,
                 )
         self.insertRole = channel.unary_unary(
                 '/project/insertRole',
                 request_serializer=project__pb2.ProjectRoleDto.SerializeToString,
-                response_deserializer=project__pb2.Response.FromString,
+                response_deserializer=project__pb2.ProjectResponse.FromString,
                 )
         self.updateRole = channel.unary_unary(
                 '/project/updateRole',
                 request_serializer=project__pb2.ProjectRoleDto.SerializeToString,
-                response_deserializer=project__pb2.Response.FromString,
+                response_deserializer=project__pb2.ProjectResponse.FromString,
                 )
         self.deleteRole = channel.unary_unary(
                 '/project/deleteRole',
                 request_serializer=project__pb2.Query.SerializeToString,
-                response_deserializer=project__pb2.Response.FromString,
+                response_deserializer=project__pb2.ProjectResponse.FromString,
                 )
         self.checkPermission = channel.unary_unary(
                 '/project/checkPermission',
                 request_serializer=project__pb2.PermissionDto.SerializeToString,
                 response_deserializer=project__pb2.PermissionResponseDto.FromString,
+                )
+        self.queryUserProjectAmount = channel.unary_unary(
+                '/project/queryUserProjectAmount',
+                request_serializer=project__pb2.ProjectRequest.SerializeToString,
+                response_deserializer=project__pb2.QueryUserProjectAmountResponse.FromString,
                 )
 
 
@@ -139,6 +144,13 @@ class projectServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def queryUserProjectAmount(self, request, context):
+        """查询用户已有的项目
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_projectServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -150,7 +162,7 @@ def add_projectServicer_to_server(servicer, server):
             'insert': grpc.unary_unary_rpc_method_handler(
                     servicer.insert,
                     request_deserializer=project__pb2.ProjectDto.FromString,
-                    response_serializer=project__pb2.Response.SerializeToString,
+                    response_serializer=project__pb2.ProjectResponse.SerializeToString,
             ),
             'updateAvatar': grpc.unary_unary_rpc_method_handler(
                     servicer.updateAvatar,
@@ -160,7 +172,7 @@ def add_projectServicer_to_server(servicer, server):
             'update': grpc.unary_unary_rpc_method_handler(
                     servicer.update,
                     request_deserializer=project__pb2.ProjectDto.FromString,
-                    response_serializer=project__pb2.Response.SerializeToString,
+                    response_serializer=project__pb2.ProjectResponse.SerializeToString,
             ),
             'query': grpc.unary_unary_rpc_method_handler(
                     servicer.query,
@@ -170,27 +182,32 @@ def add_projectServicer_to_server(servicer, server):
             'delete': grpc.unary_unary_rpc_method_handler(
                     servicer.delete,
                     request_deserializer=project__pb2.Query.FromString,
-                    response_serializer=project__pb2.Response.SerializeToString,
+                    response_serializer=project__pb2.ProjectResponse.SerializeToString,
             ),
             'insertRole': grpc.unary_unary_rpc_method_handler(
                     servicer.insertRole,
                     request_deserializer=project__pb2.ProjectRoleDto.FromString,
-                    response_serializer=project__pb2.Response.SerializeToString,
+                    response_serializer=project__pb2.ProjectResponse.SerializeToString,
             ),
             'updateRole': grpc.unary_unary_rpc_method_handler(
                     servicer.updateRole,
                     request_deserializer=project__pb2.ProjectRoleDto.FromString,
-                    response_serializer=project__pb2.Response.SerializeToString,
+                    response_serializer=project__pb2.ProjectResponse.SerializeToString,
             ),
             'deleteRole': grpc.unary_unary_rpc_method_handler(
                     servicer.deleteRole,
                     request_deserializer=project__pb2.Query.FromString,
-                    response_serializer=project__pb2.Response.SerializeToString,
+                    response_serializer=project__pb2.ProjectResponse.SerializeToString,
             ),
             'checkPermission': grpc.unary_unary_rpc_method_handler(
                     servicer.checkPermission,
                     request_deserializer=project__pb2.PermissionDto.FromString,
                     response_serializer=project__pb2.PermissionResponseDto.SerializeToString,
+            ),
+            'queryUserProjectAmount': grpc.unary_unary_rpc_method_handler(
+                    servicer.queryUserProjectAmount,
+                    request_deserializer=project__pb2.ProjectRequest.FromString,
+                    response_serializer=project__pb2.QueryUserProjectAmountResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -232,7 +249,7 @@ class project(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/project/insert',
             project__pb2.ProjectDto.SerializeToString,
-            project__pb2.Response.FromString,
+            project__pb2.ProjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -266,7 +283,7 @@ class project(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/project/update',
             project__pb2.ProjectDto.SerializeToString,
-            project__pb2.Response.FromString,
+            project__pb2.ProjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -300,7 +317,7 @@ class project(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/project/delete',
             project__pb2.Query.SerializeToString,
-            project__pb2.Response.FromString,
+            project__pb2.ProjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -317,7 +334,7 @@ class project(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/project/insertRole',
             project__pb2.ProjectRoleDto.SerializeToString,
-            project__pb2.Response.FromString,
+            project__pb2.ProjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -334,7 +351,7 @@ class project(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/project/updateRole',
             project__pb2.ProjectRoleDto.SerializeToString,
-            project__pb2.Response.FromString,
+            project__pb2.ProjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -351,7 +368,7 @@ class project(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/project/deleteRole',
             project__pb2.Query.SerializeToString,
-            project__pb2.Response.FromString,
+            project__pb2.ProjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -369,5 +386,22 @@ class project(object):
         return grpc.experimental.unary_unary(request, target, '/project/checkPermission',
             project__pb2.PermissionDto.SerializeToString,
             project__pb2.PermissionResponseDto.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def queryUserProjectAmount(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/project/queryUserProjectAmount',
+            project__pb2.ProjectRequest.SerializeToString,
+            project__pb2.QueryUserProjectAmountResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
