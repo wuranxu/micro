@@ -21,3 +21,9 @@ class QueryRedisDto(BaseModel):
 class RedisCommandDto(BaseModel):
     id: int
     command: str
+
+
+class RedisCommandWithNameDto(BaseModel):
+    env: int
+    name: str
+    command: str

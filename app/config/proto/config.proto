@@ -1,12 +1,18 @@
 syntax = "proto3";
 import "google/protobuf/struct.proto";
 
-message Request {}
+message ConfigRequest {}
 
-message Response {
+message ConfigResponse {
   int32 code = 1;
   string msg = 2;
   bytes data = 3;
+}
+
+message ConfigStringResponse {
+  optional int32 code = 1;
+  string msg = 2;
+  string data = 3;
 }
 
 message CommandResponse {
@@ -51,6 +57,11 @@ message PityGatewayDto {
   string gateway = 4;
 }
 
+message QueryGatewayDto {
+  int32 env = 1;
+  string name = 2 ;
+}
+
 message CustomDto {
   int32 id = 1;
 }
@@ -58,6 +69,12 @@ message CustomDto {
 message RunRedisCommandDto {
   int32 id = 1;
   string command = 2;
+}
+
+message RunRedisCommandWithNameDto {
+  string name = 1;
+  int32 env = 2;
+  string command = 3;
 }
 
 message QueryDbConfigDto {
@@ -276,6 +293,23 @@ message SqlCommandDto {
   string sql = 2;
 }
 
+message ExecuteSQLDto {
+  int32 env = 1;
+  string name = 2;
+  string sql = 3;
+}
+
+message QueryGConfigDto {
+  int32 env = 1;
+  string key = 2;
+}
+
+message QueryGConfigResponse {
+  int32 code = 1;
+  string name = 2;
+  GConfigModel data = 3;
+}
+
 message SqlResult {
   repeated google.protobuf.Struct result = 1;
   int32 elapsed = 2;
@@ -324,47 +358,53 @@ service config {
   // 编辑网关地址
   rpc updateGateway(PityGatewayDto) returns (GatewayResponseDto) {}
   // 删除网关地址
-  rpc deleteGateway(CustomDto) returns (Response) {}
+  rpc deleteGateway(CustomDto) returns (ConfigResponse) {}
+
+  rpc queryGateway(QueryGatewayDto)returns (ConfigStringResponse) {}
 
   // 获取数据库配置
   rpc listDbConfig(QueryDbConfigDto) returns (ListDbConfigResponseDto) {}
   // 添加数据库配置
-  rpc insertDbConfig(DatabaseModelDto) returns (Response) {}
+  rpc insertDbConfig(DatabaseModelDto) returns (ConfigResponse) {}
   // 编辑数据库配置
-  rpc updateDbConfig(DatabaseModelDto) returns (Response) {}
+  rpc updateDbConfig(DatabaseModelDto) returns (ConfigResponse) {}
   // 删除数据库配置
-  rpc deleteDbConfig(CustomDto) returns (Response) {}
+  rpc deleteDbConfig(CustomDto) returns (ConfigResponse) {}
   // 测试数据库链接
-  rpc testDbConfig(DatabaseConnectionDto) returns (Response) {}
+  rpc testDbConfig(DatabaseConnectionDto) returns (ConfigResponse) {}
 
   // 获取数据库列表
-  rpc listDbTree(Request) returns (ListDatabaseResponseDto) {}
+  rpc listDbTree(ConfigRequest) returns (ListDatabaseResponseDto) {}
   // 获取数据库表+字段
   rpc listDbTables(DatabaseModelDto) returns (ListTableResponseDto) {}
   // 在线执行sql
   rpc runSQL(SqlCommandDto) returns (RunSQLResponseDto) {}
   // 查询sql执行记录
   rpc querySQLHistory(QuerySQLHistoryDto) returns (QuerySQLHistoryResponseDto) {}
+  // 执行sql
+  rpc executeSQL(ExecuteSQLDto) returns (ConfigStringResponse) {}
 
   // 获取环境列表
   rpc listEnvironment(ListEnvironmentDto) returns (ListEnvironmentResponseDto) {}
   // 添加环境
-  rpc insertEnvironment(EnvironmentModelDto) returns (Response) {}
+  rpc insertEnvironment(EnvironmentModelDto) returns (ConfigResponse) {}
   // 编辑环境
   rpc updateEnvironment(EnvironmentModelDto) returns (UpdateEnvironmentResponseDto) {}
   // 删除环境
-  rpc deleteEnvironment(CustomDto) returns (Response) {}
+  rpc deleteEnvironment(CustomDto) returns (ConfigResponse) {}
 
   // 获取全局变量
   rpc listGConfig(ListGConfigDto) returns (ListGConfigResponseDto) {}
-  rpc insertGConfig(GConfigDto) returns (Response) {}
-  rpc updateGConfig(GConfigDto) returns (Response) {}
-  rpc deleteGConfig(CustomDto) returns (Response) {}
+  rpc insertGConfig(GConfigDto) returns (ConfigResponse) {}
+  rpc updateGConfig(GConfigDto) returns (ConfigResponse) {}
+  rpc deleteGConfig(CustomDto) returns (ConfigResponse) {}
 
   // redis配置curd
   rpc listRedis(ListRedisDto) returns (ListRedisResponseDto) {}
   rpc insertRedis(RedisDto) returns (RedisResponseDto) {}
   rpc updateRedis(RedisDto) returns (RedisResponseDto) {}
-  rpc deleteRedis(CustomDto) returns (Response) {}
+  rpc deleteRedis(CustomDto) returns (ConfigResponse) {}
   rpc runRedisCommand(RunRedisCommandDto) returns (CommandResponse) {}
+  rpc runRedisCommandWithName(RunRedisCommandWithNameDto) returns (CommandResponse) {}
+  rpc getGConfigByKey(QueryGConfigDto) returns (QueryGConfigResponse) {}
 }

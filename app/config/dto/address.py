@@ -19,6 +19,15 @@ class CustomDto(BaseModel):
     id: int
 
 
+class QueryGConfigDto(BaseModel):
+    env: int
+    key: str
+
+
+class QueryGatewayDto(BaseModel):
+    env: int
+    name: str
+
 class PityGatewayDto(BaseModel):
     name: str = ''
     env: int = None

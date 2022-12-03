@@ -13,9 +13,11 @@ from curd.TestCaseAssertsDao import TestCaseAssertsDao
 from curd.TestCaseDao import TestCaseDao
 from curd.TestCaseDirectory import PityTestcaseDirectoryDao
 from curd.TestCaseOutParametersDao import PityTestCaseOutParametersDao
+from curd.TestPlan import PityTestPlanDao
 from curd.TestReport import TestReportDao
 from curd.TestcaseDataDao import PityTestcaseDataDao
 from dto.constructor import ConstructorForm, QueryConstructorDto
+from dto.test_plan import ListTestPlanDto
 from dto.test_report import ListTestReportDto
 from dto.testcase import ListTestCaseDto, QueryTestCaseDto, ReOrderConstructorDto, ListConstructorQueryForm
 from dto.testcase_data import PityTestcaseDataForm
@@ -33,7 +35,7 @@ from proto.testcase_pb2 import ListTestCaseResponse, TestCaseModel, TestCaseTree
     ConstructorResponseTree, QueryReportResponse, QueryReportData, TestReportModel, TestResult, ListReportResponse, \
     ListReportData, QueryXmindResponse, QueryXmindData, TestPlanTreeResponse, TestPlanTreeData, TestCaseDataResponse, \
     TestCaseOutParametersResponse, BatchUpdateOutParametersResponse, TestCaseGenerateResponse, TestCaseInfoDto, \
-    ImportTestCaseResponse, RequestInfo
+    ImportTestCaseResponse, RequestInfo, ListTestPlanResponse
 from proto.testcase_pb2_grpc import testcaseServicer
 from utils.request import get_convertor
 from utils.request.generator import CaseGenerator
@@ -394,3 +396,12 @@ class TestCaseServiceApi(testcaseServicer):
         content = base64.b64decode(request.content.decode().split("base64,")[-1])
         requests = convert(content.decode())
         return Context.render_list(requests, RequestInfo)
+
+    @Interceptor(ListTestPlanDto, ListTestPlanResponse)
+    async def listTestPlan(self, request: ListTestPlanDto, context):
+        user = Context.get_user(context)
+        data, total = await PityTestPlanDao.list_test_plan(request.page, request.size, project_id=request.project_id,
+                                                           name=request.name, follow=request.follow,
+                                                           priority=request.priority, role=user.role,
+                                                           create_user=request.create_user, user_id=user.id)
+        ans = Scheduler.list_test_plan(data)

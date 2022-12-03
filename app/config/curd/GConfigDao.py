@@ -30,7 +30,7 @@ class GConfigDao(Mapper):
 
     @staticmethod
     @RedisHelper.cache("dao", 1800, True)
-    async def async_get_gconfig_by_key(key: str, env: int) -> GConfig:
+    async def get_gconfig_by_key(key: str, env: int) -> GConfig:
         try:
             filters = [GConfig.key == key, GConfig.deleted_at == 0, GConfig.enable == True, GConfig.env == env]
             async with async_session() as session:

@@ -33,6 +33,12 @@ class RunSQLCommandDto(BaseModel):
     sql: str
 
 
+class ExecuteSQLDto(BaseModel):
+    env: int
+    name: str
+    sql: str
+
+
 class QuerySQLHistoryDto(BaseModel):
     page: int = 1
     size: int = 4

@@ -4,6 +4,16 @@ from klose.request import PityModel
 from pydantic import BaseModel, validator
 
 
+class ListTestPlanDto(BaseModel):
+    page: int
+    size: int
+    project_id: int = None
+    name: str = ''
+    priority: str = ''
+    create_user: int = None
+    follow: bool = None
+
+
 class PityTestPlanForm(BaseModel):
     id: int = None
     project_id: int

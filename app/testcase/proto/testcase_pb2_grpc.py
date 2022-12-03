@@ -209,6 +209,51 @@ class testcaseStub(object):
                 request_serializer=testcase__pb2.ImportCaseDto.SerializeToString,
                 response_deserializer=testcase__pb2.ImportTestCaseResponse.FromString,
                 )
+        self.listTestPlan = channel.unary_unary(
+                '/testcase/listTestPlan',
+                request_serializer=testcase__pb2.ListTestPlanDto.SerializeToString,
+                response_deserializer=testcase__pb2.ListTestPlanResponse.FromString,
+                )
+        self.insertTestPlan = channel.unary_unary(
+                '/testcase/insertTestPlan',
+                request_serializer=testcase__pb2.TestPlanDto.SerializeToString,
+                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                )
+        self.updateTestPlan = channel.unary_unary(
+                '/testcase/updateTestPlan',
+                request_serializer=testcase__pb2.TestPlanDto.SerializeToString,
+                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                )
+        self.deleteTestPlan = channel.unary_unary(
+                '/testcase/deleteTestPlan',
+                request_serializer=testcase__pb2.CustomDto.SerializeToString,
+                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                )
+        self.switchTestPlan = channel.unary_unary(
+                '/testcase/switchTestPlan',
+                request_serializer=testcase__pb2.SwitchTestPlanDto.SerializeToString,
+                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                )
+        self.executeTestPlan = channel.unary_unary(
+                '/testcase/executeTestPlan',
+                request_serializer=testcase__pb2.CustomDto.SerializeToString,
+                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                )
+        self.followTestPlan = channel.unary_unary(
+                '/testcase/followTestPlan',
+                request_serializer=testcase__pb2.CustomDto.SerializeToString,
+                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                )
+        self.unFollowTestPlan = channel.unary_unary(
+                '/testcase/unFollowTestPlan',
+                request_serializer=testcase__pb2.CustomDto.SerializeToString,
+                response_deserializer=testcase__pb2.TestCaseResponse.FromString,
+                )
+        self.queryUserFollowTestPlan = channel.unary_unary(
+                '/testcase/queryUserFollowTestPlan',
+                request_serializer=testcase__pb2.TestCaseRequest.SerializeToString,
+                response_deserializer=testcase__pb2.QueryFollowPlanResponse.FromString,
+                )
 
 
 class testcaseServicer(object):
@@ -448,6 +493,61 @@ class testcaseServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def listTestPlan(self, request, context):
+        """测试计划
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def insertTestPlan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def updateTestPlan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def deleteTestPlan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def switchTestPlan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def executeTestPlan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def followTestPlan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def unFollowTestPlan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def queryUserFollowTestPlan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_testcaseServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -645,6 +745,51 @@ def add_testcaseServicer_to_server(servicer, server):
                     servicer.importTestCase,
                     request_deserializer=testcase__pb2.ImportCaseDto.FromString,
                     response_serializer=testcase__pb2.ImportTestCaseResponse.SerializeToString,
+            ),
+            'listTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.listTestPlan,
+                    request_deserializer=testcase__pb2.ListTestPlanDto.FromString,
+                    response_serializer=testcase__pb2.ListTestPlanResponse.SerializeToString,
+            ),
+            'insertTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.insertTestPlan,
+                    request_deserializer=testcase__pb2.TestPlanDto.FromString,
+                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+            ),
+            'updateTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.updateTestPlan,
+                    request_deserializer=testcase__pb2.TestPlanDto.FromString,
+                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+            ),
+            'deleteTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.deleteTestPlan,
+                    request_deserializer=testcase__pb2.CustomDto.FromString,
+                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+            ),
+            'switchTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.switchTestPlan,
+                    request_deserializer=testcase__pb2.SwitchTestPlanDto.FromString,
+                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+            ),
+            'executeTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.executeTestPlan,
+                    request_deserializer=testcase__pb2.CustomDto.FromString,
+                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+            ),
+            'followTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.followTestPlan,
+                    request_deserializer=testcase__pb2.CustomDto.FromString,
+                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+            ),
+            'unFollowTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.unFollowTestPlan,
+                    request_deserializer=testcase__pb2.CustomDto.FromString,
+                    response_serializer=testcase__pb2.TestCaseResponse.SerializeToString,
+            ),
+            'queryUserFollowTestPlan': grpc.unary_unary_rpc_method_handler(
+                    servicer.queryUserFollowTestPlan,
+                    request_deserializer=testcase__pb2.TestCaseRequest.FromString,
+                    response_serializer=testcase__pb2.QueryFollowPlanResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -1316,5 +1461,158 @@ class testcase(object):
         return grpc.experimental.unary_unary(request, target, '/testcase/importTestCase',
             testcase__pb2.ImportCaseDto.SerializeToString,
             testcase__pb2.ImportTestCaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def listTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/listTestPlan',
+            testcase__pb2.ListTestPlanDto.SerializeToString,
+            testcase__pb2.ListTestPlanResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def insertTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/insertTestPlan',
+            testcase__pb2.TestPlanDto.SerializeToString,
+            testcase__pb2.TestCaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def updateTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/updateTestPlan',
+            testcase__pb2.TestPlanDto.SerializeToString,
+            testcase__pb2.TestCaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def deleteTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/deleteTestPlan',
+            testcase__pb2.CustomDto.SerializeToString,
+            testcase__pb2.TestCaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def switchTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/switchTestPlan',
+            testcase__pb2.SwitchTestPlanDto.SerializeToString,
+            testcase__pb2.TestCaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def executeTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/executeTestPlan',
+            testcase__pb2.CustomDto.SerializeToString,
+            testcase__pb2.TestCaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def followTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/followTestPlan',
+            testcase__pb2.CustomDto.SerializeToString,
+            testcase__pb2.TestCaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def unFollowTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/unFollowTestPlan',
+            testcase__pb2.CustomDto.SerializeToString,
+            testcase__pb2.TestCaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def queryUserFollowTestPlan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/testcase/queryUserFollowTestPlan',
+            testcase__pb2.TestCaseRequest.SerializeToString,
+            testcase__pb2.QueryFollowPlanResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

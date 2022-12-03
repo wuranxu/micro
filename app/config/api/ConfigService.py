@@ -11,22 +11,24 @@ from curd.EnvironmentDao import EnvironmentDao
 from curd.GConfigDao import GConfigDao
 from curd.PityGatewayDao import PityGatewayDao
 from curd.RedisConfigDao import PityRedisConfigDao
-from dto.address import PityAddressForm, CustomDto, PityGatewayDto
-from dto.database import QueryDatabaseDto, DatabaseDto, TestDatabaseDto, RunSQLCommandDto, QuerySQLHistoryDto
+from dto.address import PityAddressForm, CustomDto, PityGatewayDto, QueryGatewayDto
+from dto.database import QueryDatabaseDto, DatabaseDto, TestDatabaseDto, RunSQLCommandDto, QuerySQLHistoryDto, \
+    ExecuteSQLDto
 from dto.environment import EnvironmentDto, QueryEnvironmentDto
 from dto.gconfig import QueryGConfigDto, GConfigDto
-from dto.redis_config import QueryRedisDto, RedisConfigDto, RedisCommandDto
+from dto.redis_config import QueryRedisDto, RedisConfigDto, RedisCommandDto, RedisCommandWithNameDto
 from model.address import PityGateway
 from model.database import PityDatabase
+from model.environment import Environment as Env
 from model.redis_config import PityRedis
 from model.sql_log import PitySQLHistory
-from proto.config_pb2 import ListGatewayResponseDto, GatewayResponseDto, Response, PityGatewayModel, \
+from proto.config_pb2 import ListGatewayResponseDto, GatewayResponseDto, ConfigResponse as Response, PityGatewayModel, \
     ListDbConfigResponseDto, PityDatabaseModel, ListEnvironmentResponseDto, \
     UpdateEnvironmentResponseDto, Environment, ListGConfigResponseDto, GConfigModelData, GConfigModel, \
     ListRedisResponseDto, PityRedisModel, RedisResponseDto, CommandResponse, ListTableResponseDto, TableResponse, \
-    ListDatabaseResponseDto, DbTree, RunSQLResponseDto, SqlResult, QuerySQLHistoryResponseDto, SQLHistoryResponse
+    ListDatabaseResponseDto, DbTree, RunSQLResponseDto, SqlResult, QuerySQLHistoryResponseDto, SQLHistoryResponse, \
+    ExecuteSQLResponse, QueryGConfigResponse
 from proto.config_pb2_grpc import configServicer
-from model.environment import Environment as Env
 
 
 class ConfigServiceApi(configServicer):
@@ -55,6 +57,13 @@ class ConfigServiceApi(configServicer):
         user = Context.get_user(context)
         async with async_session() as session:
             await PityGatewayDao.delete_record_by_id(session, user.id, request.id)
+
+    @Interceptor(CustomDto, Response, role=Config.MANAGER)
+    async def queryGateway(self, request: QueryGatewayDto, context):
+        """
+        通过name env查询gateway
+        """
+        return await PityGatewayDao.query_gateway(request.env, request.name)
 
     @Interceptor(QueryDatabaseDto, ListDbConfigResponseDto)
     async def listDbConfig(self, request, context):
@@ -123,6 +132,13 @@ class ConfigServiceApi(configServicer):
         columns, result = PityResponse.parse_sql_result(result)
         await PitySQLHistoryDao.insert(model=PitySQLHistory(request.sql, elapsed, request.id, user.id))
         return Context.render(dict(result=result, columns=columns, elapsed=elapsed), SqlResult)
+
+    @Interceptor(ExecuteSQLDto, ExecuteSQLResponse)
+    async def executeSQL(self, request: ExecuteSQLDto, context):
+        """
+        在线执行SQL语句
+        """
+        return await DbConfigDao.execute_sql(request.env, request.name, request.sql)
 
     @Interceptor(QuerySQLHistoryDto, QuerySQLHistoryResponseDto)
     async def querySQLHistory(self, request, context):
@@ -212,6 +228,13 @@ class ConfigServiceApi(configServicer):
         async with async_session() as session:
             await GConfigDao.delete_record_by_id(session, user.id, request.id, log=True)
 
+    @Interceptor(QueryGConfigDto, QueryGConfigResponse)
+    async def getGConfigByKey(self, request: QueryGConfigDto, context):
+        """
+        通过key获取全局变量
+        """
+        return await GConfigDao.get_gconfig_by_key(request.key, request.env)
+
     @Interceptor(QueryRedisDto, ListRedisResponseDto)
     async def listRedis(self, request, context):
         """
@@ -262,4 +285,12 @@ class ConfigServiceApi(configServicer):
         在线执行redis命令
         """
         ans = await PityRedisConfigDao.execute_command(request.command, id=request.id)
+        return json.dumps(ans, ensure_ascii=False)
+
+    @Interceptor(RedisCommandWithNameDto, CommandResponse)
+    async def runRedisCommandWithName(self, request: RedisCommandWithNameDto, context):
+        """
+        在线执行redis命令 通过名称和环境
+        """
+        ans = await PityRedisConfigDao.execute_command(request.command, env=request.env, name=request.name)
         return json.dumps(ans, ensure_ascii=False)
