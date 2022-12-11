@@ -16,7 +16,7 @@ from dto.project import ListProjectDto, ProjectForm, CustomDto, ProjectAvatarDto
 from model.project_role import ProjectRole
 from proto.project_pb2 import ListProjectResponseDto, ListProjectResponseData, ProjectModel, ProjectResponse, \
     QueryProjectResponseDto, QueryProjectData, ProjectDto, ProjectRoleDto, ProjectAvatarResponseDto, \
-    PermissionResponseDto, QueryUserProjectAmountResponse
+    PermissionResponseDto, QueryUserProjectAmountResponse, QueryUserProjectResponse
 from proto.project_pb2_grpc import projectServicer
 
 
@@ -119,3 +119,12 @@ class ProjectServiceApi(projectServicer):
         """
         user = Context.get_user(context)
         return await ProjectDao.query_user_project(user.id)
+
+    @Interceptor(None, QueryUserProjectResponse)
+    async def queryUserProject(self, request, context):
+        """
+        查询用户拥有的项目数量
+        """
+        user = Context.get_user(context)
+        async with async_session() as session:
+            return await ProjectDao.list_project_id_by_user(session, user.id, user.role)

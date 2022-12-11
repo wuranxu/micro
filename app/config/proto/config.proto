@@ -147,6 +147,12 @@ message ListEnvironmentResponseDto {
   repeated Environment data = 3;
 }
 
+message QueryEnvironmentResponse {
+  int32 code = 1;
+  string msg = 2;
+  Environment data = 3;
+}
+
 message EnvironmentModelDto {
   optional int32 id = 1;
   string name = 2;
@@ -384,6 +390,8 @@ service config {
   // 执行sql
   rpc executeSQL(ExecuteSQLDto) returns (ConfigStringResponse) {}
 
+  // 查询测试环境
+  rpc queryEnvironment(CustomDto) returns (QueryEnvironmentResponse) {}
   // 获取环境列表
   rpc listEnvironment(ListEnvironmentDto) returns (ListEnvironmentResponseDto) {}
   // 添加环境

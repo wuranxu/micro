@@ -17,7 +17,7 @@ class dashboardStub(object):
         self.statistics = channel.unary_unary(
                 '/dashboard/statistics',
                 request_serializer=dashboard__pb2.DashboardRequest.SerializeToString,
-                response_deserializer=dashboard__pb2.Response.FromString,
+                response_deserializer=dashboard__pb2.StatisticsResponse.FromString,
                 )
         self.workspace = channel.unary_unary(
                 '/dashboard/workspace',
@@ -47,7 +47,7 @@ def add_dashboardServicer_to_server(servicer, server):
             'statistics': grpc.unary_unary_rpc_method_handler(
                     servicer.statistics,
                     request_deserializer=dashboard__pb2.DashboardRequest.FromString,
-                    response_serializer=dashboard__pb2.Response.SerializeToString,
+                    response_serializer=dashboard__pb2.StatisticsResponse.SerializeToString,
             ),
             'workspace': grpc.unary_unary_rpc_method_handler(
                     servicer.workspace,
@@ -77,7 +77,7 @@ class dashboard(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dashboard/statistics',
             dashboard__pb2.DashboardRequest.SerializeToString,
-            dashboard__pb2.Response.FromString,
+            dashboard__pb2.StatisticsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

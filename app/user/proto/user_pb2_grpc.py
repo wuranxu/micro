@@ -17,7 +17,7 @@ class userStub(object):
         self.register = channel.unary_unary(
                 '/user/register',
                 request_serializer=user__pb2.UserDto.SerializeToString,
-                response_deserializer=user__pb2.Response.FromString,
+                response_deserializer=user__pb2.UserResponse.FromString,
                 )
         self.login = channel.unary_unary(
                 '/user/login',
@@ -26,7 +26,7 @@ class userStub(object):
                 )
         self.listUser = channel.unary_unary(
                 '/user/listUser',
-                request_serializer=user__pb2.Request.SerializeToString,
+                request_serializer=user__pb2.UserRequest.SerializeToString,
                 response_deserializer=user__pb2.ListUserResponseDto.FromString,
                 )
         self.loginWithGithub = channel.unary_unary(
@@ -42,22 +42,32 @@ class userStub(object):
         self.delete = channel.unary_unary(
                 '/user/delete',
                 request_serializer=user__pb2.CommonDeleteDto.SerializeToString,
-                response_deserializer=user__pb2.Response.FromString,
+                response_deserializer=user__pb2.UserResponse.FromString,
                 )
         self.resetPassword = channel.unary_unary(
                 '/user/resetPassword',
                 request_serializer=user__pb2.ResetDto.SerializeToString,
-                response_deserializer=user__pb2.Response.FromString,
+                response_deserializer=user__pb2.UserResponse.FromString,
                 )
         self.generatePassword = channel.unary_unary(
                 '/user/generatePassword',
                 request_serializer=user__pb2.GeneratePasswordDto.SerializeToString,
-                response_deserializer=user__pb2.Response.FromString,
+                response_deserializer=user__pb2.UserResponse.FromString,
                 )
         self.checkToken = channel.unary_unary(
                 '/user/checkToken',
                 request_serializer=user__pb2.CheckResetUrlDto.SerializeToString,
                 response_deserializer=user__pb2.CheckResetUrlResponseDto.FromString,
+                )
+        self.query = channel.unary_unary(
+                '/user/query',
+                request_serializer=user__pb2.CustomDto.SerializeToString,
+                response_deserializer=user__pb2.LoginResponseDto.FromString,
+                )
+        self.listUserTouch = channel.unary_unary(
+                '/user/listUserTouch',
+                request_serializer=user__pb2.ListUserTouchDto.SerializeToString,
+                response_deserializer=user__pb2.ListUserTouchResponse.FromString,
                 )
 
 
@@ -100,9 +110,7 @@ class userServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def delete(self, request, context):
-        """// 根据token查询用户
-        rpc query(Request) returns (Response) {}
-        禁用用户
+        """禁用用户
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -129,13 +137,27 @@ class userServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def query(self, request, context):
+        """查询用户信息
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def listUserTouch(self, request, context):
+        """查询用户联系方式
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_userServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'register': grpc.unary_unary_rpc_method_handler(
                     servicer.register,
                     request_deserializer=user__pb2.UserDto.FromString,
-                    response_serializer=user__pb2.Response.SerializeToString,
+                    response_serializer=user__pb2.UserResponse.SerializeToString,
             ),
             'login': grpc.unary_unary_rpc_method_handler(
                     servicer.login,
@@ -144,7 +166,7 @@ def add_userServicer_to_server(servicer, server):
             ),
             'listUser': grpc.unary_unary_rpc_method_handler(
                     servicer.listUser,
-                    request_deserializer=user__pb2.Request.FromString,
+                    request_deserializer=user__pb2.UserRequest.FromString,
                     response_serializer=user__pb2.ListUserResponseDto.SerializeToString,
             ),
             'loginWithGithub': grpc.unary_unary_rpc_method_handler(
@@ -160,22 +182,32 @@ def add_userServicer_to_server(servicer, server):
             'delete': grpc.unary_unary_rpc_method_handler(
                     servicer.delete,
                     request_deserializer=user__pb2.CommonDeleteDto.FromString,
-                    response_serializer=user__pb2.Response.SerializeToString,
+                    response_serializer=user__pb2.UserResponse.SerializeToString,
             ),
             'resetPassword': grpc.unary_unary_rpc_method_handler(
                     servicer.resetPassword,
                     request_deserializer=user__pb2.ResetDto.FromString,
-                    response_serializer=user__pb2.Response.SerializeToString,
+                    response_serializer=user__pb2.UserResponse.SerializeToString,
             ),
             'generatePassword': grpc.unary_unary_rpc_method_handler(
                     servicer.generatePassword,
                     request_deserializer=user__pb2.GeneratePasswordDto.FromString,
-                    response_serializer=user__pb2.Response.SerializeToString,
+                    response_serializer=user__pb2.UserResponse.SerializeToString,
             ),
             'checkToken': grpc.unary_unary_rpc_method_handler(
                     servicer.checkToken,
                     request_deserializer=user__pb2.CheckResetUrlDto.FromString,
                     response_serializer=user__pb2.CheckResetUrlResponseDto.SerializeToString,
+            ),
+            'query': grpc.unary_unary_rpc_method_handler(
+                    servicer.query,
+                    request_deserializer=user__pb2.CustomDto.FromString,
+                    response_serializer=user__pb2.LoginResponseDto.SerializeToString,
+            ),
+            'listUserTouch': grpc.unary_unary_rpc_method_handler(
+                    servicer.listUserTouch,
+                    request_deserializer=user__pb2.ListUserTouchDto.FromString,
+                    response_serializer=user__pb2.ListUserTouchResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -200,7 +232,7 @@ class user(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user/register',
             user__pb2.UserDto.SerializeToString,
-            user__pb2.Response.FromString,
+            user__pb2.UserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -233,7 +265,7 @@ class user(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user/listUser',
-            user__pb2.Request.SerializeToString,
+            user__pb2.UserRequest.SerializeToString,
             user__pb2.ListUserResponseDto.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -285,7 +317,7 @@ class user(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user/delete',
             user__pb2.CommonDeleteDto.SerializeToString,
-            user__pb2.Response.FromString,
+            user__pb2.UserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -302,7 +334,7 @@ class user(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user/resetPassword',
             user__pb2.ResetDto.SerializeToString,
-            user__pb2.Response.FromString,
+            user__pb2.UserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -319,7 +351,7 @@ class user(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user/generatePassword',
             user__pb2.GeneratePasswordDto.SerializeToString,
-            user__pb2.Response.FromString,
+            user__pb2.UserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -337,5 +369,39 @@ class user(object):
         return grpc.experimental.unary_unary(request, target, '/user/checkToken',
             user__pb2.CheckResetUrlDto.SerializeToString,
             user__pb2.CheckResetUrlResponseDto.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def query(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/user/query',
+            user__pb2.CustomDto.SerializeToString,
+            user__pb2.LoginResponseDto.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def listUserTouch(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/user/listUserTouch',
+            user__pb2.ListUserTouchDto.SerializeToString,
+            user__pb2.ListUserTouchResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

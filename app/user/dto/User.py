@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel, EmailStr
 
 
@@ -54,3 +56,7 @@ class CustomDto(BaseModel):
 
 class CheckTokenDto(BaseModel):
     token: str
+
+
+class UserTouchDto(BaseModel):
+    receivers: List[int]

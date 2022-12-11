@@ -14,12 +14,12 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nuser.proto\"\t\n\x07Request\"3\n\x08Response\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\".\n\x08LoginDto\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"F\n\x10LoginResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x17\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\t.UserInfo\"\xff\x01\n\x08UserInfo\x12\x12\n\x05token\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0c\n\x04role\x18\x04 \x01(\x05\x12\n\n\x02id\x18\x05 \x01(\x05\x12\x13\n\x06\x65xpire\x18\x06 \x01(\x05H\x01\x88\x01\x01\x12\x12\n\x05phone\x18\x07 \x01(\tH\x02\x88\x01\x01\x12\x15\n\x08is_valid\x18\x08 \x01(\x08H\x03\x88\x01\x01\x12\x1a\n\rlast_login_at\x18\t \x01(\tH\x04\x88\x01\x01\x12\x0e\n\x06\x61vatar\x18\n \x01(\tB\x08\n\x06_tokenB\t\n\x07_expireB\x08\n\x06_phoneB\x0b\n\t_is_validB\x10\n\x0e_last_login_at\"J\n\x07UserDto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\"I\n\x13ListUserResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x17\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\t.UserInfo\"\"\n\x12LoginWithGithubDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\"\xb3\x01\n\rUpdateUserDto\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x11\n\x04name\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x12\n\x05\x65mail\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x12\n\x05phone\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x11\n\x04role\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x15\n\x08is_valid\x18\x06 \x01(\x08H\x04\x88\x01\x01\x42\x07\n\x05_nameB\x08\n\x06_emailB\x08\n\x06_phoneB\x07\n\x05_roleB\x0b\n\t_is_valid\"\x1d\n\x0f\x43ommonDeleteDto\x12\n\n\x02id\x18\x01 \x01(\x05\"+\n\x08ResetDto\x12\r\n\x05token\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"$\n\x13GeneratePasswordDto\x12\r\n\x05\x65mail\x18\x01 \x01(\t\"!\n\x10\x43heckResetUrlDto\x12\r\n\x05token\x18\x01 \x01(\t\"C\n\x18\x43heckResetUrlResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t2\xb3\x03\n\x04user\x12!\n\x08register\x12\x08.UserDto\x1a\t.Response\"\x00\x12\'\n\x05login\x12\t.LoginDto\x1a\x11.LoginResponseDto\"\x00\x12,\n\x08listUser\x12\x08.Request\x1a\x14.ListUserResponseDto\"\x00\x12;\n\x0floginWithGithub\x12\x13.LoginWithGithubDto\x1a\x11.LoginResponseDto\"\x00\x12-\n\x06update\x12\x0e.UpdateUserDto\x1a\x11.LoginResponseDto\"\x00\x12\'\n\x06\x64\x65lete\x12\x10.CommonDeleteDto\x1a\t.Response\"\x00\x12\'\n\rresetPassword\x12\t.ResetDto\x1a\t.Response\"\x00\x12\x35\n\x10generatePassword\x12\x14.GeneratePasswordDto\x1a\t.Response\"\x00\x12<\n\ncheckToken\x12\x11.CheckResetUrlDto\x1a\x19.CheckResetUrlResponseDto\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nuser.proto\"\r\n\x0bUserRequest\"7\n\x0cUserResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\".\n\x08LoginDto\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"F\n\x10LoginResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x17\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\t.UserInfo\"\xff\x01\n\x08UserInfo\x12\x12\n\x05token\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0c\n\x04role\x18\x04 \x01(\x05\x12\n\n\x02id\x18\x05 \x01(\x05\x12\x13\n\x06\x65xpire\x18\x06 \x01(\x05H\x01\x88\x01\x01\x12\x12\n\x05phone\x18\x07 \x01(\tH\x02\x88\x01\x01\x12\x15\n\x08is_valid\x18\x08 \x01(\x08H\x03\x88\x01\x01\x12\x1a\n\rlast_login_at\x18\t \x01(\tH\x04\x88\x01\x01\x12\x0e\n\x06\x61vatar\x18\n \x01(\tB\x08\n\x06_tokenB\t\n\x07_expireB\x08\n\x06_phoneB\x0b\n\t_is_validB\x10\n\x0e_last_login_at\"J\n\x07UserDto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\"I\n\x13ListUserResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x17\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\t.UserInfo\"\"\n\x12LoginWithGithubDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\"\xb3\x01\n\rUpdateUserDto\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x11\n\x04name\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x12\n\x05\x65mail\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x12\n\x05phone\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x11\n\x04role\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x15\n\x08is_valid\x18\x06 \x01(\x08H\x04\x88\x01\x01\x42\x07\n\x05_nameB\x08\n\x06_emailB\x08\n\x06_phoneB\x07\n\x05_roleB\x0b\n\t_is_valid\"\x1d\n\x0f\x43ommonDeleteDto\x12\n\n\x02id\x18\x01 \x01(\x05\"+\n\x08ResetDto\x12\r\n\x05token\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"$\n\x13GeneratePasswordDto\x12\r\n\x05\x65mail\x18\x01 \x01(\t\"!\n\x10\x43heckResetUrlDto\x12\r\n\x05token\x18\x01 \x01(\t\"C\n\x18\x43heckResetUrlResponseDto\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"\x17\n\tCustomDto\x12\n\n\x02id\x18\x01 \x01(\x05\"%\n\x10ListUserTouchDto\x12\x11\n\treceivers\x18\x01 \x03(\x05\"@\n\x11UserTouchResponse\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x12\n\x05phone\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x08\n\x06_phone\"T\n\x15ListUserTouchResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12 \n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x12.UserTouchResponse2\xaf\x04\n\x04user\x12%\n\x08register\x12\x08.UserDto\x1a\r.UserResponse\"\x00\x12\'\n\x05login\x12\t.LoginDto\x1a\x11.LoginResponseDto\"\x00\x12\x30\n\x08listUser\x12\x0c.UserRequest\x1a\x14.ListUserResponseDto\"\x00\x12;\n\x0floginWithGithub\x12\x13.LoginWithGithubDto\x1a\x11.LoginResponseDto\"\x00\x12-\n\x06update\x12\x0e.UpdateUserDto\x1a\x11.LoginResponseDto\"\x00\x12+\n\x06\x64\x65lete\x12\x10.CommonDeleteDto\x1a\r.UserResponse\"\x00\x12+\n\rresetPassword\x12\t.ResetDto\x1a\r.UserResponse\"\x00\x12\x39\n\x10generatePassword\x12\x14.GeneratePasswordDto\x1a\r.UserResponse\"\x00\x12<\n\ncheckToken\x12\x11.CheckResetUrlDto\x1a\x19.CheckResetUrlResponseDto\"\x00\x12(\n\x05query\x12\n.CustomDto\x1a\x11.LoginResponseDto\"\x00\x12<\n\rlistUserTouch\x12\x11.ListUserTouchDto\x1a\x16.ListUserTouchResponse\"\x00\x62\x06proto3')
 
 
 
-_REQUEST = DESCRIPTOR.message_types_by_name['Request']
-_RESPONSE = DESCRIPTOR.message_types_by_name['Response']
+_USERREQUEST = DESCRIPTOR.message_types_by_name['UserRequest']
+_USERRESPONSE = DESCRIPTOR.message_types_by_name['UserResponse']
 _LOGINDTO = DESCRIPTOR.message_types_by_name['LoginDto']
 _LOGINRESPONSEDTO = DESCRIPTOR.message_types_by_name['LoginResponseDto']
 _USERINFO = DESCRIPTOR.message_types_by_name['UserInfo']
@@ -32,19 +32,23 @@ _RESETDTO = DESCRIPTOR.message_types_by_name['ResetDto']
 _GENERATEPASSWORDDTO = DESCRIPTOR.message_types_by_name['GeneratePasswordDto']
 _CHECKRESETURLDTO = DESCRIPTOR.message_types_by_name['CheckResetUrlDto']
 _CHECKRESETURLRESPONSEDTO = DESCRIPTOR.message_types_by_name['CheckResetUrlResponseDto']
-Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
-  'DESCRIPTOR' : _REQUEST,
+_CUSTOMDTO = DESCRIPTOR.message_types_by_name['CustomDto']
+_LISTUSERTOUCHDTO = DESCRIPTOR.message_types_by_name['ListUserTouchDto']
+_USERTOUCHRESPONSE = DESCRIPTOR.message_types_by_name['UserTouchResponse']
+_LISTUSERTOUCHRESPONSE = DESCRIPTOR.message_types_by_name['ListUserTouchResponse']
+UserRequest = _reflection.GeneratedProtocolMessageType('UserRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERREQUEST,
   '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:Request)
+  # @@protoc_insertion_point(class_scope:UserRequest)
   })
-_sym_db.RegisterMessage(Request)
+_sym_db.RegisterMessage(UserRequest)
 
-Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
-  'DESCRIPTOR' : _RESPONSE,
+UserResponse = _reflection.GeneratedProtocolMessageType('UserResponse', (_message.Message,), {
+  'DESCRIPTOR' : _USERRESPONSE,
   '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:Response)
+  # @@protoc_insertion_point(class_scope:UserResponse)
   })
-_sym_db.RegisterMessage(Response)
+_sym_db.RegisterMessage(UserResponse)
 
 LoginDto = _reflection.GeneratedProtocolMessageType('LoginDto', (_message.Message,), {
   'DESCRIPTOR' : _LOGINDTO,
@@ -130,38 +134,74 @@ CheckResetUrlResponseDto = _reflection.GeneratedProtocolMessageType('CheckResetU
   })
 _sym_db.RegisterMessage(CheckResetUrlResponseDto)
 
+CustomDto = _reflection.GeneratedProtocolMessageType('CustomDto', (_message.Message,), {
+  'DESCRIPTOR' : _CUSTOMDTO,
+  '__module__' : 'user_pb2'
+  # @@protoc_insertion_point(class_scope:CustomDto)
+  })
+_sym_db.RegisterMessage(CustomDto)
+
+ListUserTouchDto = _reflection.GeneratedProtocolMessageType('ListUserTouchDto', (_message.Message,), {
+  'DESCRIPTOR' : _LISTUSERTOUCHDTO,
+  '__module__' : 'user_pb2'
+  # @@protoc_insertion_point(class_scope:ListUserTouchDto)
+  })
+_sym_db.RegisterMessage(ListUserTouchDto)
+
+UserTouchResponse = _reflection.GeneratedProtocolMessageType('UserTouchResponse', (_message.Message,), {
+  'DESCRIPTOR' : _USERTOUCHRESPONSE,
+  '__module__' : 'user_pb2'
+  # @@protoc_insertion_point(class_scope:UserTouchResponse)
+  })
+_sym_db.RegisterMessage(UserTouchResponse)
+
+ListUserTouchResponse = _reflection.GeneratedProtocolMessageType('ListUserTouchResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTUSERTOUCHRESPONSE,
+  '__module__' : 'user_pb2'
+  # @@protoc_insertion_point(class_scope:ListUserTouchResponse)
+  })
+_sym_db.RegisterMessage(ListUserTouchResponse)
+
 _USER = DESCRIPTOR.services_by_name['user']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _REQUEST._serialized_start=14
-  _REQUEST._serialized_end=23
-  _RESPONSE._serialized_start=25
-  _RESPONSE._serialized_end=76
-  _LOGINDTO._serialized_start=78
-  _LOGINDTO._serialized_end=124
-  _LOGINRESPONSEDTO._serialized_start=126
-  _LOGINRESPONSEDTO._serialized_end=196
-  _USERINFO._serialized_start=199
-  _USERINFO._serialized_end=454
-  _USERDTO._serialized_start=456
-  _USERDTO._serialized_end=530
-  _LISTUSERRESPONSEDTO._serialized_start=532
-  _LISTUSERRESPONSEDTO._serialized_end=605
-  _LOGINWITHGITHUBDTO._serialized_start=607
-  _LOGINWITHGITHUBDTO._serialized_end=641
-  _UPDATEUSERDTO._serialized_start=644
-  _UPDATEUSERDTO._serialized_end=823
-  _COMMONDELETEDTO._serialized_start=825
-  _COMMONDELETEDTO._serialized_end=854
-  _RESETDTO._serialized_start=856
-  _RESETDTO._serialized_end=899
-  _GENERATEPASSWORDDTO._serialized_start=901
-  _GENERATEPASSWORDDTO._serialized_end=937
-  _CHECKRESETURLDTO._serialized_start=939
-  _CHECKRESETURLDTO._serialized_end=972
-  _CHECKRESETURLRESPONSEDTO._serialized_start=974
-  _CHECKRESETURLRESPONSEDTO._serialized_end=1041
-  _USER._serialized_start=1044
-  _USER._serialized_end=1479
+  _USERREQUEST._serialized_start=14
+  _USERREQUEST._serialized_end=27
+  _USERRESPONSE._serialized_start=29
+  _USERRESPONSE._serialized_end=84
+  _LOGINDTO._serialized_start=86
+  _LOGINDTO._serialized_end=132
+  _LOGINRESPONSEDTO._serialized_start=134
+  _LOGINRESPONSEDTO._serialized_end=204
+  _USERINFO._serialized_start=207
+  _USERINFO._serialized_end=462
+  _USERDTO._serialized_start=464
+  _USERDTO._serialized_end=538
+  _LISTUSERRESPONSEDTO._serialized_start=540
+  _LISTUSERRESPONSEDTO._serialized_end=613
+  _LOGINWITHGITHUBDTO._serialized_start=615
+  _LOGINWITHGITHUBDTO._serialized_end=649
+  _UPDATEUSERDTO._serialized_start=652
+  _UPDATEUSERDTO._serialized_end=831
+  _COMMONDELETEDTO._serialized_start=833
+  _COMMONDELETEDTO._serialized_end=862
+  _RESETDTO._serialized_start=864
+  _RESETDTO._serialized_end=907
+  _GENERATEPASSWORDDTO._serialized_start=909
+  _GENERATEPASSWORDDTO._serialized_end=945
+  _CHECKRESETURLDTO._serialized_start=947
+  _CHECKRESETURLDTO._serialized_end=980
+  _CHECKRESETURLRESPONSEDTO._serialized_start=982
+  _CHECKRESETURLRESPONSEDTO._serialized_end=1049
+  _CUSTOMDTO._serialized_start=1051
+  _CUSTOMDTO._serialized_end=1074
+  _LISTUSERTOUCHDTO._serialized_start=1076
+  _LISTUSERTOUCHDTO._serialized_end=1113
+  _USERTOUCHRESPONSE._serialized_start=1115
+  _USERTOUCHRESPONSE._serialized_end=1179
+  _LISTUSERTOUCHRESPONSE._serialized_start=1181
+  _LISTUSERTOUCHRESPONSE._serialized_end=1265
+  _USER._serialized_start=1268
+  _USER._serialized_end=1827
 # @@protoc_insertion_point(module_scope)

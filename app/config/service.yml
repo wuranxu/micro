@@ -3,6 +3,8 @@ version: v1
 service: config
 port: 16016
 method:
+  queryGateway:
+    authorization: true
   listGateway:
     authorization: true
   insertGateway:
@@ -20,6 +22,8 @@ method:
   deleteDbConfig:
     authorization: true
   testDbConfig:
+    authorization: true
+  queryEnvironment:
     authorization: true
   listEnvironment:
     authorization: true
@@ -55,4 +59,3 @@ method:
     authorization: true
   querySQLHistory:
     authorization: true
-

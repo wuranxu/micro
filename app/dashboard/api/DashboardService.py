@@ -4,13 +4,13 @@ from klose.utils.client import RpcClient
 from klose.utils.context import Context, Interceptor
 
 from curd.dashboard import DashboardDao
-from proto.dashboard_pb2 import WorkspaceResponse, WorkSpaceData
+from proto.dashboard_pb2 import WorkspaceResponse, WorkSpaceData, StatisticsResponse, StatisticsData
 from proto.dashboard_pb2_grpc import dashboardServicer
 
 
 class DashboardServiceApi(dashboardServicer):
 
-    @Interceptor(None, WorkspaceResponse)
+    @Interceptor(None, StatisticsResponse)
     async def statistics(self, request, context):
         """
         查询统计首页信息
@@ -23,8 +23,7 @@ class DashboardServiceApi(dashboardServicer):
         rank = await DashboardDao.query_user_case_rank()
         count, data = await DashboardDao.get_statistics_data(start, end)
         report_data = await DashboardDao.get_report_statistics(start, end)
-        # online = ws_manage.get_clients()
-        # return Context.success_json(dict(count=count, data=data, rank=rank, report=report_data))
+        return Context.render(dict(count=count, data=data, rank=rank, report=report_data), StatisticsData)
 
     @Interceptor(None, WorkspaceResponse)
     async def workspace(self, request, context):

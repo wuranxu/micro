@@ -52,9 +52,10 @@ class ProjectDao(Mapper):
         获取用户可见的项目
         :return:
         """
-        if role == Config.ADMIN:
-            return []
         ans = set()
+        if role == Config.ADMIN:
+            projects = await session.execute(select(Project.id).where(Project.deleted_at == 0))
+            return [p[0] for p in projects.all()]
         # 找到包含用户的角色
         roles = await session.execute(select(ProjectRole.project_id).where(ProjectRole.user_id == user,
                                                                            ProjectRole.deleted_at == 0))
@@ -65,7 +66,7 @@ class ProjectDao(Mapper):
             or_(Project.private == False, Project.owner == user), Project.deleted_at == 0))
         for r in roles.all():
             ans.add(r[0])
-        return list(ans) if len(ans) > 0 else None
+        return list(ans)
 
     @classmethod
     async def is_project_admin(cls, session, project_id: int, user_id: int):

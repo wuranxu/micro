@@ -11,7 +11,10 @@ method:
   delete:
     authorization: true
   query:
+    authorization: true
   update:
+    authorization: true
+  listUserTouch:
     authorization: true
   checkToken:
   resetPassword:

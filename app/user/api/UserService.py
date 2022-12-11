@@ -1,7 +1,6 @@
 import asyncio
 import json
 
-from curd.UserDao import PityUserDao
 from klose.config import Config
 from klose.core.msg.mail import Email
 from klose.request.fatcory import PityResponse
@@ -9,11 +8,13 @@ from klose.third_party.auth import UserToken
 from klose.utils.AsyncHttpClient import AsyncRequest
 from klose.utils.context import Context, Interceptor
 from klose.utils.des import Des
-from proto.user_pb2 import LoginResponseDto, UserInfo, ListUserResponseDto, CheckResetUrlResponseDto, Response
-from proto.user_pb2_grpc import userServicer
 
+from curd.UserDao import PityUserDao
 from dto.User import UserLoginRequest, UserRegisterRequest, UserUpdateForm, ResetPwdForm, \
-    GenerateUrlRequest, GithubLoginCode, CustomDto, CheckTokenDto
+    GenerateUrlRequest, GithubLoginCode, CustomDto, CheckTokenDto, UserTouchDto
+from proto.user_pb2 import LoginResponseDto, UserInfo, ListUserResponseDto, CheckResetUrlResponseDto, \
+    UserResponse as Response, ListUserTouchResponse, UserTouchResponse
+from proto.user_pb2_grpc import userServicer
 
 FORBIDDEN = "对不起，你没有足够的权限"
 
@@ -139,3 +140,13 @@ class UserServiceApi(userServicer):
         user = PityResponse.model_to_dict(user, "password")
         data.expire, data.token = UserToken.get_token(user)
         return data
+
+    @Interceptor(CustomDto, LoginResponseDto)
+    async def query(self, request: CustomDto, context):
+        user = await PityUserDao.query_user(request.id)
+        return PityResponse.from_orm(user, UserInfo())
+
+    @Interceptor(UserTouchDto, ListUserTouchResponse)
+    async def listUserTouch(self, request: UserTouchDto, context):
+        data = await PityUserDao.list_user_touch(*request.receivers)
+        return Context.render_list(data, UserTouchResponse)

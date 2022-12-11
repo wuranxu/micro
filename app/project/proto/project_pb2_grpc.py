@@ -69,6 +69,11 @@ class projectStub(object):
                 request_serializer=project__pb2.ProjectRequest.SerializeToString,
                 response_deserializer=project__pb2.QueryUserProjectAmountResponse.FromString,
                 )
+        self.queryUserProject = channel.unary_unary(
+                '/project/queryUserProject',
+                request_serializer=project__pb2.ProjectRequest.SerializeToString,
+                response_deserializer=project__pb2.QueryUserProjectResponse.FromString,
+                )
 
 
 class projectServicer(object):
@@ -145,6 +150,13 @@ class projectServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def queryUserProjectAmount(self, request, context):
+        """查询用户已有的项目数量
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def queryUserProject(self, request, context):
         """查询用户已有的项目
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -208,6 +220,11 @@ def add_projectServicer_to_server(servicer, server):
                     servicer.queryUserProjectAmount,
                     request_deserializer=project__pb2.ProjectRequest.FromString,
                     response_serializer=project__pb2.QueryUserProjectAmountResponse.SerializeToString,
+            ),
+            'queryUserProject': grpc.unary_unary_rpc_method_handler(
+                    servicer.queryUserProject,
+                    request_deserializer=project__pb2.ProjectRequest.FromString,
+                    response_serializer=project__pb2.QueryUserProjectResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -403,5 +420,22 @@ class project(object):
         return grpc.experimental.unary_unary(request, target, '/project/queryUserProjectAmount',
             project__pb2.ProjectRequest.SerializeToString,
             project__pb2.QueryUserProjectAmountResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def queryUserProject(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/project/queryUserProject',
+            project__pb2.ProjectRequest.SerializeToString,
+            project__pb2.QueryUserProjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

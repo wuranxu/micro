@@ -4,6 +4,8 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from klose.request.fatcory import PityResponse
 
+from core.executor import Executor
+
 
 class Scheduler(object):
     scheduler: AsyncIOScheduler = None

@@ -35,10 +35,12 @@ from proto.testcase_pb2 import ListTestCaseResponse, TestCaseModel, TestCaseTree
     ConstructorResponseTree, QueryReportResponse, QueryReportData, TestReportModel, TestResult, ListReportResponse, \
     ListReportData, QueryXmindResponse, QueryXmindData, TestPlanTreeResponse, TestPlanTreeData, TestCaseDataResponse, \
     TestCaseOutParametersResponse, BatchUpdateOutParametersResponse, TestCaseGenerateResponse, TestCaseInfoDto, \
-    ImportTestCaseResponse, RequestInfo, ListTestPlanResponse
+    ImportTestCaseResponse, RequestInfo, QueryFollowPlanResponse, \
+    QueryFollowPlanData, TestPlanModel, ListTestPlanData, ListTestPlanResponse
 from proto.testcase_pb2_grpc import testcaseServicer
 from utils.request import get_convertor
 from utils.request.generator import CaseGenerator
+from utils.scheduler import Scheduler
 
 
 class TestCaseServiceApi(testcaseServicer):
@@ -397,11 +399,19 @@ class TestCaseServiceApi(testcaseServicer):
         requests = convert(content.decode())
         return Context.render_list(requests, RequestInfo)
 
+    @Interceptor(None, QueryFollowPlanResponse)
+    async def queryUserFollowTestPlan(self, request, context):
+        user = Context.get_user(context)
+        result = await PityTestPlanDao.query_user_follow_test_plan(user.id)
+        return Context.render_list(result, QueryFollowPlanData)
+
     @Interceptor(ListTestPlanDto, ListTestPlanResponse)
     async def listTestPlan(self, request: ListTestPlanDto, context):
         user = Context.get_user(context)
-        data, total = await PityTestPlanDao.list_test_plan(request.page, request.size, project_id=request.project_id,
+        data, total = await PityTestPlanDao.list_test_plan(context, request.page, request.size,
+                                                           project_id=request.project_id,
                                                            name=request.name, follow=request.follow,
                                                            priority=request.priority, role=user.role,
                                                            create_user=request.create_user, user_id=user.id)
         ans = Scheduler.list_test_plan(data)
+        return ListTestPlanData(data=Context.render_list(ans, TestPlanModel), total=total)

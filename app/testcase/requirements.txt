@@ -1,3 +1,4 @@
-klose==0.0.62
+klose==0.0.69
 apscheduler
 awaits~=0.0.1
+jsonpath

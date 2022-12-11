@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-message Request {
+message UserRequest {
 
 }
 
-message Response {
+message UserResponse {
   int32 code = 1;
   string msg = 2;
   bytes data = 3;
@@ -83,25 +83,46 @@ message CheckResetUrlResponseDto {
   string data = 3;
 }
 
+message CustomDto {
+  int32 id = 1;
+}
+
+message ListUserTouchDto {
+  repeated int32 receivers = 1;
+}
+
+message UserTouchResponse {
+  string email = 1;
+  optional string phone = 2;
+}
+
+message ListUserTouchResponse {
+  int32 code = 1;
+  string msg = 2;
+  repeated UserTouchResponse data = 3;
+}
+
 service user {
   // 注册用户
-  rpc register(UserDto) returns (Response) {}
+  rpc register(UserDto) returns (UserResponse) {}
   // 用户登录
   rpc login(LoginDto) returns (LoginResponseDto) {}
   // 获取用户列表
-  rpc listUser(Request) returns (ListUserResponseDto) {}
+  rpc listUser(UserRequest) returns (ListUserResponseDto) {}
   // 通过github登录
   rpc loginWithGithub(LoginWithGithubDto) returns (LoginResponseDto) {}
   // 更新用户信息
   rpc update(UpdateUserDto) returns (LoginResponseDto) {}
-  //  // 根据token查询用户
-  //  rpc query(Request) returns (Response) {}
   // 禁用用户
-  rpc delete(CommonDeleteDto) returns (Response) {}
+  rpc delete(CommonDeleteDto) returns (UserResponse) {}
   // 重置用户密码
-  rpc resetPassword(ResetDto) returns (Response) {}
+  rpc resetPassword(ResetDto) returns (UserResponse) {}
   // 生成重置密码链接
-  rpc generatePassword(GeneratePasswordDto) returns (Response) {}
+  rpc generatePassword(GeneratePasswordDto) returns (UserResponse) {}
   // 校验生成的重置密码链接
   rpc checkToken(CheckResetUrlDto) returns (CheckResetUrlResponseDto) {}
+  // 查询用户信息
+  rpc query(CustomDto) returns (LoginResponseDto) {}
+  // 查询用户联系方式
+  rpc listUserTouch(ListUserTouchDto) returns (ListUserTouchResponse) {}
 }

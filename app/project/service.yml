@@ -23,3 +23,8 @@ method:
     authorization: true
   checkPermission:
     authorization: true
+  queryUserProject:
+    authorization: true
+  queryUserProjectAmount:
+    authorization: true
+

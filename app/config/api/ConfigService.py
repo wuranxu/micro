@@ -27,7 +27,7 @@ from proto.config_pb2 import ListGatewayResponseDto, GatewayResponseDto, ConfigR
     UpdateEnvironmentResponseDto, Environment, ListGConfigResponseDto, GConfigModelData, GConfigModel, \
     ListRedisResponseDto, PityRedisModel, RedisResponseDto, CommandResponse, ListTableResponseDto, TableResponse, \
     ListDatabaseResponseDto, DbTree, RunSQLResponseDto, SqlResult, QuerySQLHistoryResponseDto, SQLHistoryResponse, \
-    ExecuteSQLResponse, QueryGConfigResponse
+    QueryGConfigResponse, ConfigStringResponse, QueryEnvironmentResponse
 from proto.config_pb2_grpc import configServicer
 
 
@@ -58,7 +58,7 @@ class ConfigServiceApi(configServicer):
         async with async_session() as session:
             await PityGatewayDao.delete_record_by_id(session, user.id, request.id)
 
-    @Interceptor(CustomDto, Response, role=Config.MANAGER)
+    @Interceptor(QueryGatewayDto, Response, role=Config.MANAGER)
     async def queryGateway(self, request: QueryGatewayDto, context):
         """
         通过name env查询gateway
@@ -133,7 +133,7 @@ class ConfigServiceApi(configServicer):
         await PitySQLHistoryDao.insert(model=PitySQLHistory(request.sql, elapsed, request.id, user.id))
         return Context.render(dict(result=result, columns=columns, elapsed=elapsed), SqlResult)
 
-    @Interceptor(ExecuteSQLDto, ExecuteSQLResponse)
+    @Interceptor(ExecuteSQLDto, ConfigStringResponse)
     async def executeSQL(self, request: ExecuteSQLDto, context):
         """
         在线执行SQL语句
@@ -160,12 +160,17 @@ class ConfigServiceApi(configServicer):
         data = PityResponse.encode_json(ans, "deleted_at")
         return Context.render(dict(data=data, total=total), SQLHistoryResponse)
 
+    @Interceptor(CustomDto, QueryEnvironmentResponse)
+    async def queryEnvironment(self, request: CustomDto, context):
+        result = await EnvironmentDao.query_env(request.id)
+        return PityResponse.from_orm(result, Environment)
+
     @Interceptor(QueryEnvironmentDto, ListEnvironmentResponseDto)
-    async def listEnvironment(self, request, context):
+    async def listEnvironment(self, request: QueryEnvironmentDto, context):
         """
         获取环境列表
         """
-        data = await EnvironmentDao.list_env()
+        data = await EnvironmentDao.list_env(request.name)
         return PityResponse.from_orm_list(data, Environment)
 
     @Interceptor(EnvironmentDto, Response, role=Config.ADMIN)

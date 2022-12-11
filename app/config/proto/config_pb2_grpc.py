@@ -15,155 +15,160 @@ class configStub(object):
             channel: A grpc.Channel.
         """
         self.listGateway = channel.unary_unary(
-                '/config/listGateway',
-                request_serializer=config__pb2.ListGatewayDto.SerializeToString,
-                response_deserializer=config__pb2.ListGatewayResponseDto.FromString,
-                )
+            '/config/listGateway',
+            request_serializer=config__pb2.ListGatewayDto.SerializeToString,
+            response_deserializer=config__pb2.ListGatewayResponseDto.FromString,
+        )
         self.insertGateway = channel.unary_unary(
-                '/config/insertGateway',
-                request_serializer=config__pb2.PityGatewayDto.SerializeToString,
-                response_deserializer=config__pb2.GatewayResponseDto.FromString,
-                )
+            '/config/insertGateway',
+            request_serializer=config__pb2.PityGatewayDto.SerializeToString,
+            response_deserializer=config__pb2.GatewayResponseDto.FromString,
+        )
         self.updateGateway = channel.unary_unary(
-                '/config/updateGateway',
-                request_serializer=config__pb2.PityGatewayDto.SerializeToString,
-                response_deserializer=config__pb2.GatewayResponseDto.FromString,
-                )
+            '/config/updateGateway',
+            request_serializer=config__pb2.PityGatewayDto.SerializeToString,
+            response_deserializer=config__pb2.GatewayResponseDto.FromString,
+        )
         self.deleteGateway = channel.unary_unary(
-                '/config/deleteGateway',
-                request_serializer=config__pb2.CustomDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/deleteGateway',
+            request_serializer=config__pb2.CustomDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.queryGateway = channel.unary_unary(
-                '/config/queryGateway',
-                request_serializer=config__pb2.QueryGatewayDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigStringResponse.FromString,
-                )
+            '/config/queryGateway',
+            request_serializer=config__pb2.QueryGatewayDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigStringResponse.FromString,
+        )
         self.listDbConfig = channel.unary_unary(
-                '/config/listDbConfig',
-                request_serializer=config__pb2.QueryDbConfigDto.SerializeToString,
-                response_deserializer=config__pb2.ListDbConfigResponseDto.FromString,
-                )
+            '/config/listDbConfig',
+            request_serializer=config__pb2.QueryDbConfigDto.SerializeToString,
+            response_deserializer=config__pb2.ListDbConfigResponseDto.FromString,
+        )
         self.insertDbConfig = channel.unary_unary(
-                '/config/insertDbConfig',
-                request_serializer=config__pb2.DatabaseModelDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/insertDbConfig',
+            request_serializer=config__pb2.DatabaseModelDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.updateDbConfig = channel.unary_unary(
-                '/config/updateDbConfig',
-                request_serializer=config__pb2.DatabaseModelDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/updateDbConfig',
+            request_serializer=config__pb2.DatabaseModelDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.deleteDbConfig = channel.unary_unary(
-                '/config/deleteDbConfig',
-                request_serializer=config__pb2.CustomDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/deleteDbConfig',
+            request_serializer=config__pb2.CustomDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.testDbConfig = channel.unary_unary(
-                '/config/testDbConfig',
-                request_serializer=config__pb2.DatabaseConnectionDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/testDbConfig',
+            request_serializer=config__pb2.DatabaseConnectionDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.listDbTree = channel.unary_unary(
-                '/config/listDbTree',
-                request_serializer=config__pb2.ConfigRequest.SerializeToString,
-                response_deserializer=config__pb2.ListDatabaseResponseDto.FromString,
-                )
+            '/config/listDbTree',
+            request_serializer=config__pb2.ConfigRequest.SerializeToString,
+            response_deserializer=config__pb2.ListDatabaseResponseDto.FromString,
+        )
         self.listDbTables = channel.unary_unary(
-                '/config/listDbTables',
-                request_serializer=config__pb2.DatabaseModelDto.SerializeToString,
-                response_deserializer=config__pb2.ListTableResponseDto.FromString,
-                )
+            '/config/listDbTables',
+            request_serializer=config__pb2.DatabaseModelDto.SerializeToString,
+            response_deserializer=config__pb2.ListTableResponseDto.FromString,
+        )
         self.runSQL = channel.unary_unary(
-                '/config/runSQL',
-                request_serializer=config__pb2.SqlCommandDto.SerializeToString,
-                response_deserializer=config__pb2.RunSQLResponseDto.FromString,
-                )
+            '/config/runSQL',
+            request_serializer=config__pb2.SqlCommandDto.SerializeToString,
+            response_deserializer=config__pb2.RunSQLResponseDto.FromString,
+        )
         self.querySQLHistory = channel.unary_unary(
-                '/config/querySQLHistory',
-                request_serializer=config__pb2.QuerySQLHistoryDto.SerializeToString,
-                response_deserializer=config__pb2.QuerySQLHistoryResponseDto.FromString,
-                )
+            '/config/querySQLHistory',
+            request_serializer=config__pb2.QuerySQLHistoryDto.SerializeToString,
+            response_deserializer=config__pb2.QuerySQLHistoryResponseDto.FromString,
+        )
         self.executeSQL = channel.unary_unary(
-                '/config/executeSQL',
-                request_serializer=config__pb2.ExecuteSQLDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigStringResponse.FromString,
-                )
+            '/config/executeSQL',
+            request_serializer=config__pb2.ExecuteSQLDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigStringResponse.FromString,
+        )
+        self.queryEnvironment = channel.unary_unary(
+            '/config/queryEnvironment',
+            request_serializer=config__pb2.CustomDto.SerializeToString,
+            response_deserializer=config__pb2.QueryEnvironmentResponse.FromString,
+        )
         self.listEnvironment = channel.unary_unary(
-                '/config/listEnvironment',
-                request_serializer=config__pb2.ListEnvironmentDto.SerializeToString,
-                response_deserializer=config__pb2.ListEnvironmentResponseDto.FromString,
-                )
+            '/config/listEnvironment',
+            request_serializer=config__pb2.ListEnvironmentDto.SerializeToString,
+            response_deserializer=config__pb2.ListEnvironmentResponseDto.FromString,
+        )
         self.insertEnvironment = channel.unary_unary(
-                '/config/insertEnvironment',
-                request_serializer=config__pb2.EnvironmentModelDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/insertEnvironment',
+            request_serializer=config__pb2.EnvironmentModelDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.updateEnvironment = channel.unary_unary(
-                '/config/updateEnvironment',
-                request_serializer=config__pb2.EnvironmentModelDto.SerializeToString,
-                response_deserializer=config__pb2.UpdateEnvironmentResponseDto.FromString,
-                )
+            '/config/updateEnvironment',
+            request_serializer=config__pb2.EnvironmentModelDto.SerializeToString,
+            response_deserializer=config__pb2.UpdateEnvironmentResponseDto.FromString,
+        )
         self.deleteEnvironment = channel.unary_unary(
-                '/config/deleteEnvironment',
-                request_serializer=config__pb2.CustomDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/deleteEnvironment',
+            request_serializer=config__pb2.CustomDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.listGConfig = channel.unary_unary(
-                '/config/listGConfig',
-                request_serializer=config__pb2.ListGConfigDto.SerializeToString,
-                response_deserializer=config__pb2.ListGConfigResponseDto.FromString,
-                )
+            '/config/listGConfig',
+            request_serializer=config__pb2.ListGConfigDto.SerializeToString,
+            response_deserializer=config__pb2.ListGConfigResponseDto.FromString,
+        )
         self.insertGConfig = channel.unary_unary(
-                '/config/insertGConfig',
-                request_serializer=config__pb2.GConfigDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/insertGConfig',
+            request_serializer=config__pb2.GConfigDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.updateGConfig = channel.unary_unary(
-                '/config/updateGConfig',
-                request_serializer=config__pb2.GConfigDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/updateGConfig',
+            request_serializer=config__pb2.GConfigDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.deleteGConfig = channel.unary_unary(
-                '/config/deleteGConfig',
-                request_serializer=config__pb2.CustomDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/deleteGConfig',
+            request_serializer=config__pb2.CustomDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.listRedis = channel.unary_unary(
-                '/config/listRedis',
-                request_serializer=config__pb2.ListRedisDto.SerializeToString,
-                response_deserializer=config__pb2.ListRedisResponseDto.FromString,
-                )
+            '/config/listRedis',
+            request_serializer=config__pb2.ListRedisDto.SerializeToString,
+            response_deserializer=config__pb2.ListRedisResponseDto.FromString,
+        )
         self.insertRedis = channel.unary_unary(
-                '/config/insertRedis',
-                request_serializer=config__pb2.RedisDto.SerializeToString,
-                response_deserializer=config__pb2.RedisResponseDto.FromString,
-                )
+            '/config/insertRedis',
+            request_serializer=config__pb2.RedisDto.SerializeToString,
+            response_deserializer=config__pb2.RedisResponseDto.FromString,
+        )
         self.updateRedis = channel.unary_unary(
-                '/config/updateRedis',
-                request_serializer=config__pb2.RedisDto.SerializeToString,
-                response_deserializer=config__pb2.RedisResponseDto.FromString,
-                )
+            '/config/updateRedis',
+            request_serializer=config__pb2.RedisDto.SerializeToString,
+            response_deserializer=config__pb2.RedisResponseDto.FromString,
+        )
         self.deleteRedis = channel.unary_unary(
-                '/config/deleteRedis',
-                request_serializer=config__pb2.CustomDto.SerializeToString,
-                response_deserializer=config__pb2.ConfigResponse.FromString,
-                )
+            '/config/deleteRedis',
+            request_serializer=config__pb2.CustomDto.SerializeToString,
+            response_deserializer=config__pb2.ConfigResponse.FromString,
+        )
         self.runRedisCommand = channel.unary_unary(
-                '/config/runRedisCommand',
-                request_serializer=config__pb2.RunRedisCommandDto.SerializeToString,
-                response_deserializer=config__pb2.CommandResponse.FromString,
-                )
+            '/config/runRedisCommand',
+            request_serializer=config__pb2.RunRedisCommandDto.SerializeToString,
+            response_deserializer=config__pb2.CommandResponse.FromString,
+        )
         self.runRedisCommandWithName = channel.unary_unary(
-                '/config/runRedisCommandWithName',
-                request_serializer=config__pb2.RunRedisCommandWithNameDto.SerializeToString,
-                response_deserializer=config__pb2.CommandResponse.FromString,
-                )
+            '/config/runRedisCommandWithName',
+            request_serializer=config__pb2.RunRedisCommandWithNameDto.SerializeToString,
+            response_deserializer=config__pb2.CommandResponse.FromString,
+        )
         self.getGConfigByKey = channel.unary_unary(
-                '/config/getGConfigByKey',
-                request_serializer=config__pb2.QueryGConfigDto.SerializeToString,
-                response_deserializer=config__pb2.QueryGConfigResponse.FromString,
-                )
+            '/config/getGConfigByKey',
+            request_serializer=config__pb2.QueryGConfigDto.SerializeToString,
+            response_deserializer=config__pb2.QueryGConfigResponse.FromString,
+        )
 
 
 class configServicer(object):
@@ -273,6 +278,13 @@ class configServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def queryEnvironment(self, request, context):
+        """查询测试环境
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def listEnvironment(self, request, context):
         """获取环境列表
         """
@@ -372,672 +384,694 @@ class configServicer(object):
 
 def add_configServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'listGateway': grpc.unary_unary_rpc_method_handler(
-                    servicer.listGateway,
-                    request_deserializer=config__pb2.ListGatewayDto.FromString,
-                    response_serializer=config__pb2.ListGatewayResponseDto.SerializeToString,
-            ),
-            'insertGateway': grpc.unary_unary_rpc_method_handler(
-                    servicer.insertGateway,
-                    request_deserializer=config__pb2.PityGatewayDto.FromString,
-                    response_serializer=config__pb2.GatewayResponseDto.SerializeToString,
-            ),
-            'updateGateway': grpc.unary_unary_rpc_method_handler(
-                    servicer.updateGateway,
-                    request_deserializer=config__pb2.PityGatewayDto.FromString,
-                    response_serializer=config__pb2.GatewayResponseDto.SerializeToString,
-            ),
-            'deleteGateway': grpc.unary_unary_rpc_method_handler(
-                    servicer.deleteGateway,
-                    request_deserializer=config__pb2.CustomDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'queryGateway': grpc.unary_unary_rpc_method_handler(
-                    servicer.queryGateway,
-                    request_deserializer=config__pb2.QueryGatewayDto.FromString,
-                    response_serializer=config__pb2.ConfigStringResponse.SerializeToString,
-            ),
-            'listDbConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.listDbConfig,
-                    request_deserializer=config__pb2.QueryDbConfigDto.FromString,
-                    response_serializer=config__pb2.ListDbConfigResponseDto.SerializeToString,
-            ),
-            'insertDbConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.insertDbConfig,
-                    request_deserializer=config__pb2.DatabaseModelDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'updateDbConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.updateDbConfig,
-                    request_deserializer=config__pb2.DatabaseModelDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'deleteDbConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.deleteDbConfig,
-                    request_deserializer=config__pb2.CustomDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'testDbConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.testDbConfig,
-                    request_deserializer=config__pb2.DatabaseConnectionDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'listDbTree': grpc.unary_unary_rpc_method_handler(
-                    servicer.listDbTree,
-                    request_deserializer=config__pb2.ConfigRequest.FromString,
-                    response_serializer=config__pb2.ListDatabaseResponseDto.SerializeToString,
-            ),
-            'listDbTables': grpc.unary_unary_rpc_method_handler(
-                    servicer.listDbTables,
-                    request_deserializer=config__pb2.DatabaseModelDto.FromString,
-                    response_serializer=config__pb2.ListTableResponseDto.SerializeToString,
-            ),
-            'runSQL': grpc.unary_unary_rpc_method_handler(
-                    servicer.runSQL,
-                    request_deserializer=config__pb2.SqlCommandDto.FromString,
-                    response_serializer=config__pb2.RunSQLResponseDto.SerializeToString,
-            ),
-            'querySQLHistory': grpc.unary_unary_rpc_method_handler(
-                    servicer.querySQLHistory,
-                    request_deserializer=config__pb2.QuerySQLHistoryDto.FromString,
-                    response_serializer=config__pb2.QuerySQLHistoryResponseDto.SerializeToString,
-            ),
-            'executeSQL': grpc.unary_unary_rpc_method_handler(
-                    servicer.executeSQL,
-                    request_deserializer=config__pb2.ExecuteSQLDto.FromString,
-                    response_serializer=config__pb2.ConfigStringResponse.SerializeToString,
-            ),
-            'listEnvironment': grpc.unary_unary_rpc_method_handler(
-                    servicer.listEnvironment,
-                    request_deserializer=config__pb2.ListEnvironmentDto.FromString,
-                    response_serializer=config__pb2.ListEnvironmentResponseDto.SerializeToString,
-            ),
-            'insertEnvironment': grpc.unary_unary_rpc_method_handler(
-                    servicer.insertEnvironment,
-                    request_deserializer=config__pb2.EnvironmentModelDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'updateEnvironment': grpc.unary_unary_rpc_method_handler(
-                    servicer.updateEnvironment,
-                    request_deserializer=config__pb2.EnvironmentModelDto.FromString,
-                    response_serializer=config__pb2.UpdateEnvironmentResponseDto.SerializeToString,
-            ),
-            'deleteEnvironment': grpc.unary_unary_rpc_method_handler(
-                    servicer.deleteEnvironment,
-                    request_deserializer=config__pb2.CustomDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'listGConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.listGConfig,
-                    request_deserializer=config__pb2.ListGConfigDto.FromString,
-                    response_serializer=config__pb2.ListGConfigResponseDto.SerializeToString,
-            ),
-            'insertGConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.insertGConfig,
-                    request_deserializer=config__pb2.GConfigDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'updateGConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.updateGConfig,
-                    request_deserializer=config__pb2.GConfigDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'deleteGConfig': grpc.unary_unary_rpc_method_handler(
-                    servicer.deleteGConfig,
-                    request_deserializer=config__pb2.CustomDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'listRedis': grpc.unary_unary_rpc_method_handler(
-                    servicer.listRedis,
-                    request_deserializer=config__pb2.ListRedisDto.FromString,
-                    response_serializer=config__pb2.ListRedisResponseDto.SerializeToString,
-            ),
-            'insertRedis': grpc.unary_unary_rpc_method_handler(
-                    servicer.insertRedis,
-                    request_deserializer=config__pb2.RedisDto.FromString,
-                    response_serializer=config__pb2.RedisResponseDto.SerializeToString,
-            ),
-            'updateRedis': grpc.unary_unary_rpc_method_handler(
-                    servicer.updateRedis,
-                    request_deserializer=config__pb2.RedisDto.FromString,
-                    response_serializer=config__pb2.RedisResponseDto.SerializeToString,
-            ),
-            'deleteRedis': grpc.unary_unary_rpc_method_handler(
-                    servicer.deleteRedis,
-                    request_deserializer=config__pb2.CustomDto.FromString,
-                    response_serializer=config__pb2.ConfigResponse.SerializeToString,
-            ),
-            'runRedisCommand': grpc.unary_unary_rpc_method_handler(
-                    servicer.runRedisCommand,
-                    request_deserializer=config__pb2.RunRedisCommandDto.FromString,
-                    response_serializer=config__pb2.CommandResponse.SerializeToString,
-            ),
-            'runRedisCommandWithName': grpc.unary_unary_rpc_method_handler(
-                    servicer.runRedisCommandWithName,
-                    request_deserializer=config__pb2.RunRedisCommandWithNameDto.FromString,
-                    response_serializer=config__pb2.CommandResponse.SerializeToString,
-            ),
-            'getGConfigByKey': grpc.unary_unary_rpc_method_handler(
-                    servicer.getGConfigByKey,
-                    request_deserializer=config__pb2.QueryGConfigDto.FromString,
-                    response_serializer=config__pb2.QueryGConfigResponse.SerializeToString,
-            ),
+        'listGateway': grpc.unary_unary_rpc_method_handler(
+            servicer.listGateway,
+            request_deserializer=config__pb2.ListGatewayDto.FromString,
+            response_serializer=config__pb2.ListGatewayResponseDto.SerializeToString,
+        ),
+        'insertGateway': grpc.unary_unary_rpc_method_handler(
+            servicer.insertGateway,
+            request_deserializer=config__pb2.PityGatewayDto.FromString,
+            response_serializer=config__pb2.GatewayResponseDto.SerializeToString,
+        ),
+        'updateGateway': grpc.unary_unary_rpc_method_handler(
+            servicer.updateGateway,
+            request_deserializer=config__pb2.PityGatewayDto.FromString,
+            response_serializer=config__pb2.GatewayResponseDto.SerializeToString,
+        ),
+        'deleteGateway': grpc.unary_unary_rpc_method_handler(
+            servicer.deleteGateway,
+            request_deserializer=config__pb2.CustomDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'queryGateway': grpc.unary_unary_rpc_method_handler(
+            servicer.queryGateway,
+            request_deserializer=config__pb2.QueryGatewayDto.FromString,
+            response_serializer=config__pb2.ConfigStringResponse.SerializeToString,
+        ),
+        'listDbConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.listDbConfig,
+            request_deserializer=config__pb2.QueryDbConfigDto.FromString,
+            response_serializer=config__pb2.ListDbConfigResponseDto.SerializeToString,
+        ),
+        'insertDbConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.insertDbConfig,
+            request_deserializer=config__pb2.DatabaseModelDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'updateDbConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.updateDbConfig,
+            request_deserializer=config__pb2.DatabaseModelDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'deleteDbConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.deleteDbConfig,
+            request_deserializer=config__pb2.CustomDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'testDbConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.testDbConfig,
+            request_deserializer=config__pb2.DatabaseConnectionDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'listDbTree': grpc.unary_unary_rpc_method_handler(
+            servicer.listDbTree,
+            request_deserializer=config__pb2.ConfigRequest.FromString,
+            response_serializer=config__pb2.ListDatabaseResponseDto.SerializeToString,
+        ),
+        'listDbTables': grpc.unary_unary_rpc_method_handler(
+            servicer.listDbTables,
+            request_deserializer=config__pb2.DatabaseModelDto.FromString,
+            response_serializer=config__pb2.ListTableResponseDto.SerializeToString,
+        ),
+        'runSQL': grpc.unary_unary_rpc_method_handler(
+            servicer.runSQL,
+            request_deserializer=config__pb2.SqlCommandDto.FromString,
+            response_serializer=config__pb2.RunSQLResponseDto.SerializeToString,
+        ),
+        'querySQLHistory': grpc.unary_unary_rpc_method_handler(
+            servicer.querySQLHistory,
+            request_deserializer=config__pb2.QuerySQLHistoryDto.FromString,
+            response_serializer=config__pb2.QuerySQLHistoryResponseDto.SerializeToString,
+        ),
+        'executeSQL': grpc.unary_unary_rpc_method_handler(
+            servicer.executeSQL,
+            request_deserializer=config__pb2.ExecuteSQLDto.FromString,
+            response_serializer=config__pb2.ConfigStringResponse.SerializeToString,
+        ),
+        'queryEnvironment': grpc.unary_unary_rpc_method_handler(
+            servicer.queryEnvironment,
+            request_deserializer=config__pb2.CustomDto.FromString,
+            response_serializer=config__pb2.QueryEnvironmentResponse.SerializeToString,
+        ),
+        'listEnvironment': grpc.unary_unary_rpc_method_handler(
+            servicer.listEnvironment,
+            request_deserializer=config__pb2.ListEnvironmentDto.FromString,
+            response_serializer=config__pb2.ListEnvironmentResponseDto.SerializeToString,
+        ),
+        'insertEnvironment': grpc.unary_unary_rpc_method_handler(
+            servicer.insertEnvironment,
+            request_deserializer=config__pb2.EnvironmentModelDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'updateEnvironment': grpc.unary_unary_rpc_method_handler(
+            servicer.updateEnvironment,
+            request_deserializer=config__pb2.EnvironmentModelDto.FromString,
+            response_serializer=config__pb2.UpdateEnvironmentResponseDto.SerializeToString,
+        ),
+        'deleteEnvironment': grpc.unary_unary_rpc_method_handler(
+            servicer.deleteEnvironment,
+            request_deserializer=config__pb2.CustomDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'listGConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.listGConfig,
+            request_deserializer=config__pb2.ListGConfigDto.FromString,
+            response_serializer=config__pb2.ListGConfigResponseDto.SerializeToString,
+        ),
+        'insertGConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.insertGConfig,
+            request_deserializer=config__pb2.GConfigDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'updateGConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.updateGConfig,
+            request_deserializer=config__pb2.GConfigDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'deleteGConfig': grpc.unary_unary_rpc_method_handler(
+            servicer.deleteGConfig,
+            request_deserializer=config__pb2.CustomDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'listRedis': grpc.unary_unary_rpc_method_handler(
+            servicer.listRedis,
+            request_deserializer=config__pb2.ListRedisDto.FromString,
+            response_serializer=config__pb2.ListRedisResponseDto.SerializeToString,
+        ),
+        'insertRedis': grpc.unary_unary_rpc_method_handler(
+            servicer.insertRedis,
+            request_deserializer=config__pb2.RedisDto.FromString,
+            response_serializer=config__pb2.RedisResponseDto.SerializeToString,
+        ),
+        'updateRedis': grpc.unary_unary_rpc_method_handler(
+            servicer.updateRedis,
+            request_deserializer=config__pb2.RedisDto.FromString,
+            response_serializer=config__pb2.RedisResponseDto.SerializeToString,
+        ),
+        'deleteRedis': grpc.unary_unary_rpc_method_handler(
+            servicer.deleteRedis,
+            request_deserializer=config__pb2.CustomDto.FromString,
+            response_serializer=config__pb2.ConfigResponse.SerializeToString,
+        ),
+        'runRedisCommand': grpc.unary_unary_rpc_method_handler(
+            servicer.runRedisCommand,
+            request_deserializer=config__pb2.RunRedisCommandDto.FromString,
+            response_serializer=config__pb2.CommandResponse.SerializeToString,
+        ),
+        'runRedisCommandWithName': grpc.unary_unary_rpc_method_handler(
+            servicer.runRedisCommandWithName,
+            request_deserializer=config__pb2.RunRedisCommandWithNameDto.FromString,
+            response_serializer=config__pb2.CommandResponse.SerializeToString,
+        ),
+        'getGConfigByKey': grpc.unary_unary_rpc_method_handler(
+            servicer.getGConfigByKey,
+            request_deserializer=config__pb2.QueryGConfigDto.FromString,
+            response_serializer=config__pb2.QueryGConfigResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'config', rpc_method_handlers)
+        'config', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class config(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def listGateway(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                    target,
+                    options=(),
+                    channel_credentials=None,
+                    call_credentials=None,
+                    insecure=False,
+                    compression=None,
+                    wait_for_ready=None,
+                    timeout=None,
+                    metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/listGateway',
-            config__pb2.ListGatewayDto.SerializeToString,
-            config__pb2.ListGatewayResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.ListGatewayDto.SerializeToString,
+                                             config__pb2.ListGatewayResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def insertGateway(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                      target,
+                      options=(),
+                      channel_credentials=None,
+                      call_credentials=None,
+                      insecure=False,
+                      compression=None,
+                      wait_for_ready=None,
+                      timeout=None,
+                      metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/insertGateway',
-            config__pb2.PityGatewayDto.SerializeToString,
-            config__pb2.GatewayResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.PityGatewayDto.SerializeToString,
+                                             config__pb2.GatewayResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def updateGateway(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                      target,
+                      options=(),
+                      channel_credentials=None,
+                      call_credentials=None,
+                      insecure=False,
+                      compression=None,
+                      wait_for_ready=None,
+                      timeout=None,
+                      metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/updateGateway',
-            config__pb2.PityGatewayDto.SerializeToString,
-            config__pb2.GatewayResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.PityGatewayDto.SerializeToString,
+                                             config__pb2.GatewayResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def deleteGateway(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                      target,
+                      options=(),
+                      channel_credentials=None,
+                      call_credentials=None,
+                      insecure=False,
+                      compression=None,
+                      wait_for_ready=None,
+                      timeout=None,
+                      metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/deleteGateway',
-            config__pb2.CustomDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.CustomDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def queryGateway(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                     target,
+                     options=(),
+                     channel_credentials=None,
+                     call_credentials=None,
+                     insecure=False,
+                     compression=None,
+                     wait_for_ready=None,
+                     timeout=None,
+                     metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/queryGateway',
-            config__pb2.QueryGatewayDto.SerializeToString,
-            config__pb2.ConfigStringResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.QueryGatewayDto.SerializeToString,
+                                             config__pb2.ConfigStringResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def listDbConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                     target,
+                     options=(),
+                     channel_credentials=None,
+                     call_credentials=None,
+                     insecure=False,
+                     compression=None,
+                     wait_for_ready=None,
+                     timeout=None,
+                     metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/listDbConfig',
-            config__pb2.QueryDbConfigDto.SerializeToString,
-            config__pb2.ListDbConfigResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.QueryDbConfigDto.SerializeToString,
+                                             config__pb2.ListDbConfigResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def insertDbConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                       target,
+                       options=(),
+                       channel_credentials=None,
+                       call_credentials=None,
+                       insecure=False,
+                       compression=None,
+                       wait_for_ready=None,
+                       timeout=None,
+                       metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/insertDbConfig',
-            config__pb2.DatabaseModelDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.DatabaseModelDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def updateDbConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                       target,
+                       options=(),
+                       channel_credentials=None,
+                       call_credentials=None,
+                       insecure=False,
+                       compression=None,
+                       wait_for_ready=None,
+                       timeout=None,
+                       metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/updateDbConfig',
-            config__pb2.DatabaseModelDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.DatabaseModelDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def deleteDbConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                       target,
+                       options=(),
+                       channel_credentials=None,
+                       call_credentials=None,
+                       insecure=False,
+                       compression=None,
+                       wait_for_ready=None,
+                       timeout=None,
+                       metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/deleteDbConfig',
-            config__pb2.CustomDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.CustomDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def testDbConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                     target,
+                     options=(),
+                     channel_credentials=None,
+                     call_credentials=None,
+                     insecure=False,
+                     compression=None,
+                     wait_for_ready=None,
+                     timeout=None,
+                     metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/testDbConfig',
-            config__pb2.DatabaseConnectionDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.DatabaseConnectionDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def listDbTree(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                   target,
+                   options=(),
+                   channel_credentials=None,
+                   call_credentials=None,
+                   insecure=False,
+                   compression=None,
+                   wait_for_ready=None,
+                   timeout=None,
+                   metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/listDbTree',
-            config__pb2.ConfigRequest.SerializeToString,
-            config__pb2.ListDatabaseResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.ConfigRequest.SerializeToString,
+                                             config__pb2.ListDatabaseResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def listDbTables(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                     target,
+                     options=(),
+                     channel_credentials=None,
+                     call_credentials=None,
+                     insecure=False,
+                     compression=None,
+                     wait_for_ready=None,
+                     timeout=None,
+                     metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/listDbTables',
-            config__pb2.DatabaseModelDto.SerializeToString,
-            config__pb2.ListTableResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.DatabaseModelDto.SerializeToString,
+                                             config__pb2.ListTableResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def runSQL(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+               target,
+               options=(),
+               channel_credentials=None,
+               call_credentials=None,
+               insecure=False,
+               compression=None,
+               wait_for_ready=None,
+               timeout=None,
+               metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/runSQL',
-            config__pb2.SqlCommandDto.SerializeToString,
-            config__pb2.RunSQLResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.SqlCommandDto.SerializeToString,
+                                             config__pb2.RunSQLResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def querySQLHistory(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                        target,
+                        options=(),
+                        channel_credentials=None,
+                        call_credentials=None,
+                        insecure=False,
+                        compression=None,
+                        wait_for_ready=None,
+                        timeout=None,
+                        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/querySQLHistory',
-            config__pb2.QuerySQLHistoryDto.SerializeToString,
-            config__pb2.QuerySQLHistoryResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.QuerySQLHistoryDto.SerializeToString,
+                                             config__pb2.QuerySQLHistoryResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def executeSQL(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                   target,
+                   options=(),
+                   channel_credentials=None,
+                   call_credentials=None,
+                   insecure=False,
+                   compression=None,
+                   wait_for_ready=None,
+                   timeout=None,
+                   metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/executeSQL',
-            config__pb2.ExecuteSQLDto.SerializeToString,
-            config__pb2.ConfigStringResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.ExecuteSQLDto.SerializeToString,
+                                             config__pb2.ConfigStringResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def queryEnvironment(request,
+                         target,
+                         options=(),
+                         channel_credentials=None,
+                         call_credentials=None,
+                         insecure=False,
+                         compression=None,
+                         wait_for_ready=None,
+                         timeout=None,
+                         metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/config/queryEnvironment',
+                                             config__pb2.CustomDto.SerializeToString,
+                                             config__pb2.QueryEnvironmentResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def listEnvironment(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                        target,
+                        options=(),
+                        channel_credentials=None,
+                        call_credentials=None,
+                        insecure=False,
+                        compression=None,
+                        wait_for_ready=None,
+                        timeout=None,
+                        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/listEnvironment',
-            config__pb2.ListEnvironmentDto.SerializeToString,
-            config__pb2.ListEnvironmentResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.ListEnvironmentDto.SerializeToString,
+                                             config__pb2.ListEnvironmentResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def insertEnvironment(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                          target,
+                          options=(),
+                          channel_credentials=None,
+                          call_credentials=None,
+                          insecure=False,
+                          compression=None,
+                          wait_for_ready=None,
+                          timeout=None,
+                          metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/insertEnvironment',
-            config__pb2.EnvironmentModelDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.EnvironmentModelDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def updateEnvironment(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                          target,
+                          options=(),
+                          channel_credentials=None,
+                          call_credentials=None,
+                          insecure=False,
+                          compression=None,
+                          wait_for_ready=None,
+                          timeout=None,
+                          metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/updateEnvironment',
-            config__pb2.EnvironmentModelDto.SerializeToString,
-            config__pb2.UpdateEnvironmentResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.EnvironmentModelDto.SerializeToString,
+                                             config__pb2.UpdateEnvironmentResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def deleteEnvironment(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                          target,
+                          options=(),
+                          channel_credentials=None,
+                          call_credentials=None,
+                          insecure=False,
+                          compression=None,
+                          wait_for_ready=None,
+                          timeout=None,
+                          metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/deleteEnvironment',
-            config__pb2.CustomDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.CustomDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def listGConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                    target,
+                    options=(),
+                    channel_credentials=None,
+                    call_credentials=None,
+                    insecure=False,
+                    compression=None,
+                    wait_for_ready=None,
+                    timeout=None,
+                    metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/listGConfig',
-            config__pb2.ListGConfigDto.SerializeToString,
-            config__pb2.ListGConfigResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.ListGConfigDto.SerializeToString,
+                                             config__pb2.ListGConfigResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def insertGConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                      target,
+                      options=(),
+                      channel_credentials=None,
+                      call_credentials=None,
+                      insecure=False,
+                      compression=None,
+                      wait_for_ready=None,
+                      timeout=None,
+                      metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/insertGConfig',
-            config__pb2.GConfigDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.GConfigDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def updateGConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                      target,
+                      options=(),
+                      channel_credentials=None,
+                      call_credentials=None,
+                      insecure=False,
+                      compression=None,
+                      wait_for_ready=None,
+                      timeout=None,
+                      metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/updateGConfig',
-            config__pb2.GConfigDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.GConfigDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def deleteGConfig(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                      target,
+                      options=(),
+                      channel_credentials=None,
+                      call_credentials=None,
+                      insecure=False,
+                      compression=None,
+                      wait_for_ready=None,
+                      timeout=None,
+                      metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/deleteGConfig',
-            config__pb2.CustomDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.CustomDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def listRedis(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                  target,
+                  options=(),
+                  channel_credentials=None,
+                  call_credentials=None,
+                  insecure=False,
+                  compression=None,
+                  wait_for_ready=None,
+                  timeout=None,
+                  metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/listRedis',
-            config__pb2.ListRedisDto.SerializeToString,
-            config__pb2.ListRedisResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.ListRedisDto.SerializeToString,
+                                             config__pb2.ListRedisResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def insertRedis(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                    target,
+                    options=(),
+                    channel_credentials=None,
+                    call_credentials=None,
+                    insecure=False,
+                    compression=None,
+                    wait_for_ready=None,
+                    timeout=None,
+                    metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/insertRedis',
-            config__pb2.RedisDto.SerializeToString,
-            config__pb2.RedisResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.RedisDto.SerializeToString,
+                                             config__pb2.RedisResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def updateRedis(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                    target,
+                    options=(),
+                    channel_credentials=None,
+                    call_credentials=None,
+                    insecure=False,
+                    compression=None,
+                    wait_for_ready=None,
+                    timeout=None,
+                    metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/updateRedis',
-            config__pb2.RedisDto.SerializeToString,
-            config__pb2.RedisResponseDto.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.RedisDto.SerializeToString,
+                                             config__pb2.RedisResponseDto.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def deleteRedis(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                    target,
+                    options=(),
+                    channel_credentials=None,
+                    call_credentials=None,
+                    insecure=False,
+                    compression=None,
+                    wait_for_ready=None,
+                    timeout=None,
+                    metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/deleteRedis',
-            config__pb2.CustomDto.SerializeToString,
-            config__pb2.ConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.CustomDto.SerializeToString,
+                                             config__pb2.ConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def runRedisCommand(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                        target,
+                        options=(),
+                        channel_credentials=None,
+                        call_credentials=None,
+                        insecure=False,
+                        compression=None,
+                        wait_for_ready=None,
+                        timeout=None,
+                        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/runRedisCommand',
-            config__pb2.RunRedisCommandDto.SerializeToString,
-            config__pb2.CommandResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.RunRedisCommandDto.SerializeToString,
+                                             config__pb2.CommandResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def runRedisCommandWithName(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                                target,
+                                options=(),
+                                channel_credentials=None,
+                                call_credentials=None,
+                                insecure=False,
+                                compression=None,
+                                wait_for_ready=None,
+                                timeout=None,
+                                metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/runRedisCommandWithName',
-            config__pb2.RunRedisCommandWithNameDto.SerializeToString,
-            config__pb2.CommandResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.RunRedisCommandWithNameDto.SerializeToString,
+                                             config__pb2.CommandResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def getGConfigByKey(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+                        target,
+                        options=(),
+                        channel_credentials=None,
+                        call_credentials=None,
+                        insecure=False,
+                        compression=None,
+                        wait_for_ready=None,
+                        timeout=None,
+                        metadata=None):
         return grpc.experimental.unary_unary(request, target, '/config/getGConfigByKey',
-            config__pb2.QueryGConfigDto.SerializeToString,
-            config__pb2.QueryGConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+                                             config__pb2.QueryGConfigDto.SerializeToString,
+                                             config__pb2.QueryGConfigResponse.FromString,
+                                             options, channel_credentials,
+                                             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

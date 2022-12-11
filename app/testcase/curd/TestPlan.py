@@ -18,7 +18,8 @@ from model.testplan_follow_user import PityTestPlanFollowUserRel
 class PityTestPlanDao(Mapper):
 
     @classmethod
-    async def list_test_plan(cls, page: int, size: int, project_id: int = None, name: str = '', priority: str = '',
+    async def list_test_plan(cls, context, page: int, size: int, project_id: int = None, name: str = '',
+                             priority: str = '',
                              role: str = None, create_user: int = None,
                              user_id: int = None, follow: bool = None):
         try:
@@ -28,15 +29,12 @@ class PityTestPlanDao(Mapper):
                     PityTestPlanDao.where(project_id, PityTestPlan.project_id == project_id, conditions)
                 else:
                     # 找出用户能看到的项目
-                    project_service = await RpcClient.get_instance("project")
-                    # TODO 需要微服务解决
-                    projects = project_service.list_project_id_by_user(user_id, role)
-                    # projects = await ProjectDao.list_project_id_by_user(session, user_id, role)
-                    if projects is None:
+                    project_client = await RpcClient.get_instance("project")
+                    projects = await RpcClient.invoke(project_client, "queryUserProject", dict(), context=context)
+                    if not projects:
                         # 说明用户一个项目都没有，不需要继续查询了
                         return [], 0
-                    if len(projects) > 0:
-                        cls.where(projects, PityTestPlan.project_id.in_(projects), conditions)
+                    cls.where(projects, PityTestPlan.project_id.in_(projects), conditions)
                 cls.where(name, PityTestPlan.name.like(f"%{name}%"), conditions) \
                     .where(priority, PityTestPlan.priority == priority, conditions) \
                     .where(create_user, PityTestPlan.create_user == create_user, conditions)

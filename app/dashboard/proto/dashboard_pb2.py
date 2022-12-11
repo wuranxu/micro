@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x64\x61shboard.proto\"\'\n\x10\x44\x61shboardRequest\x12\x13\n\x0brequestJson\x18\x01 \x01(\x0c\"9\n\x08Response\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x12\n\nresultJson\x18\x03 \x01(\x0c\")\n\nWeeklyCase\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"\x83\x01\n\rWorkSpaceData\x12\x15\n\rproject_count\x18\x01 \x01(\x05\x12\x12\n\ncase_count\x18\x02 \x01(\x05\x12\x11\n\tuser_rank\x18\x03 \x01(\x05\x12 \n\x0bweekly_case\x18\x04 \x03(\x0b\x32\x0b.WeeklyCase\x12\x12\n\ntotal_user\x18\x05 \x01(\x05\"L\n\x11WorkspaceResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1c\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0e.WorkSpaceData2o\n\tdashboard\x12,\n\nstatistics\x12\x11.DashboardRequest\x1a\t.Response\"\x00\x12\x34\n\tworkspace\x12\x11.DashboardRequest\x1a\x12.WorkspaceResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0f\x64\x61shboard.proto\"\'\n\x10\x44\x61shboardRequest\x12\x13\n\x0brequestJson\x18\x01 \x01(\x0c\"9\n\x08Response\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x12\n\nresultJson\x18\x03 \x01(\x0c\")\n\nWeeklyCase\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"\x83\x01\n\rWorkSpaceData\x12\x15\n\rproject_count\x18\x01 \x01(\x05\x12\x12\n\ncase_count\x18\x02 \x01(\x05\x12\x11\n\tuser_rank\x18\x03 \x01(\x05\x12 \n\x0bweekly_case\x18\x04 \x03(\x0b\x32\x0b.WeeklyCase\x12\x12\n\ntotal_user\x18\x05 \x01(\x05\"L\n\x11WorkspaceResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1c\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0e.WorkSpaceData\"/\n\x04Rank\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\x12\x0c\n\x04rank\x18\x03 \x01(\x05\"\x06\n\x04\x44\x61ta\"\x8d\x01\n\x05\x43ount\x12\x14\n\x07project\x18\x01 \x01(\x05H\x00\x88\x01\x01\x12\x15\n\x08testcase\x18\x02 \x01(\x05H\x01\x88\x01\x01\x12\x15\n\x08testplan\x18\x03 \x01(\x05H\x02\x88\x01\x01\x12\x11\n\x04user\x18\x04 \x01(\x05H\x03\x88\x01\x01\x42\n\n\x08_projectB\x0b\n\t_testcaseB\x0b\n\t_testplanB\x07\n\x05_user\"\xbd\x01\n\x06Report\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12\x12\n\x05\x65rror\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\x13\n\x06\x66\x61iled\x18\x03 \x01(\x05H\x01\x88\x01\x01\x12\x11\n\x04rate\x18\x04 \x01(\x05H\x02\x88\x01\x01\x12\x11\n\x04skip\x18\x05 \x01(\x05H\x03\x88\x01\x01\x12\x14\n\x07success\x18\x06 \x01(\x05H\x04\x88\x01\x01\x12\x0c\n\x04\x64\x61te\x18\x07 \x01(\tB\x08\n\x06_errorB\t\n\x07_failedB\x07\n\x05_rateB\x07\n\x05_skipB\n\n\x08_success\"\xd8\x01\n\nReportData\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\x12\x12\n\x05\x65rror\x18\x03 \x01(\x05H\x00\x88\x01\x01\x12\x13\n\x06\x66\x61iled\x18\x04 \x01(\x05H\x01\x88\x01\x01\x12\x11\n\x04rate\x18\x05 \x01(\x05H\x02\x88\x01\x01\x12\x11\n\x04skip\x18\x06 \x01(\x05H\x03\x88\x01\x01\x12\x14\n\x07success\x18\x07 \x01(\x05H\x04\x88\x01\x01\x12\x15\n\x04\x64\x61ta\x18\x08 \x03(\x0b\x32\x07.ReportB\x08\n\x06_errorB\t\n\x07_failedB\x07\n\x05_rateB\x07\n\x05_skipB\n\n\x08_success\"\x8e\x01\n\tCountData\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0f\n\x07project\x18\x02 \x01(\x05\x12\x15\n\x08testplan\x18\x03 \x01(\x05H\x00\x88\x01\x01\x12\x11\n\x04user\x18\x04 \x01(\x05H\x01\x88\x01\x01\x12\x15\n\x08testcase\x18\x05 \x01(\x05H\x02\x88\x01\x01\x42\x0b\n\t_testplanB\x07\n\x05_userB\x0b\n\t_testcase\"s\n\x0eStatisticsData\x12\x15\n\x05\x63ount\x18\x01 \x01(\x0b\x32\x06.Count\x12\x13\n\x04rank\x18\x02 \x03(\x0b\x32\x05.Rank\x12\x1b\n\x06report\x18\x03 \x01(\x0b\x32\x0b.ReportData\x12\x18\n\x04\x64\x61ta\x18\x04 \x03(\x0b\x32\n.CountData\"N\n\x12StatisticsResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x1d\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x0f.StatisticsData2y\n\tdashboard\x12\x36\n\nstatistics\x12\x11.DashboardRequest\x1a\x13.StatisticsResponse\"\x00\x12\x34\n\tworkspace\x12\x11.DashboardRequest\x1a\x12.WorkspaceResponse\"\x00\x62\x06proto3')
 
 
 
@@ -23,6 +23,14 @@ _RESPONSE = DESCRIPTOR.message_types_by_name['Response']
 _WEEKLYCASE = DESCRIPTOR.message_types_by_name['WeeklyCase']
 _WORKSPACEDATA = DESCRIPTOR.message_types_by_name['WorkSpaceData']
 _WORKSPACERESPONSE = DESCRIPTOR.message_types_by_name['WorkspaceResponse']
+_RANK = DESCRIPTOR.message_types_by_name['Rank']
+_DATA = DESCRIPTOR.message_types_by_name['Data']
+_COUNT = DESCRIPTOR.message_types_by_name['Count']
+_REPORT = DESCRIPTOR.message_types_by_name['Report']
+_REPORTDATA = DESCRIPTOR.message_types_by_name['ReportData']
+_COUNTDATA = DESCRIPTOR.message_types_by_name['CountData']
+_STATISTICSDATA = DESCRIPTOR.message_types_by_name['StatisticsData']
+_STATISTICSRESPONSE = DESCRIPTOR.message_types_by_name['StatisticsResponse']
 DashboardRequest = _reflection.GeneratedProtocolMessageType('DashboardRequest', (_message.Message,), {
   'DESCRIPTOR' : _DASHBOARDREQUEST,
   '__module__' : 'dashboard_pb2'
@@ -58,6 +66,62 @@ WorkspaceResponse = _reflection.GeneratedProtocolMessageType('WorkspaceResponse'
   })
 _sym_db.RegisterMessage(WorkspaceResponse)
 
+Rank = _reflection.GeneratedProtocolMessageType('Rank', (_message.Message,), {
+  'DESCRIPTOR' : _RANK,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:Rank)
+  })
+_sym_db.RegisterMessage(Rank)
+
+Data = _reflection.GeneratedProtocolMessageType('Data', (_message.Message,), {
+  'DESCRIPTOR' : _DATA,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:Data)
+  })
+_sym_db.RegisterMessage(Data)
+
+Count = _reflection.GeneratedProtocolMessageType('Count', (_message.Message,), {
+  'DESCRIPTOR' : _COUNT,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:Count)
+  })
+_sym_db.RegisterMessage(Count)
+
+Report = _reflection.GeneratedProtocolMessageType('Report', (_message.Message,), {
+  'DESCRIPTOR' : _REPORT,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:Report)
+  })
+_sym_db.RegisterMessage(Report)
+
+ReportData = _reflection.GeneratedProtocolMessageType('ReportData', (_message.Message,), {
+  'DESCRIPTOR' : _REPORTDATA,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:ReportData)
+  })
+_sym_db.RegisterMessage(ReportData)
+
+CountData = _reflection.GeneratedProtocolMessageType('CountData', (_message.Message,), {
+  'DESCRIPTOR' : _COUNTDATA,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:CountData)
+  })
+_sym_db.RegisterMessage(CountData)
+
+StatisticsData = _reflection.GeneratedProtocolMessageType('StatisticsData', (_message.Message,), {
+  'DESCRIPTOR' : _STATISTICSDATA,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:StatisticsData)
+  })
+_sym_db.RegisterMessage(StatisticsData)
+
+StatisticsResponse = _reflection.GeneratedProtocolMessageType('StatisticsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _STATISTICSRESPONSE,
+  '__module__' : 'dashboard_pb2'
+  # @@protoc_insertion_point(class_scope:StatisticsResponse)
+  })
+_sym_db.RegisterMessage(StatisticsResponse)
+
 _DASHBOARD = DESCRIPTOR.services_by_name['dashboard']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
@@ -72,6 +136,22 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _WORKSPACEDATA._serialized_end=294
   _WORKSPACERESPONSE._serialized_start=296
   _WORKSPACERESPONSE._serialized_end=372
-  _DASHBOARD._serialized_start=374
-  _DASHBOARD._serialized_end=485
+  _RANK._serialized_start=374
+  _RANK._serialized_end=421
+  _DATA._serialized_start=423
+  _DATA._serialized_end=429
+  _COUNT._serialized_start=432
+  _COUNT._serialized_end=573
+  _REPORT._serialized_start=576
+  _REPORT._serialized_end=765
+  _REPORTDATA._serialized_start=768
+  _REPORTDATA._serialized_end=984
+  _COUNTDATA._serialized_start=987
+  _COUNTDATA._serialized_end=1129
+  _STATISTICSDATA._serialized_start=1131
+  _STATISTICSDATA._serialized_end=1246
+  _STATISTICSRESPONSE._serialized_start=1248
+  _STATISTICSRESPONSE._serialized_end=1326
+  _DASHBOARD._serialized_start=1328
+  _DASHBOARD._serialized_end=1449
 # @@protoc_insertion_point(module_scope)

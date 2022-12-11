@@ -94,6 +94,12 @@ message QueryProjectResponseDto {
   string msg = 3;
 }
 
+message QueryUserProjectResponse {
+  int32 code = 1;
+  string msg = 2;
+  repeated int32 data = 3;
+}
+
 message ProjectAvatarDto {
   int32 project_id = 1;
   string filename = 2;
@@ -137,6 +143,8 @@ service project {
   rpc deleteRole(Query) returns (ProjectResponse) {}
   // 查询用户是否有权限
   rpc checkPermission(PermissionDto) returns (PermissionResponseDto) {}
-  // 查询用户已有的项目
+  // 查询用户已有的项目数量
   rpc queryUserProjectAmount(ProjectRequest) returns (QueryUserProjectAmountResponse) {}
+  // 查询用户已有的项目
+  rpc queryUserProject(ProjectRequest) returns (QueryUserProjectResponse) {}
 }

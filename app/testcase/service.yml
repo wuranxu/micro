@@ -81,3 +81,9 @@ method:
     authorization: true
   importTestCase:
     authorization: true
+  queryUserFollowTestPlan:
+    authorization: true
+  listTestPlan:
+    authorization: true
+
+

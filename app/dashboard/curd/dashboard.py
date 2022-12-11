@@ -37,7 +37,6 @@ class DashboardDao(Mapper):
         result, idx = await cls.get_date_data(start, end)
         sql = cls.create_sql(PityReport, start, end, field="start_at")
         data = await session.execute(sql)
-        # count, success, failed, skip, error, total, total_pass = 0, 0, 0, 0, 0, 0, 0
         count = success = failed = skip = error = total = total_pass = 0
         for item in data.scalars().all():
             date = item.start_at.strftime("%Y-%m-%d")

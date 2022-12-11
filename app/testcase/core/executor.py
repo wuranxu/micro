@@ -7,14 +7,16 @@ from datetime import datetime
 from typing import List, Any
 
 from klose.config import Config
-from klose.core.paramters import ParametersParser
-from klose.core.ws_connection_manager import ws_manage
+from klose.core.msg.dingtalk import DingTalk
+from klose.core.msg.mail import Email
 from klose.enums.GconfigEnum import GconfigType, GConfigParserEnum
+from klose.enums.NoticeEnum import NoticeType
 from klose.enums.RequestBodyEnum import BodyType
 from klose.utils.AsyncHttpClient import AsyncRequest
 from klose.utils.client import RpcClient
 from klose.utils.decorator import case_log, lock
 from klose.utils.gconfig_parser import StringGConfigParser, JSONGConfigParser, YamlGConfigParser
+from klose.utils.json_compare import JsonCompare
 from klose.utils.logger import Log
 
 from core.constructor.case_constructor import TestcaseConstructor
@@ -22,6 +24,7 @@ from core.constructor.http_constructor import HttpConstructor
 from core.constructor.python_constructor import PythonConstructor
 from core.constructor.redis_constructor import RedisConstructor
 from core.constructor.sql_constructor import SqlConstructor
+from core.paramters import ParametersParser
 from curd.TestCaseAssertsDao import TestCaseAssertsDao
 from curd.TestCaseDao import TestCaseDao
 from curd.TestCaseOutParametersDao import PityTestCaseOutParametersDao
@@ -34,6 +37,7 @@ from model.constructor import Constructor
 from model.out_parameters import PityTestCaseOutParameters
 from model.test_case import TestCase
 from model.test_plan import PityTestPlan
+from model.testcase_asserts import TestCaseAsserts
 from utils.case_logger import CaseLog
 
 
@@ -96,7 +100,7 @@ class Executor(object):
             return YamlGConfigParser.parse
         raise Exception(f"全局变量类型: {key_type}不合法, 请检查!")
 
-    async def parse_field(self, data, field, name, env):
+    async def parse_field(self, context, data, field, name, env):
         """
         解析字段
         """
@@ -104,13 +108,10 @@ class Executor(object):
             self.append("获取{}: [{}]字段: [{}]中的el表达式".format(name, data, field))
             field_origin = getattr(data, field)
             variables = self.get_el_expression(field_origin)
-            config_service = await RpcClient.get_instance("config")
+            config_client = await RpcClient.get_instance("config")
             for v in variables:
                 key = v.split(".")[0]
-                resp = await config_service.getGConfigByKey(dict(key=key,env=env))
-                if resp.get("code", 0) != 0:
-                    raise Exception(resp.get("msg"))
-                cf = resp.get("data")
+                cf = await RpcClient.invoke(config_client, "getGConfigByKey", dict(key=key, env=env))
                 if cf:
                     # 解析变量
                     parse = self.get_parser(cf.get("key_type"))
@@ -327,7 +328,9 @@ class Executor(object):
 
             # Step9: 替换base_path
             if case_info.base_path:
-                base_path = await PityGatewayDao.query_gateway(env, case_info.base_path)
+                config_client = await RpcClient.get_instance("config")
+                base_path = await RpcClient.invoke(config_client, "queryGateway",
+                                                   dict(env=env, name=case_info.base_path))
                 case_info.url = f"{base_path}{case_info.url}"
 
             response_info["url"] = case_info.url
@@ -646,7 +649,7 @@ class Executor(object):
         return json.dumps(result, ensure_ascii=False)
 
     @staticmethod
-    async def notice(env: list, plan: PityTestPlan, project: Project, report_dict: dict, users: list):
+    async def notice(env: list, plan: PityTestPlan, project, report_dict: dict, users: list):
         """
         消息通知方法
         :param env:
@@ -672,10 +675,11 @@ class Executor(object):
                         users = [r.get("phone") for r in users]
                         report_dict[e]['notification_user'] = " ".join(map(lambda x: f"@{x}", users))
                         render_markdown = DingTalk.render_markdown(**report_dict[e], plan_name=plan.name)
-                        if not project.dingtalk_url:
+                        dingtalk_url = project.get("dingtalk_url")
+                        if not dingtalk_url:
                             Executor.log.debug("项目未配置钉钉通知机器人")
                             continue
-                        ding = DingTalk(project.dingtalk_url)
+                        ding = DingTalk(dingtalk_url)
                         await ding.send_msg("pity测试报告", render_markdown, None, users,
                                             link=report_dict[e]['report_url'])
 
@@ -688,6 +692,8 @@ class Executor(object):
         :param executor:
         :return:
         """
+        project_client = await RpcClient.get_instance("project")
+        user_client = await RpcClient.get_instance("user")
         plan = await PityTestPlanDao.query_test_plan(plan_id)
         if plan is None:
             Executor.log.debug(f"测试计划: [{plan_id}]不存在")
@@ -695,11 +701,8 @@ class Executor(object):
         try:
             # 设置为running
             await PityTestPlanDao.update_test_plan_state(plan.id, 1)
-            project_client = await RpcClient.get_instance("project")
-            resp = await project_client.query(dict(id=plan.project_id))
-            if resp.get('code', 0) != 0:
-                raise Exception(resp.get('msg'))
-            project = resp.get("data").get("project")
+            data = await RpcClient.invoke(project_client, "query", dict(id=plan.project_id))
+            project = data.get("project")
             env = list(map(int, plan.env.split(",")))
             case_list = list(map(int, plan.case_list.split(",")))
             receiver = list(map(int, plan.receiver.split(",") if plan.receiver else []))
@@ -709,10 +712,11 @@ class Executor(object):
                 *(Executor.run_multiple(executor, int(e), case_list, mode=1, retry_minutes=plan.retry_minutes,
                                         plan_id=plan.id, ordered=plan.ordered, report_dict=report_dict) for e in env))
             await PityTestPlanDao.update_test_plan_state(plan.id, 0)
-            users = await UserDao.list_user_touch(*receiver)
+            users = await RpcClient.invoke(user_client, "listUserTouch", dict(receiver=receiver))
             await Executor.notice(env, plan, project, report_dict, users)
-            if executor != 0:
-                await ws_manage.notify(executor, title="测试计划执行完毕", content=f"请前往测试报告页面查看细节")
+            # TODO
+            # if executor != 0:
+            #     await ws_manage.notify(executor, title="测试计划执行完毕", content=f"请前往测试报告页面查看细节")
         except Exception as e:
             Executor.log.exception(f"执行测试计划: 【{plan.name}】失败: {str(e)}")
             Executor.log.error(f"执行测试计划: 【{plan.name}】失败: {str(e)}")
@@ -721,11 +725,13 @@ class Executor(object):
     async def run_multiple(executor: int, env: int, case_list: List[int], mode=0, plan_id: int = None, ordered=False,
                            report_dict: dict = None, retry_minutes: int = 0):
         try:
-            current_env = await EnvironmentDao.query_env(env)
+            env_client = await RpcClient.get_instance("config")
+            current_env = await RpcClient.invoke(env_client, 'queryEnvironment', dict(id=env))
             if executor != 0:
                 # 说明不是系统执行
-                user = await UserDao.query_user(executor)
-                name = user.name if user is not None else "未知"
+                user_client = await RpcClient.get_instance("user")
+                user = await RpcClient.invoke(user_client, "query", dict(id=executor))
+                name = user.get('name', '未知') if user is not None else "未知"
             else:
                 name = "pity机器人"
             st = time.perf_counter()
@@ -772,7 +778,7 @@ class Executor(object):
                     "executor": name,
                     "cost": cost,
                     "plan_result": "通过" if ok + fail + error + skip > 0 and fail + error == 0 else '未通过',
-                    "env": current_env.name,
+                    "env": current_env.get("name"),
                 }
             return report_id
         except Exception as e:
